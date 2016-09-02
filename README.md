@@ -1,1 +1,1 @@
-Geneve, pronouced jen-eve (jenēv), makes the generation of events in Google Calendar way more fun.
+Geneve, pronouced jen-eve (jenēv), lets you create and share events on your favorite apps.
