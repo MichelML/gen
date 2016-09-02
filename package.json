@@ -1,0 +1,24 @@
+{
+  "name": "Geneve",
+  "version": "1.0.0",
+  "description": "Easy-to-use interface for Google Calendar Events creation",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michel Moreau",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "gulp": "^3.9.1",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.10.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "gulp-nodemon": "^2.1.0",
+    "jade": "^1.11.0",
+    "pg": "^6.1.0",
+    "serve-static": "^1.11.1"
+  }
+}

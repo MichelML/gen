@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="initial-scale=1">
+        <title>GEN | Event Creation</title>
+        <meta name="google-signin-client_id" content="185629692675-jsqjmmqp6c11unoa18vf0ck8ibncdm99.apps.googleusercontent.com">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+        <link rel="stylesheet" href="bower_components/materialize/dist/css/materialize.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="css/styles.css">
+    </head>
+    <body class="flow-text">
+        <header class="dblue-bg">
+            <div id="logo" class="row">
+                <div class="col s6 offset-s3 center">
+                    <img id="logo-img" src="img/gen-logo2.png" class="responsive-img" alt="Geneve logo">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s10 offset-s1 center white-text">
+                    <div id="mission-statements">
+                        <span>Create Google Calendar Events. kFast.</span>
+                    </div>
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col s4 offset-s4">
+                    <div class="divider"></div>
+                </div>
+            </div>
+        </header>
+
+        <section id="call-to-signin">
+            <div class="row center">
+                <div class="col s12 white-text">
+                    <h5>Sign in to Start</h5>
+                    <i class="small material-icons">keyboard_arrow_down</i>
+                </div>
+            </div>
+        </section>
+        <section id="signin">
+            <div class="row">
+              <div class="col s10 offset-s1">
+                <div id="g-signin2" class="left-align"></div>
+              </div>
+            </div>
+        </section>
+
+        <footer class="page-footer orange darken-1">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                  <p class="grey-text text-lighten-4"><u>Useful Links</u></p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <ul>
+                  <li><a class="grey-text text-lighten-3" href="#!">About</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Privacy</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Terms of Service</a></li>
+                  <li><a class="grey-text text-lighten-3" href="#!">Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container">
+            © 2016 Michel Moreau
+            </div>
+          </div>
+        </footer>
+        <script src="bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
+        <script src="js/main.js"></script>
+        <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+    </body>
+</html>

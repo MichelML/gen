@@ -1,0 +1,33 @@
+doctype html
+html(lang='en')
+    include ./includes/htmlhead
+    body.white.flow-text
+        include ./includes/nav
+        main
+            .row.margin-t-2
+                .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
+                    h5.blue-grey-text.text-accent-3 Ok, so you want to organize an event...
+                .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
+                    form.margin-t-1
+                        label(for="name-event").teal-text.text-accent-4 What name should you give to the event?
+                        input#name-event(type="text", name="name-event", placeholder="Type the event's name here")
+
+                        // following events inspired by http://eventmanagement.com/events/types-of-events/
+                        - var eventTypes = ["Annual Shareholder Meetings", "Award Ceremonies", "Birthday", "Board Meetings", "Business Dinners", "Conferences", "Executive Retreats", "Family Events", "Golf Events", "Incentive Events", "Incentive Travel", "Friends Gathering", "Meetings", "Networking Events", "Opening Ceremonies", "Press Conferences", "Product Launches", "Seminars", "Team Building Events", "Theme Parties", "Trade Fairs", "Trade Shows", "Vip Events", "Wedding Anniversaries", "Weddings"];
+                        label(for="type-event").teal-text.text-accent-4 What type of event is it?
+                        input(list="type-event", name="type-event", placeholder="Birthday party, Conference, etc.")
+                        datalist#type-event
+                            each event in eventTypes
+                                option(value= event)
+
+                        label(for="host-event").margin-t-5.teal-text.text-accent-4 Who is hosting this event?
+                        input#host(type="text", name="host-event", placeholder="Type the host's name here")
+
+                        label(for="place-event").teal-text.text-accent-4 Where is the event taking place?
+                        input#place-event(type="text", name="place-event", placeholder="Enter location, full address, or else")
+
+                        button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
+                          | Create My Event
+                          i.material-icons.right send
+    include ./includes/footer         
+    include ./includes/htmlbottom

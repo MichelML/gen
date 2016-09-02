@@ -1,0 +1,48 @@
+nav.purple-bg
+  .nav-wrapper
+    a.brand-logo(href='/') 
+      img.nav-img(src='img/gen-gre.png', alt='GEN logo')
+    a.button-collapse(href='#', data-activates='mobile-demo')
+      i.material-icons.green-text.text-accent-3 menu
+    ul.right.hide-on-med-and-down
+      li
+        a(href='#') My Profile
+      li
+        a(href='#') My Events
+      li
+        a(href='#', onclick='signOut()') Sign out
+      li
+        a(href='collapsible.html') 
+            .chip
+              img(src='https://lh4.googleusercontent.com/-O8rOO2fiFxc/AAAAAAAAAAI/AAAAAAAAAA4/5Tb31UDmVro/s96-c/photo.jpg', alt='Contact Person')
+              span Michel ML
+    ul#mobile-demo.side-nav.left-align
+      li
+        .row
+          .col.offset-s1.s10
+            .chip
+              img(src='https://lh4.googleusercontent.com/-O8rOO2fiFxc/AAAAAAAAAAI/AAAAAAAAAA4/5Tb31UDmVro/s96-c/photo.jpg', alt='Contact Person')
+              span Michel ML
+      li
+          .row
+              .col.offset-s1.s10
+                a(href='#') My Profile
+              .col.offset-s1.s10
+                a(href='#') My Events
+          .row
+              .col.offset-s1.s10
+                hr.green.margin-l-1
+          .row
+              .col.offset-s1.s10
+                a(href='#') Privacy
+              .col.offset-s1.s10
+                a(href='#') Terms of Service
+              .col.offset-s1.s10
+                a(href='#') Contact
+          .row
+              .col.offset-s1.s10
+                hr.green.margin-l-1
+          .row
+              .col.offset-s1.s10
+                a(href='#') Sign out
+

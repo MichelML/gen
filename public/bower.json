@@ -1,0 +1,10 @@
+{
+  "name": "Geneve",
+  "homepage": "https://github.com/MichelML/geneve",
+  "authors": [
+    "MichelML <michmoreau.l@gmail.com>"
+  ],
+  "description": "Easy to use interface for Google Calendar Events creation",
+  "main": "index.js",
+  "license": "MIT"
+}
