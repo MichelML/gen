@@ -2,6 +2,11 @@ body {
     background-color: #00b25c;
 }
 
+.clear {
+    margin: 0;
+    padding: 0;
+}
+
 .dblue-bg {
     background:linear-gradient(to bottom, #00ff83, #00b25c);
     padding-top:60px;
@@ -184,4 +189,7 @@ datalist {
     margin: 0;
     padding: 0;
 }
+
+
+
 

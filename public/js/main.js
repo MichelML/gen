@@ -36,18 +36,23 @@ function signOut() {
 
 $(".button-collapse").sideNav();
 
-$(document).ready(function(event) {
+$(document).ready(function() {
   $('#email-account').focus();
 });
 
+
 $(document).ready(function(event) {
     $('#name-event').focus();
-
+    $('.datepicker').pickadate({
+    selectMonths: true, // Creates a dropdown to control month
+    selectYears: 15, // Creates a dropdown of 15 years to control year
+    format: 'dd-mm-yyyy' });
+    $('.timepicker').pickatime({interval:15});
 });
-
-
 
 function initAutocomplete() {
   var input = document.getElementById('place-event');
   var searchBox = new google.maps.places.SearchBox(input);
 }
+
+

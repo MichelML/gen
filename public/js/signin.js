@@ -37,33 +37,6 @@ function signOut() {
 $(".button-collapse").sideNav();
 
 
-
-//resizing trick for proper tablet rendering of the footer element
-var windowInnerWidth;
-var $footer = $('footer');
-var initialFooterVals = $footer.css(['position', 'min-width', 'bottom']);
-
-var isWidthBetween601and999px = function() {
-  windowInnerWidth = window.innerWidth;
-  return windowInnerWidth > 600 && windowInnerWidth < 1000;
-};
-var isPortrait = function() {
-  return window.innerWidth < window.innerHeight;
-};
-var isMobile = function() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-};
-
-var wasPreviouslyTabletPortrait = false;
-
-var updateFooterStyle = function() {
-    $footer.css({
-      'position':'absolute', 
-      'min-width':'100%', 
-      'bottom':'0'
-    });
-};
-
 $(document).ready(function(event) {
   updateFooterStyle();
   $('#email-account').focus();
