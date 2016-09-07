@@ -7,27 +7,45 @@ html(lang='en')
             .row.margin-t-2
                 .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
                     h5.blue-grey-text.text-accent-3 Ok, so you want to organize an event...
-                .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
-                    form.margin-t-1
-                        label(for="name-event").teal-text.text-accent-4 What name should you give to the event?
-                        input#name-event(type="text", name="name-event", placeholder="Type the event's name here")
+            .row
+                form.margin-t-1.col.s10.offset-s1.m8.offset-m2.l6.offset-l3
+                    label(for="name-event").teal-text.text-accent-4 What name should you give to the event?
+                    input#name-event(type="text", name="name-event", placeholder="Type the event's name here")
 
-                        // following events inspired by http://eventmanagement.com/events/types-of-events/
-                        - var eventTypes = ["Annual Shareholder Meeting", "Award Ceremonie", "Birthday", "Board Meeting", "Business Dinner", "Conference", "Executive Retreat", "Family Event", "Golf Event", "Incentive Event", "Incentive Travel", "Friend Gathering", "Meeting", "Networking Event", "Opening Ceremonie", "Press Conference", "Product Launch", "Seminar", "Team Building Event", "Theme Party", "Trade Fair", "Trade Show", "Vip Event", "Wedding Anniversarie", "Wedding"];
-                        label(for="type-event").teal-text.text-accent-4 What type of event is it?
-                        input(list="type-event", name="type-event", placeholder="Birthday party, Conference, etc.")
-                        datalist#type-event
-                            each event in eventTypes
-                                option(value= event)
+                    // following events inspired by http://eventmanagement.com/events/types-of-events/
+                    - var eventTypes = ["Annual Shareholder Meeting", "Award Ceremonie", "Birthday", "Board Meeting", "Business Dinner", "Conference", "Executive Retreat", "Family Event", "Golf Event", "Incentive Event", "Incentive Travel", "Friend Gathering", "Meeting", "Networking Event", "Opening Ceremonie", "Press Conference", "Product Launch", "Seminar", "Team Building Event", "Theme Party", "Trade Fair", "Trade Show", "Vip Event", "Wedding Anniversarie", "Wedding"];
+                    label(for="type-event").teal-text.text-accent-4 What type of event is it?
+                    input(list="type-event", name="type-event", placeholder="Birthday party, Conference, etc.")
+                    datalist#type-event
+                        each event in eventTypes
+                            option(value= event)
 
-                        label(for="host-event").margin-t-5.teal-text.text-accent-4 Who is hosting this event?
-                        input#host(type="text", name="host-event", placeholder="Type the host's name here")
+                    label(for="host-event").teal-text.text-accent-4 Who is hosting this event?
+                    input#host-event(type="text", name="host-event", placeholder="Type the host's name here")
 
-                        label(for="place-event").teal-text.text-accent-4 Where is the event taking place?
-                        input#place-event(type="text", name="place-event", placeholder="Enter location, full address, or else")
+                    label(for="guests-event").teal-text.text-accent-4 Who should be invited?
+                    input#guests-event(type="text", name="guests-event", placeholder="Type guests' name here")
 
-                        button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
-                          | Create My Event
-                          i.material-icons.right send
+                    label(for="place-event").teal-text.text-accent-4 Where is the event taking place?
+                    input#place-event(type="text", name="place-event", placeholder="Enter location, full address, or else")
+
+                    
+                    .row.margin-t-2
+                        label(for="startdate-event").teal-text.text-accent-4 When does the event start?
+                        .col.s6
+                            input#startdate-event(type="date", placeholder="Pick a date").datepicker
+                        .col.s6
+                            input#starttime-event(type="time", placeholder="Pick a time").timepicker
+                    
+                    .row
+                        label(for="enddate-event").teal-text.text-accent-4 When does the event end?
+                        .col.s6
+                            input#enddate-event(type="date", placeholder="Pick a date").datepicker
+                        .col.s6
+                            input#endtime-event(type="time", placeholder="Pick a time").timepicker
+
+                    button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
+                      | Create My Event
+                      i.material-icons.right send
     include ./includes/footer         
     include ./includes/htmlbottom

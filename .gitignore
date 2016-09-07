@@ -47,3 +47,6 @@ tmp/**/*
 
 # jenev
 jenēv
+
+# vim files
+*.swp
