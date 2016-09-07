@@ -43,6 +43,9 @@ html(lang='en')
                             input#enddate-event(type="date", placeholder="Pick a date").datepicker
                         .col.s6
                             input#endtime-event(type="time", placeholder="Pick a time").timepicker
+                    
+                    label(for="details-event").teal-text.text-accent-4 What other information your guests should know?
+                    textarea#details-event.materialize-textarea(name="details-event", placeholder="Type information your guests should know before the event.\nBe positive and stick to the essential.")
 
                     button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
                       | Create My Event
