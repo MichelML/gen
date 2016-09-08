@@ -8,8 +8,8 @@ html(lang='en')
                 .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
                     h5.blue-grey-text.text-accent-3 Ok, so you want to organize an event...
             .row
-                form.margin-t-1.col.s10.offset-s1.m8.offset-m2.l6.offset-l3
-                    label(for="name-event").teal-text.text-accent-4 What name should you give to the event?
+                form.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
+                    label(for="name-event").teal-text.text-accent-4 What name should we give to the event?
                     input#name-event(type="text", name="name-event", placeholder="Type the event's name here")
 
                     // following events inspired by http://eventmanagement.com/events/types-of-events/
@@ -22,30 +22,42 @@ html(lang='en')
 
                     label(for="host-event").teal-text.text-accent-4 Who is hosting this event?
                     input#host-event(type="text", name="host-event", placeholder="Type the host's name here")
+                    br
+                    small Provide contact information below
+                    .margin-t-1
+                    .input-field.col.s12.m12.l4
+                        i.material-icons.prefix.teal-text.text-accent-4 phone
+                        input#tel-event.validate(type='tel', placeholder='Telephone')
+                    .input-field.col.s12.m12.l4
+                        i.material-icons.prefix.teal-text.text-accent-4 mail
+                        input#tel-mail.validate(type='email', placeholder='Email')
+                    .input-field.col.s12.m12.l4
+                        i.material-icons.prefix.teal-text.text-accent-4 link
+                        input#event-link.validate(type='url', placeholder='Website or event\'s link')
 
-                    label(for="guests-event").teal-text.text-accent-4 Who should be invited?
-                    input#guests-event(type="text", name="guests-event", placeholder="Type guests' name here")
+                    label#lab-guests-event(for="guests-event").teal-text.text-accent-4 Who should we invite?
+                    input#guests-event(type="text", name="guests-event", placeholder="Enter email addresses or contacts")
 
                     label(for="place-event").teal-text.text-accent-4 Where is the event taking place?
                     input#place-event(type="text", name="place-event", placeholder="Enter location, full address, or else")
 
                     
                     .row.margin-t-2
-                        label(for="startdate-event").teal-text.text-accent-4 When does the event start?
+                        h5.label.teal-text.text-accent-4 When does the event start?
                         .col.s6
                             input#startdate-event(type="date", placeholder="Pick a date").datepicker
                         .col.s6
                             input#starttime-event(type="time", placeholder="Pick a time").timepicker
                     
                     .row
-                        label(for="enddate-event").teal-text.text-accent-4 When does the event end?
+                        h5.label.teal-text.text-accent-4 When does the event end?
                         .col.s6
                             input#enddate-event(type="date", placeholder="Pick a date").datepicker
                         .col.s6
                             input#endtime-event(type="time", placeholder="Pick a time").timepicker
                     
                     label(for="details-event").teal-text.text-accent-4 What other information your guests should know?
-                    textarea#details-event.materialize-textarea(name="details-event", placeholder="Type information your guests should know before the event.\nBe positive and stick to the essential.")
+                    textarea#details-event.materialize-textarea(name="details-event", placeholder="Type information your guests should know before the event.\nStick to the essential.")
 
                     button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
                       | Create My Event
