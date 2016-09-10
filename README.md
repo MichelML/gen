@@ -1,1 +1,1 @@
-Gen lets you create and share events with Google Calendar. Faster.
+Gen makes it user friendly to create any kind of event in sync with Google Calendar.
