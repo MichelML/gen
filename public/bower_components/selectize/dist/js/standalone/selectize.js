@@ -3735,7 +3735,6 @@
 							if (self.isLocked) return;
 							self.clear();
 						});
-	
 					};
 				})();
 			};
