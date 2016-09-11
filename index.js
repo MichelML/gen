@@ -18,14 +18,11 @@ app.use(express.static(__dirname + '/public'));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'jade');
 
-app.use('/',indexView);
+app.use('/', indexView);
 app.use('/', signinView);
 app.use('/', signupView);
 app.use('/', eventView);
 app.use('/', profileView);
 app.use('/', eventSumView);
 
-app.listen(app.get('port'), function() {
-  console.log('Node app is running on port', app.get('port'));
-});
-
+app.listen(app.get('port'),() => console.log('Node app is running on port', app.get('port')););
