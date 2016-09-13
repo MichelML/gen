@@ -44,7 +44,9 @@ body {
     padding-bottom:20px;
 }
 
-
+#call-to-action {
+    margin-bottom:0;
+}
 
 .purple-bg {
     background:linear-gradient(to right, #5e35b1, #7e57c2);
@@ -145,27 +147,27 @@ body {
 }
 
 .margin-b-1 {
-    margin-left:10px;
+    margin-bottom:10px;
 }
 
 .margin-b-2 {
-    margin-left:20px;
+    margin-bottom:20px;
 }
 
 .margin-b-3 {
-    margin-left:30px;
+    margin-bottom:30px;
 }
 
 .margin-b-4 {
-    margin-left:40px;
+    margin-bottom:40px;
 }
 
 .margin-b-5 {
-    margin-left:50px;
+    margin-bottom:50px;
 }
 
 .margin-b-6 {
-    margin-left:60px;
+    margin-bottom:60px;
 }
 
 .reduce-h4-1 {
