@@ -50,3 +50,6 @@ jenēv
 
 # vim files
 *.swp
+
+# environment variables
+.env
