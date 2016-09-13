@@ -1,6 +1,8 @@
 var express = require('express'),
     app = express(),
-    EventEmitter = require('events');
+    EventEmitter = require('events'),
+    gapi = require('../../lib/gapi.js')
+    simpleGet = require('simple-get');
 
 app.get('/google/auth', (req, res) => {
     var code = req.query.code;
@@ -46,8 +48,6 @@ app.get('/google/auth', (req, res) => {
 
         pageRenderer.on('emailsReady', () => {
             var locals = {
-                title: 'My sample app',
-                url: gapi.url,
                 persons: Persons
             };
             res.render('event.jade', locals);
