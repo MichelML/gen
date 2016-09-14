@@ -7,18 +7,18 @@ const EventEmitter = require('events');
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
 const methodOverride = require('method-override');
-const simpleGet = require('simple-get');
 const morgan = require('morgan');
 const errorhandler = require('errorhandler');
 const gapi = require('./lib/gapi');
 
-// Views
+// Routes
 const indexView = require('./routes/index');
 const signinView = require('./routes/signin');
 const eventView = require('./routes/event');
 const profileView = require('./routes/profile');
 const eventSumView = require('./routes/eventsummary');
 const signupView = require('./routes/signup');
+const googleSignin = require('./routes/auth/google-signin.js');
 
 // App settings and middlewares
 const app = express();
@@ -36,6 +36,9 @@ app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
+
+// Set Login Processes
+app.use('/', googleSignin);
 
 // Set views 
 app.use('/', indexView);

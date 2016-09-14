@@ -3,6 +3,11 @@ html(lang='en')
     include ./includes/htmlhead
     body.white.flow-text
         include ./includes/nav
+        ul#contacts.hide
+            each person in persons
+                div.contact
+                    div.contact-name= person.name
+                    div.contact-email= person.email
         main
             .row.margin-t-2
                 .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
@@ -34,7 +39,7 @@ html(lang='en')
                     .input-field.col.s12.m12.l4
                         i.material-icons.prefix.teal-text.text-accent-4 link
                         input#event-link.validate(type='url', placeholder='Website or event\'s link')
-
+                        
                     label#lab-guests-event(for="guests-event").teal-text.text-accent-4 Who should we invite?
                     input#guests-event(type="text", name="guests-event", placeholder="Enter email addresses or contacts")
 
@@ -62,5 +67,7 @@ html(lang='en')
                     button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
                       | Create My Event
                       i.material-icons.right send
+    script.
+        setTimeout(function() {window.history.pushState({},'testing', '/event');}, 4);
     include ./includes/footer         
     include ./includes/htmlbottom
