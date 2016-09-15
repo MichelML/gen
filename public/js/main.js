@@ -38,6 +38,9 @@ function initAutocomplete() {
   var searchBox = new google.maps.places.SearchBox(input);
 }
 
+$(".button-collapse").sideNav();
 
-
-
+$(document).ready(function(event) {
+  updateFooterStyle();
+  $('#email-account').focus();
+});
