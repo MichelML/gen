@@ -14,7 +14,7 @@ const gulp = require('gulp'),
 gulp.task('browser-sync', ['nodemon'], () => {
   browserSync({
     proxy: "localhost:3000",  // local node app address
-    port: 8000,  // use *different* port than above
+    port: 5000,  // use *different* port than above
     notify: true
   });
 });
@@ -22,7 +22,7 @@ gulp.task('browser-sync', ['nodemon'], () => {
 gulp.task('nodemon', (cb) => {
   var called = false;
   return nodemon({
-    script: 'index.js',
+    script: 'app.js',
     ignore: [
       'gulpfile.js',
       'node_modules/'
