@@ -13,16 +13,18 @@ nav.purple-bg
         a(href='#', onclick='signOut()') Sign out
       li
         a(href='collapsible.html') 
-            .chip
-              img(src='#{me.image}', alt='Contact Person')
-              span #{me.name}
+            if me
+                .chip
+                  img(src='#{me.image}', alt='Contact Person')
+                  span #{me.name}
     ul#mobile-demo.side-nav.left-align
       li
         .row
           .col.offset-s1.s10
-            .chip
-              img(src='#{me.image}', alt='Contact Person')
-              span #{me.name}
+              if me
+                .chip
+                  img(src='#{me.image}', alt='Contact Person')
+                  span #{me.name}
       li
           .row
               .col.offset-s1.s10

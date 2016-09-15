@@ -4,10 +4,11 @@ html(lang='en')
     body.white.flow-text
         include ./includes/nav
         ul#contacts.hide
-            each person in persons
-                div.contact
-                    div.contact-name= person.name
-                    div.contact-email= person.email
+            if persons
+                each person in persons
+                    div.contact
+                        div.contact-name= person.name
+                        div.contact-email= person.email
         main
             .row.margin-t-2
                 .col.s10.offset-s1.m8.offset-m2.l6.offset-l3

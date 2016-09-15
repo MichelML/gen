@@ -41,6 +41,5 @@ function initAutocomplete() {
 $(".button-collapse").sideNav();
 
 $(document).ready(function(event) {
-  updateFooterStyle();
   $('#email-account').focus();
 });

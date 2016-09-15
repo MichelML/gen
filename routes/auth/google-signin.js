@@ -4,7 +4,7 @@ var express = require('express'),
     gapi = require('../../lib/gapi.js')
 simpleGet = require('simple-get');
 
-app.get('/event', (req, res) => {
+app.get('/googleauth', (req, res) => {
     var code = req.query.code;
     var Persons = [];
     var pageRenderer = new EventEmitter();
