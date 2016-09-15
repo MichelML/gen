@@ -11,7 +11,7 @@ $(document).ready(function() {
   $signinLink.hover(function() {
      $googleButton.attr('src', 'img/btn_google_signin_focus.png');
   });
-  $signinLink.on('focusout, mouseout', function() {
+  $signinLink.on('focusout mouseout blur', function() {
      $googleButton.attr('src', 'img/btn_google_signin_normal.png');
   });
 });
