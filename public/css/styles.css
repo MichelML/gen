@@ -192,20 +192,6 @@ datalist {
     padding: 0;
 }
 
-.guest-selectable {
-    border: 1px solid #000;
-    border-radius: 10px;
-    padding: 2px 5px;
-}
-
-.guest-selectable:focus,
-.guest-selectable:active,
-.guest-selectable:hover,
-.guest-selectable:selected {
-    background: rgba(100,100,100,0.1);
-}
-
-
 .selectize-dropdown-content * {
     font-size: 0.9rem;
 }
@@ -227,14 +213,6 @@ datalist {
     margin: 0;
 }
 
-.guest-item {
-    position: relative;
-    border: 2px solid #009688;
-    border-radius: 10px;
-    padding: 2px 10px;
-    margin-bottom: 5px;
-}
-
-#guests-event-selectized {
-    width: 100%;
+.guest-selectable .label {
+    color:rgba(100,100,120,0.6);
 }

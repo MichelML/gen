@@ -12,7 +12,7 @@ names.each(function(i) {
 $(document).ready(function(event) {
     // selectize.js below
     var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' + '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
-    $('#guests-event').selectize({
+    var $guestsEvent = $('#guests-event').selectize({
         plugins: ['remove_button'],
         persist: false,
         maxItems: null,
@@ -28,8 +28,8 @@ $(document).ready(function(event) {
                 return '<div class="guest-item">' + (item.name ? '<span class="name">' + escape(item.name) + '</span><br>' : '') + (item.email ? '<span class="email">' + escape(item.email) + '</span>' : '') + '</div>';
             },
             option: function(item, escape) {
-                var label = item.name || item.email;
-                var caption = item.name ? item.email : null;
+                var label = item.name || 'unnamed';
+                var caption = item.email;
                 return '<div class="guest-selectable">' + '<span class="label">' + escape(label) + '</span><br>' + (caption ? '<span class="caption">' + escape(caption) + '</span>' : '') + '</div>';
             }
         },
@@ -63,11 +63,13 @@ $(document).ready(function(event) {
     var $guestsInput = $("#guests-event-selectized");
     $('#lab-guests-event').css('font-size', $('label').first().css('font-size'));
     $('h5.label').css('font-size', $('label').first().css('font-size'));
-    $guestsInput.attr('style', 'width:100%');
-    $guestsInput.on('change paste keyup focus', function() {
-        if ($guestsInput.val() === "") {
-            $guestsInput.attr('style', 'width:100%');
-        }
+
+    var $selectize = $guestsEvent[0].selectize;
+
+    // Sort contacts selected by name then by email only
+    $guestsInput.on('keyup focus click', function() {
+        if (!$guestsInput.val()) $selectize.close();
+        else $selectize.open();
     });
 
 });

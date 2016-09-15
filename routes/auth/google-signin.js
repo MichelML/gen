@@ -41,7 +41,7 @@ app.get('/event', (req, res) => {
                         .filter(person => person.emailAddresses)
                         .map((person) => {
                             return {
-                                name: (person.names) ? person.names[0].displayName : 'unknown',
+                                name: (person.names) ? person.names[0].displayName : '',
                                 email: person.emailAddresses[0].value
                             };
                         }) : {};
