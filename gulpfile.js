@@ -14,7 +14,7 @@ const gulp = require('gulp'),
 gulp.task('browser-sync', ['nodemon'], () => {
   browserSync({
     proxy: "localhost:3000",  // local node app address
-    port: 5000,  // use *different* port than above
+    port: 5000,  // use *differen* port than above
     notify: true
   });
 });

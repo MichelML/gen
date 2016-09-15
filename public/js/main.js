@@ -28,7 +28,7 @@ $(document).ready(function(event) {
 });
 
 $(window).resize(function(){
-      $('#lab-guests-event').css('font-size', $('label').first().css('font-size'));
+      $('#lab-guests').css('font-size', $('label').first().css('font-size'));
       $('h5.label').css('font-size', $('label').first().css('font-size'));  
 });
 

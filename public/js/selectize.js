@@ -61,7 +61,7 @@ $(document).ready(function(event) {
         }
     });
     var $guestsInput = $("#guests-event-selectized");
-    $('#lab-guests-event').css('font-size', $('label').first().css('font-size'));
+    $('#lab-guests').css('font-size', $('label').first().css('font-size'));
     $('h5.label').css('font-size', $('label').first().css('font-size'));
 
     var $selectize = $guestsEvent[0].selectize;
