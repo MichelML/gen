@@ -1042,6 +1042,7 @@
 		var currentWidth = null;
 	
 		var update = function(e, options) {
+                        console.log(1);
 			var value, keyCode, printable, placeholder, width;
 			var shift, character, selection;
 			e = e || window.event || {};
@@ -1091,7 +1092,7 @@
 			}
 		};
 	
-		$input.on('keydown keyup update blur', update);
+		$input.on('keyup update blur', update);
 		update();
 	};
 	
