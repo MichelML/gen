@@ -59,7 +59,7 @@ app.get('/googleauth', (req, res) => {
             var locals = {
                 persons: Persons
             };
-            res.render('event.jade', locals);
+            res.render('event.pug', locals);
         });
 
     });
