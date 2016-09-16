@@ -30,7 +30,7 @@ if (process.env.NODE_ENV === 'development') {
 
 app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
-app.set('view engine', 'jade');
+app.set('view engine', 'pug');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
