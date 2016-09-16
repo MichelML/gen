@@ -10,7 +10,6 @@ names.each(function(i) {
 });
 
 $(document).ready(function(event) {
-    // selectize.js below
     var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' + '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
     var $guestsEvent = $('#guests-event').selectize({
         plugins: ['remove_button'],

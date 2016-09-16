@@ -12,11 +12,17 @@ nav.purple-bg
       li
         a(href='#', onclick='signOut()') Sign out
       li
-        a(href='collapsible.html') 
+        a(href='#') 
             if me
                 .chip
-                  img(src='#{me.image}', alt='Contact Person')
-                  span #{me.name}
+                  img#me-image(src='#{me.image}', alt='Contact Person')
+                  span#me-name #{me.name}
+      li
+        if me
+            span#me-email.hide #{me.email}
+      li
+          if me
+              span#me-firstname.hide #{me.firstName}
     ul#mobile-demo.side-nav.left-align
       li
         .row

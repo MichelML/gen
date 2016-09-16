@@ -11,8 +11,9 @@ html(lang='en')
                         div.contact-email= person.email
         main
             .row.margin-t-2
-                .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
-                    h5.blue-grey-text.text-accent-3 Ok, so you want to organize an event...
+                .col.s10.offset-s1.m12.l8.offset-l2
+                    h5#intro.blue-grey-text.text-accent-3 Great Job! One more thing before we generate your
+                    p.blue-grey-text.text-accent-3 Please review and edit your event as needed below.
             .row
                 form.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
                     label(for="name-event").teal-text.text-accent-4 What name should we give to the event?
@@ -70,6 +71,12 @@ html(lang='en')
                       i.material-icons.right send
     script(src="bower_components/localforage/dist/localforage.min.js")
     script.
-        localforage.getItem('currentEvent', function(err,val) {if (err) throw err;console.dir(val);})
+        var currentEvent;
+        localforage.getItem('currentEvent', function(err,val) {
+            if (err) throw err;
+            console.dir(val);
+            currentEvent = val;
+            $('#intro').text($('#intro').text() + ' ' + currentEvent.type.toLowerCase() + '.');
+            });
     include ./includes/footer         
     include ./includes/htmlbottom
