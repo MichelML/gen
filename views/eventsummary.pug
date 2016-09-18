@@ -1,8 +1,8 @@
 doctype html
 html(lang='en')
-    include ./includes/htmlhead
+    include ./includes/htmlhead.pug
     body.white.flow-text
-        include ./includes/nav
+        include ./includes/nav.pug
         ul#contacts.hide
             if persons
                 each person in persons
@@ -78,5 +78,5 @@ html(lang='en')
             currentEvent = val;
             $('#intro').text($('#intro').text() + ' ' + currentEvent.type.toLowerCase() + '.');
             });
-    include ./includes/footer         
-    include ./includes/htmlbottom
+    include ./includes/footer.pug
+    include ./includes/htmlbottom.pug

@@ -1,8 +1,8 @@
 doctype html
 html(lang='en')
-    include ./includes/htmlhead
+    include ./includes/htmlhead.pug
     body.white.flow-text
-        include ./includes/nav-visit
+        include ./includes/nav-visit.pug
         main
             .row
                 .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
@@ -17,5 +17,5 @@ html(lang='en')
                           | Sign in 
                           i.material-icons.right send
                         p.em0p7: a(href="/signup") Don't Have An Account Yet? Click Here
-    include ./includes/footer
-    include ./includes/htmlbottom
+    include ./includes/footer.pug
+    include ./includes/htmlbottom.pug
