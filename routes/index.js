@@ -8,7 +8,7 @@ app.get('/', function(request, response) {
   var locals = {
     url:gapi.url
   }
-  response.render('landingpage', locals);
+  response.render('./landing/landingpage', locals);
 });
 
 module.exports = app;

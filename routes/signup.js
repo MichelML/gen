@@ -4,7 +4,7 @@ var express = require('express'),
 app.get('/signup', function(request, response) {
     //if loggedin, redirect to event creation
     //else stay on page
-    response.render('signup');
+    response.render('./app/blocks/signup');
 });
 
 module.exports = app;
