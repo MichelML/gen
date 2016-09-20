@@ -11,7 +11,7 @@ block main
             .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
                 form.margin-t-3
                     label(for="email-account").margin-t-5.blue-grey-text What is your email address?
-                    input#email-account(type="email", name="email-account", placeholder="example@gmail.com")
+                    input#email-account(type="email", name="email-account", placeholder="example@gmail.com", autofocus)
                     label(for="password-account").blue-grey-text Choose a password
                     input#password-account(type="password", name="password-account", placeholder="**********")
                     label(for="password2-account").blue-grey-text Confirm your password
@@ -21,3 +21,7 @@ block main
                       i.material-icons.right send
                     p.em0p7: a(href="/signin") Have An Account Already? Click Here    
 
+block scripts
+    script(src='bower_components/jquery/dist/jquery.min.js')    
+    script(src="bower_components/localforage/dist/localforage.min.js")
+    script(src='bower_components/materialize/dist/js/materialize.min.js')
