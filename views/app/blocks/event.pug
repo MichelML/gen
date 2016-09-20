@@ -83,6 +83,7 @@ block main
 block scripts
     script.
         setTimeout(function() {window.history.pushState({},'testing', '/event');}, 4);
+
     script(src='bower_components/jquery/dist/jquery.min.js')
     script(src="bower_components/localforage/dist/localforage.min.js")
     script(src='bower_components/pickadate/lib/compressed/picker.js')
@@ -91,11 +92,13 @@ block scripts
     script(src='bower_components/materialize/dist/js/materialize.min.js')
     script(src='js/main.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
+
     script.
         setTimeout(function() {
             $('.selectize-control').removeClass('event-input');
             $('.selectize-dropdown').removeClass('event-input')
         },1000);
+
     script.
         var me = {};
         me.name = $('#me-name').text();

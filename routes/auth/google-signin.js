@@ -30,7 +30,7 @@ app.get('/googleauth', (req, res) => {
             }
         });
 
-        // Retrieving google contacts of users
+        // Retrieving Google Contacts of User
         simpleGet('https://people.googleapis.com/v1/people/me/connections?pageSize=500&requestMask.includeField=person.email_addresses%2Cperson.names&access_token=' + tokens.access_token, (err, res) => {
                 if (err) throw err;
                 var persons = '';
