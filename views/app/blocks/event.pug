@@ -5,7 +5,7 @@ block head
     meta(name='viewport', content='initial-scale=1')
     meta(name="theme-color", content="#5e35b1")
     title GEN | Event Creation
-    meta(name='google-signin-client_id', content='185629692675-jsqjmmqp6c11unoa18vf0ck8ibncdm99.apps.googleusercontent.com')
+    meta(name='google-signin-client_id', content='185629692675-kl7mt54epmrdl5qa33299f7gkt75e6p4.apps.googleusercontent.com')
     link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
     link(rel='stylesheet', href='bower_components/materialize/dist/css/materialize.css')
     link(rel='stylesheet', href='bower_components/selectize/dist/css/selectize.css')
@@ -100,12 +100,12 @@ block scripts
         },1000);
 
     script.
-        var me = {};
-        me.name = $('#me-name').text();
-        me.image = $('#me-image').attr('src');
-        me.email = $('#me-email').text();
-        me.firstname = $('#me-firstname').text();
-        localforage.setItem('me', me).then(function () {
+        var ME = {};
+        ME.name = $('#me-name').text();
+        ME.image = $('#me-image').attr('src');
+        ME.email = $('#me-email').text();
+        ME.firstname = $('#me-firstname').text();
+        localforage.setItem('me', ME).then(function () {
                       return localforage.getItem('me');
                     }).then(function (value) {
                       // we got our value

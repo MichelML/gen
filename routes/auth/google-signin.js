@@ -1,22 +1,25 @@
 var express = require('express'),
     app = express(),
     EventEmitter = require('events'),
-    gapi = require('../../lib/gapi.js')
-    simpleGet = require('simple-get');
+    gapi = require('../../lib/gapi.js');
 
 app.get('/googleauth', (req, res) => {
-    var code = req.query.code;
-    var Persons = [];
     var pageRenderer = new EventEmitter();
-    gapi.client.getToken(code, (err, tokens) => {
-        // Retrieving User's Google Profile
+    gapi.client.getToken(req.query.code, (err, tokens) => {
+      if (!err) {
         gapi.client.setCredentials(tokens);
+        pageRenderer.emit('credentialsSet');
+      }
+    });
+
+    pageRenderer.on('credentialsSet', () => {
+        // Retrieving google plus info of user
         gapi.google.plus('v1').people.get({
             userId: 'me',
+            auth: gapi.client,
             params: {
                 fields: ['emails', 'displayName', 'image', 'name/givenName']
-            },
-            auth: gapi.client
+            }
         }, (err, response) => {
             // handle err and response
             if (err) console.log(err);
@@ -31,38 +34,32 @@ app.get('/googleauth', (req, res) => {
         });
 
         // Retrieving Google Contacts of User
-        simpleGet('https://people.googleapis.com/v1/people/me/connections?pageSize=500&requestMask.includeField=person.email_addresses%2Cperson.names&access_token=' + tokens.access_token, (err, res) => {
-                if (err) throw err;
-                var persons = '';
-                res.on('data', (data) => {
-                    persons += data;
-                });
-                res.on('end', () => {
-                    persons = JSON.parse(persons);
-                    Persons = (persons.connections) ? persons.connections
-                        .filter(person => person.emailAddresses)
-                        .map((person) => {
-                            return {
-                                name: (person.names) ? person.names[0].displayName : '',
-                                email: person.emailAddresses[0].value
-                            };
-                        }) : {};
-                    pageRenderer.emit('emailsReady');
-                });
-                res.on('error', () => {
-                    console.log('There was an error. While streaming the data.')
-                });
-            }); 
-
-        pageRenderer.on('emailsReady', () => {
-            console.log(Persons);
-            var locals = {
-                persons: Persons
-            };
-            res.render('./app/blocks/event', locals);
+        gapi.google.people('v1').people.connections.list({
+            'resourceName': 'people/me',
+            'pageSize': 200,
+            'auth': gapi.client,
+            'requestMask.includeField': 'person.names,person.email_addresses'
+        }, (err, response) => {
+            // handle err and response
+            if (err) console.log(err);
+            var people = response.connections || '';
+            people = (people) ? people.filter(person => person.emailAddresses)
+                .map(person => {
+                    return {
+                        name: (person.names) ? person.names[0].displayName : '',
+                        email: person.emailAddresses[0].value
+                    };
+                }) : {};
+            console.log(people);
+            app.locals.persons = people;
+            pageRenderer.emit('peopleReady');
         });
-
     });
+
+    pageRenderer.on('peopleReady', () => {
+        res.render('./app/blocks/event');
+    });
+
 });
 
 module.exports = app;

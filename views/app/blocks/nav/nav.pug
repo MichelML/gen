@@ -16,7 +16,7 @@ block nav
             a(href='#') 
                 if me
                     .chip
-                      img#me-image(src='#{me.image}', alt='Contact Person')
+                      img#me-image(src=`${me.image}`, alt='Contact Person')
                       span#me-name #{me.name}
           li
             if me
