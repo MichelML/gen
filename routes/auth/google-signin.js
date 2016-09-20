@@ -13,6 +13,7 @@ app.get('/googleauth', (req, res) => {
     });
 
     pageRenderer.on('credentialsSet', () => {
+
         // Retrieving google plus info of user
         gapi.google.plus('v1').people.get({
             userId: 'me',
@@ -50,10 +51,10 @@ app.get('/googleauth', (req, res) => {
                         email: person.emailAddresses[0].value
                     };
                 }) : {};
-            console.log(people);
             app.locals.persons = people;
             pageRenderer.emit('peopleReady');
         });
+
     });
 
     pageRenderer.on('peopleReady', () => {
