@@ -14,24 +14,20 @@ block nav
             a(href='#', onclick='signOut()') Sign out
           li
             a(href='#') 
-                if me
-                    .chip
-                      img#me-image(src=`${me.image}`, alt='Contact Person')
-                      span#me-name #{me.name}
+                .chip
+                    img#me-image(alt='user image', data-bind=`src:${me.image}`)
+                    span#me-name(data-bind=`${me.name}`)
           li
-            if me
-                span#me-email.hide #{me.email}
+            span#me-email.hide(data-bind=`${me.email}`)
           li
-              if me
-                  span#me-firstname.hide #{me.firstName}
+            span#me-firstname.hide(data-bind=`${me.firstName}`)
         ul#mobile-demo.side-nav.left-align
           li
             .row
               .col.offset-s1.s10
-                  if me
                     .chip
-                      img(src=`${me.image}`, alt='Contact Person')
-                      span #{me.name}
+                      img(alt='user image', data-bind=`src:${me.image}`)
+                      span(data-bind=`${me.name}`)
           li
               .row
                   .col.offset-s1.s10

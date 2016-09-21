@@ -24,7 +24,10 @@ block main
     main
         .row.margin-t-2
             .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
-                h5.blue-grey-text.text-accent-3 Ok #{me.firstName}, so you want to organize an event...
+                h5.blue-grey-text.text-accent-3 
+                    | Ok
+                    span(data-bind=`${me.firstName}`)
+                    | , so you want to organize an event...
         .row
             form.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
                 label(for="name-event").teal-text.text-accent-4 What name should we give to this event?
