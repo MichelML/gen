@@ -99,17 +99,14 @@ block scripts
     script(src="js/eventstorage.js")
     script.
         var me = {};
-        me.name = "#{me.name}" || '';
-        me.image = "#{me.image}" || 'img/gen-green.png';
-        me.email = "#{me.email}" || '';
-        me.firstname = "#{me.firstName}" || '';
-        ko.applyBindings(me);
-        localforage.setItem('me', me).then(function() {
-            return localforage.getItem('me');
-        }).then(function(value) {
-            // we got our value
-            console.dir(value);
+        me.name = "#{me.name}" || "";
+        me.image = "#{me.image}" || "img/gen-green.png";
+        me.email = "#{me.email}" || "";
+        me.firstname = "#{me.firstName}" || "";
+        localforage.setItem("me", me).then(function() {
+            return localforage.getItem("me");
+        }).then(function(me) {
+            ko.applyBindings(me);
         }).catch(function(err) {
-            // we got an error
             console.log(err);
         });
