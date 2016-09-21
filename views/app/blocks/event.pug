@@ -114,8 +114,8 @@ block scripts
     else
         script.
             localforage.getItem("me")
-            .then(function(me) {
-                ko.applyBindings(me);
-            }).catch(function(err) {
-                console.log(err);
-            });
+                        .then(function(me) {
+                            ko.applyBindings(me);
+                        }).catch(function(err) {
+                            console.log(err);
+                        });
