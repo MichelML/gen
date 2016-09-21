@@ -28,7 +28,7 @@ block main
         .row
             form.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
                 label(for="name-event").teal-text.text-accent-4 What name should we give to this event?
-                input#name-event.event-input(type="text", name="name-event", placeholder="Type the event's name here")
+                input#name-event.event-input(type="text", name="name-event", placeholder="Type the event's name here", autofocus)
 
                 // following events inspired by http://eventmanagement.com/events/types-of-events/
                 - var eventTypes = ["Annual Shareholder Meeting", "Award Ceremonie", "Birthday", "Board Meeting", "Business Dinner", "Conference", "Executive Retreat", "Family Event", "Friend Gathering", "Golf Event", "Incentive Event", "Incentive Travel", "Meeting", "Networking Event", "Opening Ceremonie", "Press Conference", "Product Launch", "Seminar", "Team Building Event", "Theme Party", "Trade Fair", "Trade Show", "Vip Event", "Wedding Anniversarie", "Wedding"];
@@ -89,7 +89,7 @@ block scripts
     script(src='bower_components/pickadate/lib/compressed/picker.time.js')
     script(src='bower_components/selectize/dist/js/standalone/selectize.js')
     script(src='bower_components/materialize/dist/js/materialize.min.js')
-    script(src='js/main.js')
+    script(src='js/eventmain.js')
     script(src='js/selectize.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
 
