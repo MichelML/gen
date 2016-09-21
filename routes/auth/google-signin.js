@@ -12,7 +12,7 @@ app.get('/googleauth', (req, res) => {
       }
     });
 
-    pageRenderer.on('credentialsSet', () => {
+    pageRenderer.once('credentialsSet', () => {
 
         // Retrieving google plus info of user
         gapi.google.plus('v1').people.get({
@@ -57,7 +57,8 @@ app.get('/googleauth', (req, res) => {
 
     });
 
-    pageRenderer.on('peopleReady', () => {
+    pageRenderer.once('peopleReady', () => {
+        pageRenderer.removeAllListeners('peopleReady')
         res.render('./app/blocks/event');
     });
 
