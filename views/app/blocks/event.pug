@@ -97,16 +97,25 @@ block scripts
     script(src='js/selectize.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
     script(src="js/eventstorage.js")
-    script.
-        var me = {};
-        me.name = "#{me.name}" || "";
-        me.image = "#{me.image}" || "img/gen-green.png";
-        me.email = "#{me.email}" || "";
-        me.firstname = "#{me.firstName}" || "";
-        localforage.setItem("me", me).then(function() {
-            return localforage.getItem("me");
-        }).then(function(me) {
-            ko.applyBindings(me);
-        }).catch(function(err) {
-            console.log(err);
-        });
+    if me
+        script.
+            var me = {};
+            me.name = "#{me.name}" || "";
+            me.image = "#{me.image}" || "img/gen-green.png";
+            me.email = "#{me.email}" || "";
+            me.firstname = "#{me.firstName}" || "";
+            localforage.setItem("me", me).then(function() {
+                return localforage.getItem("me");
+            }).then(function(me) {
+                ko.applyBindings(me);
+            }).catch(function(err) {
+                console.log(err);
+            });
+    else
+        script.
+            localforage.getItem("me")
+            .then(function(me) {
+                ko.applyBindings(me);
+            }).catch(function(err) {
+                console.log(err);
+            });
