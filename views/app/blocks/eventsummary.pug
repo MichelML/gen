@@ -69,3 +69,16 @@ block main
                 button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
                   | Create My Event
                   i.material-icons.right send
+
+block scripts
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src="bower_components/localforage/dist/localforage.min.js")
+    script(src='bower_components/materialize/dist/js/materialize.min.js')
+    script(src='bower_components/knockout/dist/knockout.js')
+    script.
+            localforage.getItem("me")
+                        .then(function(me) {
+                            ko.applyBindings(me);
+                        }).catch(function(err) {
+                            console.log(err);
+                        });
