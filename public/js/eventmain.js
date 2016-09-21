@@ -1,5 +1,3 @@
-$(".button-collapse").sideNav();
-
 $(document).ready(function(event) {
     $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
@@ -13,7 +11,6 @@ $(window).resize(function(){
       $('#lab-guests').css('font-size', $('label').first().css('font-size'));
       $('h5.label').css('font-size', $('label').first().css('font-size'));  
 });
-
 
 function initAutocomplete() {
   var input = document.getElementById('place-event');
