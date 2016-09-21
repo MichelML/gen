@@ -94,42 +94,7 @@ block scripts
     script(src='js/selectize.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
 
-    script.
-        setTimeout(function() {
-            $('.selectize-control').removeClass('event-input');
-            $('.selectize-dropdown').removeClass('event-input')
-        },1000);
-
-    script.
-        var ME = {};
-        ME.name = $('#me-name').text();
-        ME.image = $('#me-image').attr('src');
-        ME.email = $('#me-email').text();
-        ME.firstname = $('#me-firstname').text();
-        localforage.setItem('me', ME).then(function () {
-                      return localforage.getItem('me');
-                    }).then(function (value) {
-                      // we got our value
-                      console.dir(value);
-                    }).catch(function (err) {
-                      // we got an error
-                      console.log(err);
-                    });
-        var currentEvent = {};
-        var currentElem = '';
-        var submitEvent = function() {
-            $('.event-input').each(function() {
-                currentElem = $(this);
-                currentEvent[currentElem.attr('id').replace(/-event/, '')] = currentElem.val(); 
-            });
-            localforage.setItem('currentEvent', currentEvent).then(function () {
-                  return localforage.getItem('currentEvent');
-                }).then(function (value) {
-                  // we got our value
-                  console.dir(value);
-                }).catch(function (err) {
-                  // we got an error
-                  console.log(err);
-                });
-           };
+    script(src="js/profilestorage.js")
+    script(src="js/eventstorage.js")
+      
 
