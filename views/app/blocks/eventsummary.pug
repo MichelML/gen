@@ -12,7 +12,10 @@ block main
     main
         .row.margin-t-2
             .col.s10.offset-s1.m12.l8.offset-l2
-                h5#intro.blue-grey-text.text-accent-3 Great Job! One more thing before we generate your
+                h5#intro.blue-grey-text.text-accent-3 
+                    | Great Job 
+                    span(data-bind='text:name')
+                    | ! One more thing before we generate your
                 p.blue-grey-text.text-accent-3 Please review and edit your event as needed below.
         .row
             form.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
