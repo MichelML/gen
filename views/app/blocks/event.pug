@@ -25,8 +25,8 @@ block main
         .row.margin-t-2
             .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
                 h5.blue-grey-text.text-accent-3 
-                    | Ok
-                    span(data-bind=`${me.firstName}`)
+                    | Ok 
+                    span(data-bind="text:firstname")
                     | , so you want to organize an event...
         .row
             form.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
@@ -92,11 +92,24 @@ block scripts
     script(src='bower_components/pickadate/lib/compressed/picker.time.js')
     script(src='bower_components/selectize/dist/js/standalone/selectize.js')
     script(src='bower_components/materialize/dist/js/materialize.min.js')
+    script(src='bower_components/knockout/dist/knockout.js')
     script(src='js/eventmain.js')
     script(src='js/selectize.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
-
-    script(src="js/profilestorage.js")
     script(src="js/eventstorage.js")
-      
-
+    script.
+        var me = {};
+        me.name = "#{me.name}";
+        me.image = "#{me.image}";
+        me.email = "#{me.email}";
+        me.firstname = "#{me.firstName}";
+        ko.applyBindings(me);
+        localforage.setItem('me', me).then(function() {
+            return localforage.getItem('me');
+        }).then(function(value) {
+            // we got our value
+            console.dir(value);
+        }).catch(function(err) {
+            // we got an error
+            console.log(err);
+        });

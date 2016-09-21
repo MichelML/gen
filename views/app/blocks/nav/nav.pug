@@ -11,23 +11,23 @@ block nav
           li
             a(href='#') My Events
           li
-            a(href='#', onclick='signOut()') Sign out
+            a(href='#') Sign out
           li
             a(href='#') 
                 .chip
-                    img#me-image(alt='user image', data-bind=`src:${me.image}`)
-                    span#me-name(data-bind=`${me.name}`)
+                    img#me-image(alt='user image', data-bind="attr:{src:image}")
+                    span#me-name(data-bind="text:name")
           li
-            span#me-email.hide(data-bind=`${me.email}`)
+            span#me-email.hide(data-bind="text:email")
           li
-            span#me-firstname.hide(data-bind=`${me.firstName}`)
+            span#me-firstname.hide(data-bind="text:firstname")
         ul#mobile-demo.side-nav.left-align
           li
             .row
               .col.offset-s1.s10
                     .chip
-                      img(alt='user image', data-bind=`src:${me.image}`)
-                      span(data-bind=`${me.name}`)
+                        img(alt='user image', data-bind="attr:{src:image}")
+                        span(data-bind="text:name")
           li
               .row
                   .col.offset-s1.s10
