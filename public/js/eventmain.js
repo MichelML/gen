@@ -1,21 +1,5 @@
 $(".button-collapse").sideNav();
 
-$(document).ready(function() {
-  var $emailAccount = $('#email-account'),
-      $signinLink = $('#signin-link'),
-      $googleButton = $('#google-btn');
-  //$emailAccount.focus();
-  $signinLink.focus(function() {
-    $googleButton.attr('src', 'img/btn_google_signin_pressed.png');
-  });
-  $signinLink.hover(function() {
-     $googleButton.attr('src', 'img/btn_google_signin_focus.png');
-  });
-  $signinLink.on('focusout mouseout blur', function() {
-     $googleButton.attr('src', 'img/btn_google_signin_normal.png');
-  });
-});
-
 $(document).ready(function(event) {
     $('.datepicker').pickadate({
     selectMonths: true, // Creates a dropdown to control month
