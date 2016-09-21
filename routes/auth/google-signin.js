@@ -26,7 +26,7 @@ app.get('/googleauth', (req, res) => {
             if (err) console.log(err);
             else {
                 app.locals.me = {
-                    name: response.displayName,
+                    name: response.displayName || '',
                     image: (response.image && response.image.url) ? response.image.url : '',
                     email: response.emails[0].value,
                     firstName: (response.name) ? response.name.givenName : ''

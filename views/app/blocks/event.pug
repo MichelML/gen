@@ -99,10 +99,10 @@ block scripts
     script(src="js/eventstorage.js")
     script.
         var me = {};
-        me.name = "#{me.name}";
-        me.image = "#{me.image}";
-        me.email = "#{me.email}";
-        me.firstname = "#{me.firstName}";
+        me.name = "#{me.name}" || '';
+        me.image = "#{me.image}" || 'img/gen-green.png';
+        me.email = "#{me.email}" || '';
+        me.firstname = "#{me.firstName}" || '';
         ko.applyBindings(me);
         localforage.setItem('me', me).then(function() {
             return localforage.getItem('me');
