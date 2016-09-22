@@ -11,19 +11,47 @@ block main
                     span(data-bind='text:firstname')
                     | !<br>One more thing before we generate your 
                     span() event type
-                p: small.blue-grey-text.text-accent-3 Please review your event below.<br>Click or tap on any information to be edited.
+                p: small.blue-grey-text.text-accent-3 Please review your event below.<br>Click/Tap on any information to be edited.
                 hr
+            .col.s10.offset-s1.m12.l8.offset-l2.center-align
                 h4.deep-purple-text: small.editable(contenteditable="true") name of the event
                 h5.deep-purple-text: small.editable(contenteditable="true") type of the event
                 h5: small 
-                    | hosted by 
+                    | hosted by
+                    br
                     span.editable.deep-purple-text(contenteditable="true") Michel ML
                 p: small
-                    | Location of the event: 
+                    | Location of the event
+                    br
                     span.editable.deep-purple-text(contenteditable="true") Chocolats Favoris Cap-Rouge
+                .row
+                    .col.s12
+                        small   
+                            | The event will start on  
+                    .col.s5.l4.offset-l1
+                        small
+                            input.deep-purple-text(type="date", width="400")
+                    .col.s2
+                        small
+                            | at
+                    .col.s5.l4
+                        small
+                            input.deep-purple-text(type="time")
+                    .col.s12
+                        small   
+                            | and will end on  
+                    .col.s5.l4.offset-l1
+                        small
+                            input.deep-purple-text(type="date", width="400")
+                    .col.s2
+                        small
+                            | at
+                    .col.s5.l4
+                        small
+                            input.deep-purple-text(type="time")
                 p: small   
                     | The event will start on  
-                    input.deep-purple-text(type="date")
+                    input.deep-purple-text(type="date", width="400")
                     | at 
                     input.deep-purple-text(type="time")
                     br
@@ -32,9 +60,9 @@ block main
                     | at 
                     input.deep-purple-text(type="time")
                 p: small 
-                    | Additional information about your event:
+                    | Additional information about your event
                     br
-                    small.blue-grey-text.text-lighten-2 (transmitted to your guests by email)
+                    small.blue-grey-text.text-lighten-2 (to be transmitted to your guests by email)
                     br
                     span.editable.deep-purple-text(contenteditable="true") skdjh alskjhf aslkdjhf aslkjdhf laksjdh lfakjhfd laskjdhf lkasjdhf lkjdhf laksjdhf lkasjhdf lkjhdf alksjdhf kalsjhdf lkasjhdflk jahsdlkjf lkajsdh lkfjha lskjdhf laskjdhf klasjhdf lkajhsfdlkj hlsdk hlkajs dlkfja slkdjfh laksjdhf lkajshdfl kjashdlfk jhasldk flkasj dflkafs klsdjahf lksjd kljhdsaf klsjhdf kljshadkl faskljdhf kljsahd kljhkas dllkdfsjhlkasdjhf lakjsdhf lkajshdf lkjashdf lkjahsdflk jhasdlkfj aslkdjhf klajdhf kljahsdfkl jhlksajh kjdsahf lkjhdflk jahsldkf jhalsdkjh laksjdhf lkasjhd flkjashd lkfhj lkjsdhlkasjdf lkjsahdf lkjsahdf lkjashdf lkjsdh .
                 p: small
