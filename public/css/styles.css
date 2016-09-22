@@ -228,10 +228,10 @@ datalist {
 
 .editable::-moz-selection { /* Code for Firefox */
     color: #00e676; 
-    background-color: #d1c4e9;
+    background-color: #ede7f6;
 }
 
 .editable::selection {
     color: #00e676; 
-    background-color: #d1c4e9;
+    background-color: #ede7f6;
 }
