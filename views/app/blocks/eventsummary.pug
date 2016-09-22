@@ -10,51 +10,77 @@ block main
                     | Great Job 
                     span(data-bind='text:firstname')
                     | !<br>One more thing before we generate your 
-                    span() event type
-                p: small.blue-grey-text.text-accent-3 Please review your event below.<br>Click/Tap on any information to be edited.
+                    span(data-bind='text:event.type') event.
+                p: small.blue-grey-text.text-accent-3 Please review the information below.<br>Click/Tap on any information to be edited.
                 hr
             .col.s10.offset-s1.m12.l8.offset-l2.center-align
-                h4.deep-purple-text: small.editable(contenteditable="true") name of the event
-                h5.deep-purple-text: small.editable(contenteditable="true") type of the event
+                h4.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.name") name of the event
+                h5.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.type, visible:!!event.type") type of the event
                 h5: small 
                     | hosted by
                     br
-                    span.editable.deep-purple-text(contenteditable="true") Michel ML
+                    span.editable.deep-purple-text(contenteditable="true",data-bind="text:event.host") Michel ML
                 p: small
                     | Location of the event
                     br
-                    span.editable.deep-purple-text(contenteditable="true") Chocolats Favoris Cap-Rouge
+                    span.editable.deep-purple-text(contenteditable="true", data-bind="text:event.location") Chocolats Favoris Cap-Rouge
                 .row
                     .col.s12
                         small   
                             | The event will start on  
                     .col.s5.l4.offset-l1
                         small
-                            input.deep-purple-text(type="date", width="400")
+                            input.deep-purple-text(type="date", data-bind="value:event.startdate")
                     .col.s2
                         small
                             | at
                     .col.s5.l4
                         small
-                            input.deep-purple-text(type="time")
+                            input.deep-purple-text(type="time", data-bind="value:event.starttime")
                     .col.s12
                         small   
                             | and will end on  
                     .col.s5.l4.offset-l1
                         small
-                            input.deep-purple-text(type="date", width="400")
+                            input.deep-purple-text(type="date", data-bind="value:event.enddate")
                     .col.s2
                         small
                             | at
                     .col.s5.l4
                         small
-                            input.deep-purple-text(type="time")
+                            input.deep-purple-text(type="time", data-bind="value:event.endtime")
                 p: small 
-                    | Additional information about your event
+                    | Below is the email your guests will receive
                     br
-                    small.blue-grey-text.text-lighten-2 (to be transmitted to your guests by email)
-                    br
-                    span.editable.deep-purple-text(contenteditable="true") skdjh alskjhf aslkdjhf aslkjdhf laksjdh lfakjhfd laskjdhf lkasjdhf lkjdhf laksjdhf lkasjhdf lkjhdf alksjdhf kalsjhdf lkasjhdflk jahsdlkjf lkajsdh lkfjha lskjdhf laskjdhf klasjhdf lkajhsfdlkj hlsdk hlkajs dlkfja slkdjfh laksjdhf lkajshdfl kjashdlfk jhasldk flkasj dflkafs klsdjahf lksjd kljhdsaf klsjhdf kljshadkl faskljdhf kljsahd kljhkas dllkdfsjhlkasdjhf lakjsdhf lkajshdf lkjashdf lkjahsdflk jhasdlkfj aslkdjhf klajdhf kljahsdfkl jhlksajh kjdsahf lkjhdflk jahsldkf jhalsdkjh laksjdhf lkasjhd flkjashd lkfhj lkjsdhlkasjdf lkjsahdf lkjsahdf lkjashdf lkjsdh .
+                    span.blue-grey-text.text-lighten-2 (along a Google Calendar invitation)
+                    .editable.left-align(contenteditable="true")
+                        | Dear guest,<br>
+                        | You have received an invitation for an event (see details below). Make sure to indicate whether you will attend the event at the link provided below.:<br>
+                        span(data-bind="text:event.name.toUpperCase()") "NAME OF EVENT"
+                        span(data-bind="visible:true")  - 
+                        span(data-bind="text:event.type")
+                        br
+                        | Hosted by 
+                        span(data-bind="text:event.host")
+                        br
+                        | Event's location: 
+                        span(data-bind="text:event.location")
+                        br
+                        | Start date & time: 
+                        span(data-bind="text:event.startdate")
+                        |  at 
+                        span(data-bind="text:event.starttime")
+                        br
+                        | End date & time: 
+                        span(data-bind="text:event.enddate")
+                        |  at 
+                        span(data-bind="text:event.endtime")
+                        br
+                        span(data-bind="visible:true") Some additional details were left for your consideration:
+                        br
+                        span(data-bind="text:event.details") some details
+                        br
+                        | Please make sure to reply to this invitation as soon as possible via the link below:
                 p: small
                     | Your guests for this event:
                     ul.guests.deep-purple-text
@@ -72,4 +98,3 @@ block scripts
     script(src='js/navinit.js')
     script(src='js/getprofile.js')
     script(src='js/eventsum.js')
-
