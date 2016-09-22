@@ -53,7 +53,7 @@ block main
                     | Below is the email your guests will receive
                     br
                     span.blue-grey-text.text-lighten-2 (along a Google Calendar invitation)
-                    .editable.left-align(contenteditable="true")
+                    .editable.left-align(contenteditable="true").card.z-depth-1.email-template: small
                         | Dear guest,<br>
                         | You have received an invitation for an event (see details below). Make sure to indicate whether you will attend the event at the link provided below.:<br>
                         span(data-bind="text:event.name.toUpperCase()") "NAME OF EVENT"
