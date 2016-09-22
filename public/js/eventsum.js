@@ -15,12 +15,12 @@ editableContent.forEach(function(val,index) {
 });
 
 
-function indicateThisIsEditable() {
+function indicateHowToEdit() {
     Materialize.toast('Type to edit', 2000)
 }
 
 $('.editable').each(function(index) {
     $(this).on('focus', function () {
-        indicateThisIsEditable();
+        indicateHowToEdit();
     });
 });

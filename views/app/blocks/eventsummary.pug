@@ -11,35 +11,35 @@ block main
                     span(data-bind='text:firstname')
                     | !<br>One more thing before we generate your 
                     span() event type
-                p: small.blue-grey-text.text-accent-3 Please review your event below.<br>Click or tap on any information for editing.
+                p: small.blue-grey-text.text-accent-3 Please review your event below.<br>Click or tap on any information to be edited.
                 hr
-                h4: small.editable(contenteditable="true") name of the event
-                h5: small.editable(contenteditable="true") type of the event
+                h4.deep-purple-text: small.editable(contenteditable="true") name of the event
+                h5.deep-purple-text: small.editable(contenteditable="true") type of the event
                 h5: small 
                     | hosted by 
-                    span.editable(contenteditable="true") Michel ML
-                p
+                    span.editable.deep-purple-text(contenteditable="true") Michel ML
+                p: small
                     | Location of the event: 
-                    span.editable(contenteditable="true") Chocolats Favoris Cap-Rouge
-                p   
+                    span.editable.deep-purple-text(contenteditable="true") Chocolats Favoris Cap-Rouge
+                p: small   
                     | The event will start on  
-                    input(type="date")
+                    input.deep-purple-text(type="date")
                     | at 
-                    input(type="time")
+                    input.deep-purple-text(type="time")
                     br
                     | and will end on 
-                    input(type="date")
+                    input.deep-purple-text(type="date")
                     | at 
-                    input(type="time")
-                p 
+                    input.deep-purple-text(type="time")
+                p: small 
                     | Additional information about your event:
                     br
-                    small (transmitted to your guests by email)
+                    small.blue-grey-text.text-lighten-2 (transmitted to your guests by email)
                     br
-                    span.editable(contenteditable="true") skdjh alskjhf aslkdjhf aslkjdhf laksjdh lfakjhfd laskjdhf lkasjdhf lkjdhf laksjdhf lkasjhdf lkjhdf alksjdhf kalsjhdf lkasjhdflk jahsdlkjf lkajsdh lkfjha lskjdhf laskjdhf klasjhdf lkajhsfdlkj hlsdk hlkajs dlkfja slkdjfh laksjdhf lkajshdfl kjashdlfk jhasldk flkasj dflkafs klsdjahf lksjd kljhdsaf klsjhdf kljshadkl faskljdhf kljsahd kljhkas dllkdfsjhlkasdjhf lakjsdhf lkajshdf lkjashdf lkjahsdflk jhasdlkfj aslkdjhf klajdhf kljahsdfkl jhlksajh kjdsahf lkjhdflk jahsldkf jhalsdkjh laksjdhf lkasjhd flkjashd lkfhj lkjsdhlkasjdf lkjsahdf lkjsahdf lkjashdf lkjsdh .
-                p
+                    span.editable.deep-purple-text(contenteditable="true") skdjh alskjhf aslkdjhf aslkjdhf laksjdh lfakjhfd laskjdhf lkasjdhf lkjdhf laksjdhf lkasjhdf lkjhdf alksjdhf kalsjhdf lkasjhdflk jahsdlkjf lkajsdh lkfjha lskjdhf laskjdhf klasjhdf lkajhsfdlkj hlsdk hlkajs dlkfja slkdjfh laksjdhf lkajshdfl kjashdlfk jhasldk flkasj dflkafs klsdjahf lksjd kljhdsaf klsjhdf kljshadkl faskljdhf kljsahd kljhkas dllkdfsjhlkasdjhf lakjsdhf lkajshdf lkjashdf lkjahsdflk jhasdlkfj aslkdjhf klajdhf kljahsdfkl jhlksajh kjdsahf lkjhdflk jahsldkf jhalsdkjh laksjdhf lkasjhd flkjashd lkfhj lkjsdhlkasjdf lkjsahdf lkjsahdf lkjashdf lkjsdh .
+                p: small
                     | Your guests for this event:
-                    ul.guests
+                    ul.guests.deep-purple-text
                         - for (var i = 0; i < 10; i++)
                             li a guest with a long name
                 button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
