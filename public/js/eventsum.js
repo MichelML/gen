@@ -13,3 +13,14 @@ editableContent.forEach(function(val,index) {
         selectElementContents(editableContent[index]);
     };
 });
+
+
+function indicateThisIsEditable() {
+    Materialize.toast('Click/Tap to edit', 2000)
+}
+
+$('.editable').each(function(index) {
+    $(this).on('hover', function () {
+        indicateThisIsEditable();
+    });
+});
