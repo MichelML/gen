@@ -222,7 +222,6 @@ datalist {
 
 .editable:focus, 
 .editable:active {
-    border:none;
+    outline:none;
     color:#00e676;
-    background:grey;
 }
