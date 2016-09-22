@@ -16,7 +16,7 @@ block main
             .col.s10.offset-s1.m12.l8.offset-l2.center-align
                 section#event-review
                     p Your Event
-                    .card.z-depth-3.card-padding
+                    .card.z-depth-2.card-padding
                         h4.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.name") name of the event
                         h5.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.type, visible:!!event.type") type of the event
                         h5: small 
@@ -52,11 +52,20 @@ block main
                             .col.s5.l4
                                 small
                                     input.deep-purple-text(type="time", data-bind="value:event.endtime")
-                section#email-template: p: small 
+                section#guests-list.margin-t-3
+                    p: small
+                        | Your guests for this event:
+                    .card.z-depth-2.card-padding
+                        span: small
+                            ul.guests.deep-purple-text(data-bind="foreach:event.guests")
+                                li
+                                    | - 
+                                    span(data-bind="text:name || email")
+                section#email-template.margin-t-3: p: small 
                     | Below is the email your guests will receive
                     br
                     span.blue-grey-text.text-lighten-2 (along with a Google Calendar invitation)
-                    .editable.left-align.card.z-depth-3.card-padding
+                    .editable.left-align.card.z-depth-2.card-padding
                         | Dear guest,<br>
                         | You have received an invitation for an event:<br>
                         span(data-bind="text:event.name.toUpperCase()") "NAME OF EVENT"
@@ -84,14 +93,6 @@ block main
                         span(data-bind="text:event.details") some details
                         br
                         | Please make sure to reply to this invitation as soon as possible via the link below:
-                section#guests-list
-                    .card.z-depth-3.card-padding
-                        p: small
-                            | Your guests for this event:
-                            ul.guests.deep-purple-text(data-bind="foreach:event.guests")
-                                li
-                                    | - 
-                                    span(data-bind="text:name || email")
                 button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
                   | Complete and Send invitations
                   i.material-icons.right send
