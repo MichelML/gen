@@ -8,10 +8,10 @@ block main
             .col.s10.offset-s1.m12.l8.offset-l2
                 h5#intro.blue-grey-text.text-accent-3 
                     | Great Job 
-                    span(data-bind='text:firstname',onmousehover='indicateThisIsEditable()')
-                    | ! One more thing before we generate your 
+                    span(data-bind='text:firstname')
+                    | !<br>One more thing before we generate your 
                     span() event type
-                p.blue-grey-text.text-accent-3 Please review and edit your event as needed below.
+                p: small.blue-grey-text.text-accent-3 Please review your event.<br>Click or tap on any information for editing.
                 hr
                 h4: small.editable(contenteditable="true") name of the event
                 h5: small.editable(contenteditable="true") type of the event
