@@ -225,3 +225,13 @@ datalist {
     outline:none;
     color:#00e676;
 }
+
+.editable::-moz-selection { /* Code for Firefox */
+    color: #00e676; 
+    background-color: #d1c4e9;
+}
+
+.editable::selection {
+    color: #00e676; 
+    background-color: #d1c4e9;
+}
