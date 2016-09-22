@@ -4,7 +4,7 @@ include ./nav/nav.pug
 
 block main
     main
-        .row.margin-t-2
+        .row.margin-t-2.center-align
             .col.s10.offset-s1.m12.l8.offset-l2
                 h5#intro.blue-grey-text.text-accent-3: small 
                     | Great Job 
@@ -13,7 +13,7 @@ block main
                     span(data-bind='text:event.type') event.
                 p: small.blue-grey-text.text-accent-3 Please review the information below.<br>Click/Tap on any information to be edited.
                 hr
-            .col.s10.offset-s1.m12.l8.offset-l2.center-align
+            .col.s10.offset-s1.m12.l8.offset-l2
                 section#event-review
                     p Your Event
                     .card.z-depth-2.card-padding
@@ -54,7 +54,7 @@ block main
                                     input.deep-purple-text(type="time", data-bind="value:event.endtime")
                 section#guests-list.margin-t-3
                     p: small
-                        | Your guests for this event:
+                        | Your guests for this event
                     .card.z-depth-2.card-padding
                         span: small
                             ul.guests.deep-purple-text(data-bind="foreach:event.guests")
@@ -62,7 +62,7 @@ block main
                                     | - 
                                     span(data-bind="text:name || email")
                 section#email-template.margin-t-3: p: small 
-                    | Below is the email your guests will receive
+                    | Email to be sent to your guests
                     br
                     span.blue-grey-text.text-lighten-2 (along with a Google Calendar invitation)
                     div.left-align.card.z-depth-2.card-padding
