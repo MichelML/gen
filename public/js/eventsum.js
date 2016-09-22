@@ -16,11 +16,11 @@ editableContent.forEach(function(val,index) {
 
 
 function indicateThisIsEditable() {
-    Materialize.toast('Click/Tap to edit', 2000)
+    Materialize.toast('Type to edit', 2000)
 }
 
 $('.editable').each(function(index) {
-    $(this).on('hover', function () {
+    $(this).on('focus', function () {
         indicateThisIsEditable();
     });
 });
