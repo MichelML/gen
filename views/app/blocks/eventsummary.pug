@@ -10,14 +10,14 @@ block main
                     | Great Job 
                     span(data-bind='text:firstname')
                     | ! One more thing before we generate your 
-                    span(data-bind='text:eventType')
+                    span() event type
                 p.blue-grey-text.text-accent-3 Please review and edit your event as needed below.
 
         .row
             .col.s10.offset-s1.m12.l8.offset-l2
                 h2.editable(contenteditable="true") name of the event
                 h5.editable(contenteditable="true") type of the event
-                h3() 
+                h3 
                     | hosted by 
                     span.editable(contenteditable="true") Michel ML
                 p
@@ -55,4 +55,5 @@ block scripts
     script(src='bower_components/knockout/dist/knockout.js')
     script(src='js/navinit.js')
     script(src='js/getprofile.js')
+    script(src='js/eventsum.js')
 
