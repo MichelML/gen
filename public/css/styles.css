@@ -213,3 +213,16 @@ datalist {
 .guest-selectable .label {
     color:rgba(100,100,120,0.6);
 }
+
+.editable {
+    width:auto;
+    max-width:auto;
+    min-width:auto;
+}
+
+.editable:focus, 
+.editable:active {
+    border:none;
+    color:#00e676;
+    background:grey;
+}
