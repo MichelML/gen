@@ -81,6 +81,12 @@ label[for$="event"] {
         margin-top:5px;
     }
 
+    .guests {
+          columns:2;
+          -webkit-columns: 2;
+          -moz-columns: 2;
+    }
+
 }
 
 
