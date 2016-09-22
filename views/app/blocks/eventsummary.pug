@@ -16,7 +16,7 @@ block main
             .col.s10.offset-s1.m12.l8.offset-l2.center-align
                 section#event-review
                     p Your Event
-                    .card.z-depth-1.card-padding
+                    .card.z-depth-3.card-padding
                         h4.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.name") name of the event
                         h5.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.type, visible:!!event.type") type of the event
                         h5: small 
@@ -56,7 +56,7 @@ block main
                     | Below is the email your guests will receive
                     br
                     span.blue-grey-text.text-lighten-2 (along with a Google Calendar invitation)
-                    .editable.left-align.card.z-depth-1.card-padding
+                    .editable.left-align.card.z-depth-3.card-padding
                         | Dear guest,<br>
                         | You have received an invitation for an event:<br>
                         span(data-bind="text:event.name.toUpperCase()") "NAME OF EVENT"
@@ -85,7 +85,7 @@ block main
                         br
                         | Please make sure to reply to this invitation as soon as possible via the link below:
                 section#guests-list
-                    .card.z-depth-1.card-padding
+                    .card.z-depth-3.card-padding
                         p: small
                             | Your guests for this event:
                             ul.guests.deep-purple-text(data-bind="foreach:event.guests")
