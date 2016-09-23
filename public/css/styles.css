@@ -259,9 +259,14 @@ datalist {
     margin-bottom:calc((128px/1.62) + 10px);
 }
 
-.personal-container {
+.icon-container {
     display:inline-block;
-    padding-top:auto;
-    padding-bottom:auto;
+    padding:2px;
 }
 
+#personal-bio:focus {
+  border-bottom: 1px solid #673ab7;
+  -webkit-box-shadow: 0 1px 0 0 #673ab7;
+  -moz-box-shadow: 0 1px 0 0 #673ab7;
+  box-shadow: 0 1px 0 0 #673ab7;
+}

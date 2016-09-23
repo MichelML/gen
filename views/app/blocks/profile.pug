@@ -8,12 +8,18 @@ block main
             img#profile-image.circle.z-depth-1(data-bind='attr:{src:image}')
         .row.center-align
             .col.s12
-                h4(data-bind='text:name')
-        .row
+                h4.blue-grey-text(data-bind='text:name')
+        .row.blue-grey-text
             .col.s4.m5.right-align
-                div.personal-container: i.material-icons email
+                div.icon-container: i.material-icons.deep-purple-text email
             .col.s8.m7.left-align
-                div.personal-container: small(data-bind='text:email')
+                div: small(data-bind='text:email')
+        .row.blue-grey-text
+            .col.s10.offset-s1.m8.offset-m2.left-align
+                h5: small Personal Bio
+            .col.s10.offset-s1.m8.offset-m2.center-align
+                textarea#personal-bio.materialize-textarea(placeholder='Tell the world who you are')
+                
 
 
 block scripts
