@@ -14,6 +14,14 @@ block main
                     input#email-account(type="email", name="email-account", placeholder="example@gmail.com", autofocus)
                     label(for="password-account").blue-grey-text Choose a password
                     input#password-account(type="password", name="password-account", placeholder="**********")
+                    .row.blue-grey-text.text-lighten-2
+                        span: small: small Must respect the following:
+                        ul: small: small
+                            li must be between 6 and 20 characters
+                            li must contain a lowercase letter
+                            li must contain a uppercase letter
+                            li must contain a number
+                            li must not contain any special character
                     label(for="password2-account").blue-grey-text Confirm your password
                     input#password-confirm(type="password", name="password2-account", placeholder="**********")
                     button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2(type='submit', name='action', disabled, onclick='')
@@ -25,3 +33,23 @@ block scripts
     script(src='bower_components/jquery/dist/jquery.min.js')    
     script(src="bower_components/localforage/dist/localforage.min.js")
     script(src='bower_components/materialize/dist/js/materialize.min.js')
+    script.
+        $(document).ready(function () {
+            var $passwordInput = $('#password-account');
+            var passwordVal = '';
+            var passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+            $passwordInput.on('keyup', function() {
+                passwordVal = $passwordInput.val();
+                if (!passwordVal) {
+                    $passwordInput.removeClass()
+                 }
+                else if (passwordReg.test(passwordVal)) {
+                    $passwordInput.removeClass('invalid');
+                    $passwordInput.addClass('valid');
+                }
+                else {
+                    $passwordInput.removeClass('valid');
+                    $passwordInput.addClass('invalid');
+                }
+             });
+        });

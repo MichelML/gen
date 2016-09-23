@@ -10,9 +10,9 @@ block main
             .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
                 form.margin-t-3
                     label(for="email-account").margin-t-5.blue-grey-text What is your email address?
-                    input#email-account(type="email", name="email-account", placeholder="example@gmail.com", autofocus)
+                    input#email-account.validate(type="email", name="email-account", placeholder="example@gmail.com", autofocus, required)
                     label(for="password-account").blue-grey-text What is your password?
-                    input#password-account(type="password", name="password-account", placeholder="**********")
+                    input#password-account(type='password', name='password-account', placeholder='**********', maxlength='20', required='required', data-error='use a uppercase, a lowercase, a number, and no special characters')
                     button.btn.green.accent-4.waves-effect.waves-light.margin-t-2(type='submit', name='action', disabled)
                       | Sign in 
                       i.material-icons.right send
@@ -22,3 +22,23 @@ block scripts
     script(src='bower_components/jquery/dist/jquery.min.js')    
     script(src="bower_components/localforage/dist/localforage.min.js")
     script(src='bower_components/materialize/dist/js/materialize.min.js')
+    script.
+        $(document).ready(function () {
+            var $passwordInput = $('#password-account');
+            var passwordVal = '';
+            var passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+            $passwordInput.on('keyup', function() {
+                passwordVal = $passwordInput.val();
+                if (!passwordVal) {
+                    $passwordInput.removeClass()
+                 }
+                else if (passwordReg.test(passwordVal)) {
+                    $passwordInput.removeClass('invalid');
+                    $passwordInput.addClass('valid');
+                }
+                else {
+                    $passwordInput.removeClass('valid');
+                    $passwordInput.addClass('invalid');
+                }
+             });
+        });
