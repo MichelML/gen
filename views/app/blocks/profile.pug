@@ -1,0 +1,16 @@
+extends ../app_layout.pug
+
+include ./nav/nav.pug
+
+block main
+    main
+        .purple-bg.big-square
+            img#profile-image.circle.z-depth-2(data-bind='attr:{src:image}')
+
+block scripts
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src="bower_components/localforage/dist/localforage.min.js")
+    script(src='bower_components/materialize/dist/js/materialize.min.js')
+    script(src='bower_components/knockout/dist/knockout.js')
+    script(src='js/navinit.js')
+    script(src='js/getprofile.js')

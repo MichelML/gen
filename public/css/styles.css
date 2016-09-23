@@ -239,3 +239,22 @@ datalist {
 .card-padding {
     padding:10px;
 }
+
+
+#profile-image {
+    border:6px solid white;
+    width:128px;
+    height:128px;
+    position:absolute;
+    bottom:calc(128px/1.62*-1);
+    left:0;
+    right:0;
+    margin:0 auto;
+}
+
+.big-square {
+    position:relative;
+    height:100px;
+    width:100%;
+}
+
