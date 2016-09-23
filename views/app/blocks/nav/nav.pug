@@ -7,13 +7,13 @@ block nav
           i.material-icons.green-text.text-accent-3 menu
         ul.right.hide-on-med-and-down
           li
-            a(href='#') My Profile
+            a(href='/me') My Profile
           li
-            a(href='#') My Events
+            a(href='/me#my-events') My Events
           li
             a(href='#') Sign out
           li
-            a(href='#') 
+            a(href='/me') 
                 .chip
                     img#me-image(alt='user image', data-bind="attr:{src:image}")
                     span#me-name(data-bind="text:name")
@@ -31,9 +31,9 @@ block nav
           li
               .row
                   .col.offset-s1.s10
-                    a(href='#') My Profile
+                    a(href='/me') My Profile
                   .col.offset-s1.s10
-                    a(href='#') My Events
+                    a(href='/me#my-events') My Events
               .row
                   .col.offset-s1.s10
                     hr.green.margin-l-1
