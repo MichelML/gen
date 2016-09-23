@@ -270,3 +270,12 @@ datalist {
   -moz-box-shadow: 0 1px 0 0 #673ab7;
   box-shadow: 0 1px 0 0 #673ab7;
 }
+
+input[type='email'][id$='account']:focus,
+ input[type='password'][id$='account']:focus {
+  border-bottom: 1px solid #673ab7;
+  -webkit-box-shadow: 0 1px 0 0 #673ab7;
+  -moz-box-shadow: 0 1px 0 0 #673ab7;
+  box-shadow: 0 1px 0 0 #673ab7;
+}
+
