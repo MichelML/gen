@@ -5,7 +5,16 @@ include ./nav/nav.pug
 block main
     main
         .purple-bg.big-square
-            img#profile-image.circle.z-depth-2(data-bind='attr:{src:image}')
+            img#profile-image.circle.z-depth-1(data-bind='attr:{src:image}')
+        .row.center-align
+            .col.s12
+                h4(data-bind='text:name')
+        .row
+            .col.s4.m5.right-align
+                div.personal-container: i.material-icons email
+            .col.s8.m7.left-align
+                div.personal-container: small(data-bind='text:email')
+
 
 block scripts
     script(src='bower_components/jquery/dist/jquery.min.js')

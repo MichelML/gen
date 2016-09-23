@@ -256,5 +256,12 @@ datalist {
     position:relative;
     height:100px;
     width:100%;
+    margin-bottom:calc((128px/1.62) + 10px);
+}
+
+.personal-container {
+    display:inline-block;
+    padding-top:auto;
+    padding-bottom:auto;
 }
 
