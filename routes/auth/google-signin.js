@@ -28,6 +28,7 @@ app.get('/googleauth', (req, res) => {
                 app.locals.me = {
                     name: response.displayName || '',
                     image: (response.image && response.image.url) ? response.image.url : '',
+                    imageBig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/,'?sz=128') : '',
                     email: response.emails[0].value,
                     firstName: (response.name) ? response.name.givenName : ''
                 };

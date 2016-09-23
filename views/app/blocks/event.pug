@@ -103,6 +103,7 @@ block scripts
             var me = {};
             me.name = "#{me.name}" || "";
             me.image = "#{me.image}" || "img/gen-green.png";
+            me.imageBig = "#{me.imageBig}" || "img/gen-green.png";
             me.email = "#{me.email}" || "";
             me.firstname = "#{me.firstName}" || "";
             localforage.setItem("me", me).then(function() {
