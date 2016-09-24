@@ -278,7 +278,3 @@ input[type='password'][id$='account']:focus {
   -moz-box-shadow: 0 1px 0 0 #673ab7;
   box-shadow: 0 1px 0 0 #673ab7;
 }
-
-.material-tooltip {
-    white-space:initial;
-}

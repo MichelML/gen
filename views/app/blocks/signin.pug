@@ -13,7 +13,7 @@ block main
                     input#email-account.validate(type="email", name="email-account", placeholder="example@gmail.com", autofocus, required)
                     label(for="password-account").blue-grey-text What is your password?
                     input#password-account(type='password', name='password-account', placeholder='**********', maxlength='20', required='required', data-error='use a uppercase, a lowercase, a number, and no special characters')
-                    button.btn.green.accent-4.waves-effect.waves-light.margin-t-2(type='submit', name='action', disabled)
+                    button#signin-button.btn.green.accent-4.waves-effect.waves-light.margin-t-2(type='submit', name='action', disabled)
                       | Sign in 
                       i.material-icons.right send
                     p.em0p7: a(href="/signup") Don't have an account yet? Click here
@@ -25,21 +25,54 @@ block scripts
     script(src='js/navinit.js')
     script.
         $(document).ready(function () {
-            var $passwordInput = $('#password-account');
-            var passwordVal = '';
-            var passwordReg = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
-            $passwordInput.on('keyup', function() {
-                passwordVal = $passwordInput.val();
-                if (!passwordVal) {
-                    $passwordInput.removeClass()
+           
+            var email = {};
+            email.elem = $('#email-account');
+
+            var password = {};
+            password.elem = $('#password-account');
+            password.value = '';
+            password.isValid = false;
+
+            var passwordValidation = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
+            var signinButton = {};
+            signinButton.elem = $('#signin-button');
+
+            var areInputsAllValid = false;
+
+            email.elem.on('keyup', function() {
+               enableSigninButton(email,password,signinButton, areInputsAllValid);
+             });
+
+            password.elem.on('keyup', function() {
+               isValidPassword(password); 
+               enableSigninButton(email,password,signinButton, areInputsAllValid);
+             });
+
+            function isValidPassword(pw) {
+                pw.value = pw.elem.val();
+                pw.isValid = passwordValidation.test(pw.value);
+                if (!pw.value) {
+                    pw.elem.removeClass()
                  }
-                else if (passwordReg.test(passwordVal)) {
-                    $passwordInput.removeClass('invalid');
-                    $passwordInput.addClass('valid');
+                else if (pw.isValid) {
+                    pw.elem.removeClass('invalid');
+                    pw.elem.addClass('valid');
                 }
                 else {
-                    $passwordInput.removeClass('valid');
-                    $passwordInput.addClass('invalid');
+                    pw.elem.removeClass('valid');
+                    pw.elem.addClass('invalid');
                 }
-             });
+            }
+
+            function enableSigninButton(mail,pw1,accountButton,areInputsValid) {
+               areInputsValid = mail.elem.hasClass('valid') && pw1.elem.hasClass('valid'); 
+               if (!areInputsValid) {
+                    accountButton.elem.prop('disabled', true);   
+                } 
+                else {
+                    accountButton.elem.prop('disabled', false);   
+                }
+            }
         });
