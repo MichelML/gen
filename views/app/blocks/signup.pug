@@ -24,7 +24,7 @@ block main
                             li must not contain any special character
                     label(for="password2-account").blue-grey-text Confirm your password
                     input#password2-account(type="password", name="password2-account", placeholder="**********")
-                    button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2(type='submit', name='action', disabled, onclick='')
+                    button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2(type='submit', name='action', disabled)
                       | Create 
                       i.material-icons.right send
                     p.em0p7: a(href="/signin") Have an account already? Click here    
@@ -37,6 +37,9 @@ block scripts
     script.
         $(document).ready(function () {
             //validation of the password input
+            var email = {};
+            email.elem = $('#email-account');
+
             var password = {};
             password.elem = $('#password-account');
             password.value = '';
@@ -46,13 +49,25 @@ block scripts
             passwordConfirm.elem = $('#password2-account');
             passwordConfirm.value = '';
             passwordConfirm.isValid = false;
+
+            var createAccountButton = {};
+            createAccountButton.elem = $('#create-account');
+
             var passwordValidation = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+
+            var areInputsAllValid = false;
+            email.elem.on('keyup', function() {
+                enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
+            })
+
             password.elem.on('keyup', function() {
                isValidPassword(password); 
+               enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
              });
              passwordConfirm.elem.on('keyup', function() {
                isValidPassword(passwordConfirm); 
                isPasswordConfirmMatching(password,passwordConfirm);
+               enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
              });
 
             function isValidPassword(pw) {
@@ -72,7 +87,6 @@ block scripts
             }
 
             function isPasswordConfirmMatching(pw1,pw2) {
-                // if passwordconfirm is invalid
                 if (!pw2.isValid) {
                     return;
                 }
@@ -83,6 +97,16 @@ block scripts
                 else if (pw2.isValid && pw1.value === pw2.value) {
                     pw2.elem.removeClass('invalid');
                     pw2.elem.addClass('valid');
+                }
+            }
+
+            function enableCreateAccountButton(mail,pw1,pw2,accountButton,areInputsValid) {
+               areInputsValid = mail.elem.hasClass('valid') && pw1.elem.hasClass('valid') && pw2.elem.hasClass('valid'); 
+               if (!areInputsValid) {
+                    accountButton.elem.prop('disabled', true);   
+                } 
+                else {
+                    accountButton.elem.prop('disabled', false);   
                 }
             }
         });
