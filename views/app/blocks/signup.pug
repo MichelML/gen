@@ -12,16 +12,17 @@ block main
                 form.margin-t-3
                     label(for="email-account").margin-t-5.blue-grey-text What is your email address?
                     input#email-account.validate(type="email", name="email-account", placeholder="example@gmail.com", autofocus)
+
+                    #password-helper.row.blue-grey-text.text-lighten-1.hide
+                        span Your password should
+                        ul: small: small
+                            li contain 6 to 20 characters
+                            li contain lowercase and uppercase letters
+                            li contain a number
+                            li <strong>not</strong> contain any special character
                     label(for="password-account").blue-grey-text Choose a password
                     input#password-account(type="password", name="password-account", placeholder="**********")
-                    .row.blue-grey-text.text-lighten-2
-                        span: small: small Must respect the following:
-                        ul: small: small
-                            li must be between 6 and 20 characters
-                            li must contain a lowercase letter
-                            li must contain a uppercase letter
-                            li must contain a number
-                            li must not contain any special character
+
                     label(for="password2-account").blue-grey-text Confirm your password
                     input#password2-account(type="password", name="password2-account", placeholder="**********")
                     button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2(type='submit', name='action', disabled)
@@ -36,7 +37,11 @@ block scripts
     script(src='js/navinit.js')
     script.
         $(document).ready(function () {
-            //validation of the password input
+            $('.tooltipped').each(function(index, element) {
+                var span = $('#' + $(element).attr('data-tooltip-id') + '>span:first-child');
+                span.before($(element).attr('data-tooltip'));
+                span.remove();
+            });
             var email = {};
             email.elem = $('#email-account');
 
@@ -44,6 +49,9 @@ block scripts
             password.elem = $('#password-account');
             password.value = '';
             password.isValid = false;
+
+            var passwordHelper = {};
+            passwordHelper.elem = $('#password-helper');
 
             var passwordConfirm = {};
             passwordConfirm.elem = $('#password2-account');
@@ -58,11 +66,18 @@ block scripts
             var areInputsAllValid = false;
             email.elem.on('keyup', function() {
                 enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
-            })
+            });
 
             password.elem.on('keyup', function() {
                isValidPassword(password); 
                enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
+               shouldShowHelper(password,passwordHelper);
+             });
+            password.elem.on('focus', function() {
+               shouldShowHelper(password,passwordHelper);
+             });
+            password.elem.on('blur', function() {
+               passwordHelper.elem.addClass('hide');
              });
              passwordConfirm.elem.on('keyup', function() {
                isValidPassword(passwordConfirm); 
@@ -107,6 +122,15 @@ block scripts
                 } 
                 else {
                     accountButton.elem.prop('disabled', false);   
+                }
+            }
+
+            function shouldShowHelper(pw,helper) {
+                if (!pw.elem.hasClass('valid')) {
+                    helper.elem.removeClass('hide');    
+                }
+                else {
+                    helper.elem.addClass('hide');
                 }
             }
         });
