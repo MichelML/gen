@@ -13,15 +13,15 @@ block main
                     label(for="email-account").margin-t-5.blue-grey-text What is your email address?
                     input#email-account.validate(type="email", name="email-account", placeholder="example@gmail.com", autofocus)
 
+                    label(for="password-account").blue-grey-text Choose a password
+                    input#password-account(type="password", name="password-account", placeholder="**********")
                     #password-helper.row.blue-grey-text.text-lighten-1.hide
                         span Your password should
                         ul: small: small
                             li contain 6 to 20 characters
                             li contain lowercase and uppercase letters
                             li contain a number
-                            li <strong>not</strong> contain any special character
-                    label(for="password-account").blue-grey-text Choose a password
-                    input#password-account(type="password", name="password-account", placeholder="**********")
+                            li not contain any special character
 
                     label(for="password2-account").blue-grey-text Confirm your password
                     input#password2-account(type="password", name="password2-account", placeholder="**********")
