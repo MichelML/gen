@@ -1,5 +1,3 @@
-console.log(process.cwd());
-
 // Set Environment
 require('dotenv').config();
 
