@@ -34,6 +34,7 @@ app.set('view engine', 'pug');
 
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended:true}));
 app.use(methodOverride('X-HTTP-Method-Override'));
 app.use(express.static(__dirname + '/public'));
 
