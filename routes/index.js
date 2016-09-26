@@ -3,8 +3,6 @@ var express = require('express'),
     gapi = require('../lib/gapi.js');
 
 app.get('/', function(request, response) {
-  //if logged in, redirect to event creation
-  //else, stay on landing
   var locals = {
     url:gapi.url
   }
