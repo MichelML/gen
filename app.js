@@ -40,7 +40,7 @@ app.use(express.static(__dirname + '/public'));
 // Set Login Processes
 app.use('/', googleSignin);
 
-// Set views 
+// Set routes 
 app.use('/', indexView);
 app.use('/', signinView);
 app.use('/', signupView);
