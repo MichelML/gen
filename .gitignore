@@ -52,3 +52,4 @@ jenēv
 *.swp
 
 # environment variables
+.env
