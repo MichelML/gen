@@ -25,7 +25,10 @@
     "gulp-nodemon": "^2.1.0",
     "jade": "^1.11.0",
     "method-override": "^2.3.6",
+    "mongodb": "^2.2.10",
+    "mongoose": "^4.6.1",
     "morgan": "^1.7.0",
+    "mpromise": "^0.5.5",
     "pug": "^2.0.0-beta6",
     "serve-static": "^1.11.1"
   }
