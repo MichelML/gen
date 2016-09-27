@@ -53,3 +53,6 @@ jenēv
 
 # environment variables
 .env
+
+#bower modules
+bower_components
