@@ -3,8 +3,12 @@ var express = require('express'),
     EventEmitter = require('events'),
     gapi = require('../../lib/gapi.js');
 
+const pg = require('pg')  
+const conString = 'postgres://localhost:5432/gen' // make sure to match your own database's credentials
+
 app.get('/googleauth', (req, res) => {
     var pageRenderer = new EventEmitter();
+    var user = {};
     gapi.client.getToken(req.query.code, (err, tokens) => {
       if (!err) {
         gapi.client.setCredentials(tokens);
@@ -26,11 +30,14 @@ app.get('/googleauth', (req, res) => {
             if (err) console.log(err);
             else {
                 app.locals.me = {
-                    name: response.displayName || '',
-                    image: (response.image && response.image.url) ? response.image.url : '',
-                    imageBig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/,'?sz=128') : '',
+                    displayname: response.displayName || 'user',
+                    firstname: response.name.givenName,
+                    lastname: response.names.familyName,
+                    pw:'',
+                    googlelogin:true,
+                    image: (response.image && response.image.url) ? response.image.url : 'images/gen-green.png',
+                    imagebig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/,'?sz=128') : 'images/gen-green.png',
                     email: response.emails[0].value,
-                    firstName: (response.name) ? response.name.givenName : ''
                 };
             }
         });

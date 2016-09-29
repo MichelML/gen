@@ -22,7 +22,7 @@ const signupView = require('./routes/signup');
 const googleSignin = require('./routes/auth/google-signin.js');
 
 // Models
-const testing = require('./models/testing.js');
+const users = require('./models/users.js');
 
 // App settings and middlewares
 const app = express();
@@ -55,7 +55,7 @@ app.use('/', profileView);
 app.use('/', eventSumView);
 
 // set models
-app.use('/', testing);
+app.use('/', users);
 
 app.listen(app.get('port'), () => console.log('Node app is running on port', app.get('port')));
 

@@ -1,7 +1,7 @@
 'use strict'
 const app = require('express')()
 const pg = require('pg')  
-const conString = 'postgres://localhost:5432/testing' // make sure to match your own database's credentials
+const conString = 'postgres://localhost:5432/gen' // make sure to match your own database's credentials
 
 app.post('/users', function (req, res, next) {  
   const user = req.body
@@ -11,7 +11,7 @@ app.post('/users', function (req, res, next) {
       // pass the error to the express error handler
       return next(err)
     }
-    client.query('INSERT INTO users (name, age) VALUES ($1, $2);', [user.name, user.age], function (err, result) {
+    client.query('INSERT INTO users (firstname, lastname, displayname, email, pw, googlelogin, firstvisit) VALUES ($1, $2, $3, $4, $5, $6, current_date);', [user.firstname, user.lastname, user.displayname, user.email, user.pw, user.googlelogin], function (err, result) {
       done() //this done callback signals the pg driver that the connection can be closed or returned to the connection pool
 
       if (err) {
