@@ -9,6 +9,7 @@ const jsonParser = bodyParser.json();
 const methodOverride = require('method-override');
 const morgan = require('morgan');
 const errorhandler = require('errorhandler');
+const helmet = require('helmet');
 const gapi = require('./lib/gapi');
 
 // Routes
@@ -19,6 +20,9 @@ const profileView = require('./routes/profile');
 const eventSumView = require('./routes/eventsummary');
 const signupView = require('./routes/signup');
 const googleSignin = require('./routes/auth/google-signin.js');
+
+// Models
+const testing = require('./models/testing.js');
 
 // App settings and middlewares
 const app = express();
@@ -32,6 +36,7 @@ app.set('port', (process.env.PORT || 5000));
 app.set('views', __dirname + '/views');
 app.set('view engine', 'pug');
 
+app.use(helmet());
 app.use(morgan('combined'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
@@ -48,6 +53,9 @@ app.use('/', signupView);
 app.use('/', eventView);
 app.use('/', profileView);
 app.use('/', eventSumView);
+
+// set models
+app.use('/', testing);
 
 app.listen(app.get('port'), () => console.log('Node app is running on port', app.get('port')));
 
