@@ -31,6 +31,8 @@
     "morgan": "^1.7.0",
     "mpromise": "^0.5.5",
     "pg": "^6.1.0",
+    "pg-monitor": "^0.5.11",
+    "pg-promise": "^5.3.4",
     "pug": "^2.0.0-beta6",
     "serve-static": "^1.11.1"
   }

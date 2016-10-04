@@ -1,10 +1,8 @@
 var express = require('express'),
     app = express(),
     EventEmitter = require('events'),
-    gapi = require('../../lib/gapi.js');
-
-const pg = require('pg')  
-const conString = 'postgres://localhost:5432/gen' // make sure to match your own database's credentials
+    gapi = require('../../lib/gapi.js'),
+    usersTable = require('../../models/users');
 
 app.get('/googleauth', (req, res) => {
     var pageRenderer = new EventEmitter();
@@ -12,11 +10,11 @@ app.get('/googleauth', (req, res) => {
     gapi.client.getToken(req.query.code, (err, tokens) => {
       if (!err) {
         gapi.client.setCredentials(tokens);
-        pageRenderer.emit('credentialsSet');
+        pageRenderer.emit('credentialsAreSet');
       }
     });
 
-    pageRenderer.once('credentialsSet', () => {
+    pageRenderer.once('credentialsAreSet', () => {
 
         // Retrieving google plus info of user
         gapi.google.plus('v1').people.get({
@@ -32,13 +30,14 @@ app.get('/googleauth', (req, res) => {
                 app.locals.me = {
                     displayname: response.displayName || 'user',
                     firstname: response.name.givenName,
-                    lastname: response.names.familyName,
+                    lastname: response.name.familyName,
                     pw:'',
                     googlelogin:true,
                     image: (response.image && response.image.url) ? response.image.url : 'images/gen-green.png',
                     imagebig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/,'?sz=128') : 'images/gen-green.png',
                     email: response.emails[0].value,
                 };
+                usersTable.add(app.locals.me);
             }
         });
 
@@ -60,12 +59,12 @@ app.get('/googleauth', (req, res) => {
                     };
                 }) : {};
             app.locals.persons = people;
-            pageRenderer.emit('peopleReady');
+            pageRenderer.emit('peopleAreRetrieved');
         });
 
     });
 
-    pageRenderer.once('peopleReady', () => {
+    pageRenderer.once('peopleAreRetrieved', () => {
         pageRenderer.removeAllListeners('peopleReady')
         res.render('./app/blocks/event');
     });
