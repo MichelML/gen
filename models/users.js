@@ -37,13 +37,10 @@ function userActions(obj) {
                     return data.count;
                 });
         },
-        // Find id-s of all users that have a given name
-        find: function (name) {
-            return obj.any("SELECT email from users WHERE name = $1", name)
+        find: function (email) {
+            return obj.one("SELECT * from users WHERE email = $1", email)
                 .then(data=> {
-                    return data.map(m=> {
-                        return m.email;
-                    });
+                    return data
                 });
         },
         // Delete users by name and return the number of users deleted
