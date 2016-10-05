@@ -28,7 +28,7 @@ app.post('/signin', (request, response) => {
             }
         })
         .catch(error=>{
-            locals.error = 'this user does not exist';
+            locals.error = 'user does not exist';
             response.render('app/blocks/signin', locals);
         });
 });
