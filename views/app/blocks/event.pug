@@ -16,11 +16,11 @@ include ./nav/nav.pug
 
 block main
     ul#contacts.hide
-        if persons
-            each person in persons
+        if me.contacts
+            each contact in me.contacts
                 div.contact
-                    div.contact-name= person.name
-                    div.contact-email= person.email
+                    div.contact-name= contact.name
+                    div.contact-email= contact.email
     main
         .row.margin-t-2
             .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
@@ -101,11 +101,11 @@ block scripts
     if me
         script.
             var me = {};
-            me.name = "#{me.name}" || "";
+            me.name = "#{me.displayname}" || "";
             me.image = "#{me.image}" || "img/gen-green.png";
             me.imageBig = "#{me.imageBig}" || "img/gen-green.png";
             me.email = "#{me.email}" || "";
-            me.firstname = "#{me.firstName}" || "";
+            me.firstname = "#{me.firstname}" || "";
             localforage.setItem("me", me).then(function() {
                 return localforage.getItem("me");
             }).then(function(me) {
