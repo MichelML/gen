@@ -1,64 +1,24 @@
 var express = require('express'),
     app = express(),
     EventEmitter = require('events'),
-    gapi = require('../../lib/gapi.js');
+    pageRenderer = new EventEmitter();
+gapi = require('../../lib/gapi.js'),
+    usersTable = require('../../models/users');
 
 app.get('/googleauth', (req, res) => {
-    var pageRenderer = new EventEmitter();
     gapi.client.getToken(req.query.code, (err, tokens) => {
-      if (!err) {
-        gapi.client.setCredentials(tokens);
-        pageRenderer.emit('credentialsSet');
-      }
+        if (!err) {
+            gapi.client.setCredentials(tokens);
+            pageRenderer.emit('credentialsAreSet');
+        }
     });
 
-    pageRenderer.once('credentialsSet', () => {
-
-        // Retrieving google plus info of user
-        gapi.google.plus('v1').people.get({
-            userId: 'me',
-            auth: gapi.client,
-            params: {
-                fields: ['emails', 'displayName', 'image', 'name/givenName']
-            }
-        }, (err, response) => {
-            // handle err and response
-            if (err) console.log(err);
-            else {
-                app.locals.me = {
-                    name: response.displayName || '',
-                    image: (response.image && response.image.url) ? response.image.url : '',
-                    imageBig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/,'?sz=128') : '',
-                    email: response.emails[0].value,
-                    firstName: (response.name) ? response.name.givenName : ''
-                };
-            }
-        });
-
-        // Retrieving Google Contacts of User
-        gapi.google.people('v1').people.connections.list({
-            'resourceName': 'people/me',
-            'pageSize': 200,
-            'auth': gapi.client,
-            'requestMask.includeField': 'person.names,person.email_addresses'
-        }, (err, response) => {
-            // handle err and response
-            if (err) console.log(err);
-            var people = response.connections || '';
-            people = (people) ? people.filter(person => person.emailAddresses)
-                .map(person => {
-                    return {
-                        name: (person.names) ? person.names[0].displayName : '',
-                        email: person.emailAddresses[0].value
-                    };
-                }) : {};
-            app.locals.persons = people;
-            pageRenderer.emit('peopleReady');
-        });
-
+    pageRenderer.once('credentialsAreSet', () => {
+        getUserGooglePlusProfile();
+        getUserGoogleContacts(undefined, undefined, true);
     });
 
-    pageRenderer.once('peopleReady', () => {
+    pageRenderer.once('peopleAreRetrieved', () => {
         pageRenderer.removeAllListeners('peopleReady')
         res.render('./app/blocks/event');
     });
@@ -66,3 +26,67 @@ app.get('/googleauth', (req, res) => {
 });
 
 module.exports = app;
+
+function getUserGooglePlusProfile() {
+    // Retrieving google plus info of user
+    gapi.google.plus('v1').people.get({
+        userId: 'me',
+        auth: gapi.client,
+        params: {
+            fields: ['emails', 'displayName', 'image', 'name/givenName']
+        }
+    }, (err, response) => {
+        // handle err and response
+        if (err) console.log(err);
+        else {
+            app.locals.me = {
+                displayname: response.displayName || 'user',
+                firstname: response.name.givenName,
+                lastname: response.name.familyName,
+                pw: '',
+                googlelogin: true,
+                image: (response.image && response.image.url) ? response.image.url : 'images/gen-green.png',
+                imagebig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/, '?sz=128') : 'images/gen-green.png',
+                email: response.emails[0].value,
+            };
+        }
+    });
+}
+
+function getUserGoogleContacts(...pageTokenAndContactsAndShouldGetContacts) {
+    var contacts = (pageTokenAndContactsAndShouldGetContacts[1]) ? pageTokenAndContactsAndShouldGetContacts[1] : [];
+    var shouldGetContacts = (pageTokenAndContactsAndShouldGetContacts[2]);
+    if (shouldGetContacts) {
+        var optionsForPeopleApiRequest = {
+            'resourceName': 'people/me',
+            'pageSize': 500,
+            'auth': gapi.client,
+            'requestMask.includeField': 'person.names,person.email_addresses'
+        };
+        var pageToken = (pageTokenAndContactsAndShouldGetContacts[0]) ? pageTokenAndContactsAndShouldGetContacts[0] : '';
+        if (pageToken) optionsForPeopleApiRequest.pageToken = pageToken;
+
+        gapi.google.people('v1').people.connections.list(optionsForPeopleApiRequest, (err, response) => {
+            // handle err and response
+            if (err) console.log(err);
+            else {
+                var shouldGetContacts = (response.connections) ? response.connections.length === 500 : false;
+                var pageToken = response.nextPageToken || '';
+                var newContacts = (response.connections) ? response.connections.filter(contact => contact.emailAddresses)
+                    .map(contact => {
+                        return {
+                            name: (contact.names) ? contact.names[0].displayName : '',
+                            email: contact.emailAddresses[0].value
+                        };
+                    }) : [];
+                contacts = contacts.concat(newContacts);
+                getUserGoogleContacts(pageToken, contacts, shouldGetContacts);
+            }
+        });
+    } else {
+        console.log('number of contacts: ' + contacts.length);
+        app.locals.me.contacts = contacts;
+        usersTable.add(app.locals.me);
+        pageRenderer.emit('peopleAreRetrieved');
+    }
+}
