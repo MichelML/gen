@@ -14,13 +14,16 @@ block head
 
 include ./nav/nav.pug
 
+include ./spinner.pug
+
 block main
     ul#contacts.hide
-        if me.contacts
-            each contact in me.contacts
-                div.contact
-                    div.contact-name= contact.name
-                    div.contact-email= contact.email
+        if me
+            if me.contacts
+                each contact in me.contacts
+                    div.contact
+                        div.contact-name= contact.name
+                        div.contact-email= contact.email
     main
         .row.margin-t-2
             .col.s10.offset-s1.m8.offset-m2.l6.offset-l3
@@ -87,23 +90,31 @@ block scripts
     script(src='js/addressreset.js')
 
     script(src='bower_components/jquery/dist/jquery.min.js')
+
     script(src="bower_components/localforage/dist/localforage.min.js")
+    include ./redirect.pug
+
     script(src='bower_components/pickadate/lib/compressed/picker.js')
     script(src='bower_components/pickadate/lib/compressed/picker.time.js')
     script(src='bower_components/selectize/dist/js/standalone/selectize.js')
+
     script(src='bower_components/materialize/dist/js/materialize.min.js')
+
     script(src='bower_components/knockout/dist/knockout.js')
+
     script(src='js/navinit.js')
     script(src='js/eventmain.js')
     script(src='js/selectize.js')
+
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
+
     script(src="js/eventstorage.js")
     if me
         script.
             var me = {};
             me.name = "#{me.displayname}" || "";
             me.image = "#{me.image}" || "img/gen-green.png";
-            me.imageBig = "#{me.imageBig}" || "img/gen-green.png";
+            me.imageBig = "#{me.imagebig}" || "img/gen-green.png";
             me.email = "#{me.email}" || "";
             me.firstname = "#{me.firstname}" || "";
             localforage.setItem("me", me).then(function() {

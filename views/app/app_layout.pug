@@ -12,16 +12,8 @@ html
             link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
             link(rel='stylesheet', href='css/styles.css')
     body.white.flow-text
+        block spinner
         block nav
-            nav.purple-bg
-              .nav-wrapper
-                a.brand-logo(href='/') 
-                  img.nav-img(src='img/gen-gre.png', alt='GEN logo')
-                a.button-collapse(href='#', data-activates='mobile')
-                  i.material-icons.green-text.text-accent-4 menu
-                ul.hide-on-med-and-down.margin-l-6
-                  li
-                    a(href='/') Home
         block main
             p We are sorry, a problem occured on our side. Try to refresh the page or come back later.
         block footer

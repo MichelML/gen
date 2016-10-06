@@ -1,0 +1,16 @@
+if !me
+    script.
+        localforage.getItem("me")
+                    .then(function(me) {
+                        if (me) {
+                            $('#spinnerdiv').fadeOut();
+                        }
+                        else { 
+                            window.location.replace('/');
+                        }
+                    }).catch(function(err) {
+                        window.location.replace('/');
+                    });
+else
+    script.
+        setTimeout(function() {$('#spinnerdiv').fadeOut();}, 1500);
