@@ -26,3 +26,11 @@ html
             script(src='bower_components/localforage/dist/localforage.min.js')
             script(src='bower_components/materialize/dist/js/materialize.min.js')
             script(src='js/navinit.js')
+        block signout
+            script.
+                function signOut() {
+                    localforage.clear()
+                        .then(()=>{
+                             window.location.replace('/');                   
+                        });
+                }
