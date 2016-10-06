@@ -1,0 +1,31 @@
+header.dblue-bg
+  #logo.row
+    .col.s6.offset-s3.center
+      img#logo-img.responsive-img(src='img/gen-landing.png', alt='GEN logo')
+  .row
+    .col.s10.offset-s1.center.white-text
+      #mission-statements
+        h4.reduce-h4-4 Create any kind of social event in sync with Google Calendar.
+  .row
+    .col.s4.offset-s4
+      .divider
+main
+  section.row.white-text#call-to-action
+      .col.s10.offset-s1.center-align
+          h5 Start Here
+      .col.s10.offset-s1.center-align
+          i.material-icons.small keyboard_arrow_down
+  section.row#sign
+        .col.s8.offset-s2.center-align.margin-b-1
+            a#signin-link(href=`${url}`)
+                img#google-btn.responsive-img(src="img/btn_google_signin_normal.png")
+        .col.s8.offset-s2.center-align.margin-b-2
+            .white-text.margin-b-1
+                h5
+                    small OR
+        .col.s5.offset-s1.m4.offset-m2.l3.offset-l3.right-align
+            div 
+                a(href="/signin").btn-large.deep-purple.accent-1.em0p7 Sign in
+        .col.s5.m4.l3.left-align
+            div
+                a(href="/signup").btn-large.deep-purple.em0p7 Sign up
