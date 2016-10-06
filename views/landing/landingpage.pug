@@ -2,6 +2,9 @@ doctype html
 html(lang='en')
   include ./headlanding.pug
   body.flow-text
+    include ../app/blocks/redirect_loggedin.pug
     include ./mainlanding.pug
     include ./footerlanding.pug
     include ./scriptslanding.pug
+    script(src="bower_components/localforage/dist/localforage.min.js")
+    include ../app/blocks/redirect_loggedin.pug

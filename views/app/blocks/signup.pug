@@ -2,6 +2,8 @@ extends ../app_layout.pug
 
 include ./nav/nav-visit.pug
 
+include ./spinner.pug
+
 block main
     main
         .row
@@ -38,6 +40,7 @@ block main
 block scripts
     script(src='bower_components/jquery/dist/jquery.min.js')    
     script(src="bower_components/localforage/dist/localforage.min.js")
+    include ./redirect_loggedin.pug
     script(src='bower_components/materialize/dist/js/materialize.min.js')
     script(src='js/navinit.js')
     script.

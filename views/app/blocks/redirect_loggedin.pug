@@ -1,0 +1,13 @@
+script.
+    localforage.getItem("me")
+                .then(function(me) {
+                    if (me) {
+                        window.location.replace('/event');
+                    }
+                    else { 
+                        $('#spinnerdiv').fadeOut();
+                    }
+                })
+                .catch(function(err) {
+                    window.location.replace('/event');
+                });
