@@ -4,9 +4,6 @@ var express = require('express'),
     usersTable = require('../models/users.js');
 
 app.get('/signin', function(request, response) {
-    //if a user is logged in already, redirect to event.pug
-    //  to be done
-    //else stay on the page
     response.render('./app/blocks/signin');
 });
 

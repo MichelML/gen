@@ -34,8 +34,8 @@ app.post('/signup', (request, response) => {
                 lastname: tempName,
                 pw: reqBody['password-account'],
                 googlelogin: false,
-                image: 'images/gen-green.png',
-                imagebig: 'images/gen-green.png',
+                image: 'img/gen-green.png',
+                imagebig: 'img/gen-green.png',
                 email: reqBody['email-account'],
                 contacts: [reqBody['email-account']]
             };
