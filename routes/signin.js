@@ -15,10 +15,10 @@ app.post('/signin', (request, response) => {
     reqBody = request.body;
     usersTable.find(reqBody['email-account'])
         .then(user=>{
-            console.log(user.email);
+            console.log(user.image + ' <- pw of user');
             if (!validate.isValidEmail(reqBody['email-account']) || 
                 !validate.isValidPassword(reqBody['password-account']) || 
-                !validate.isValidPassword(reqBody['password-account'], user.pw)) {
+                !validate.isPasswordConfirmMatching(reqBody['password-account'], user.pw)) {
                 locals.error = 'wrong email or password';
                 response.render('app/blocks/signin', locals);
             }

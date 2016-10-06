@@ -2,6 +2,8 @@ extends ../app_layout.pug
 
 include ./nav/nav.pug
 
+include ./spinner.pug
+
 block main
     main
         .row.margin-t-2.center-align
@@ -100,6 +102,7 @@ block main
 block scripts
     script(src='bower_components/jquery/dist/jquery.min.js')
     script(src="bower_components/localforage/dist/localforage.min.js")
+    include ./redirect.pug
     script(src='bower_components/materialize/dist/js/materialize.min.js')
     script(src='bower_components/knockout/dist/knockout.js')
     script(src='js/navinit.js')
