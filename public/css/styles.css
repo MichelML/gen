@@ -304,4 +304,9 @@ input[type='password'][id$='account']:focus {
     z-index:1001;
 }
 
-
+#event-solo,
+#event-social {
+    position:relative;
+    min-width:100%;
+    width:100%;
+}

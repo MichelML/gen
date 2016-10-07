@@ -15,6 +15,7 @@ const gapi = require('./lib/gapi');
 // Routes
 const indexView = require('./routes/index');
 const signinView = require('./routes/signin');
+const eventChoiceView = require('./routes/eventchoice');
 const eventView = require('./routes/event');
 const profileView = require('./routes/profile');
 const eventSumView = require('./routes/eventsummary');
@@ -47,6 +48,7 @@ app.use('/', googleSignin);
 app.use('/', indexView);
 app.use('/', signinView);
 app.use('/', signupView);
+app.use('/', eventChoiceView);
 app.use('/', eventView);
 app.use('/', profileView);
 app.use('/', eventSumView);

@@ -1,0 +1,78 @@
+extends ../app_layout.pug
+
+block head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='initial-scale=1')
+    meta(name="theme-color", content="#5e35b1")
+    title GEN | Event Creation
+    meta(name='google-signin-client_id', content='185629692675-kl7mt54epmrdl5qa33299f7gkt75e6p4.apps.googleusercontent.com')
+    link(href='https://fonts.googleapis.com/css?family=Montserrat', rel='stylesheet')
+    link(rel='stylesheet', href='bower_components/materialize/dist/css/materialize.css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    link(rel='stylesheet', href='css/styles.css')
+
+include ./nav/nav.pug
+
+include ./spinner.pug
+
+block main
+        .row.margin-t-2
+            .col.s10.offset-s1.center-align
+               h4.blue-grey-text.text-lighten-2 
+                    | Hi   
+                    span(data-bind="text:firstname")
+                    | !
+               h5: small.blue-grey-text.text-darken-2 Please select the type of event would you like to create today
+            .col.s10.offset-s1.m5.offset-m1.right-align
+                #event-personal.card.deep-purple.darken-1.center-align
+                  .card-content.white-text.margin-t-4
+                    p event without guests
+                    p: i.large.material-icons person
+                  .card-action.light-blue-text
+                    a(href='/event') Select
+            .col.s10.offset-s1.m5.left-align
+                #event-social.card.deep-purple.lighten-1.center-align
+                  .card-content.white-text.margin-t-4
+                    p event with guests
+                    p: i.large.material-icons group
+                  .card-action.light-blue-text
+                    a(href='/event') Select
+
+
+block scripts
+    script(src='js/addressreset.js')
+
+    script(src='bower_components/jquery/dist/jquery.min.js')
+
+    script(src="bower_components/localforage/dist/localforage.min.js")
+    include ./redirect.pug
+
+    script(src='bower_components/materialize/dist/js/materialize.min.js')
+
+    script(src='bower_components/knockout/dist/knockout.js')
+
+    script(src='js/navinit.js')
+
+    if me
+        script.
+            var me = {};
+            me.name = "#{me.displayname}" || "";
+            me.image = "#{me.image}" || "img/gen-green.png";
+            me.imageBig = "#{me.imagebig}" || "img/gen-green.png";
+            me.email = "#{me.email}" || "";
+            me.firstname = "#{me.firstname}" || "";
+            localforage.setItem("me", me).then(function() {
+                return localforage.getItem("me");
+            }).then(function(me) {
+                ko.applyBindings(me);
+            }).catch(function(err) {
+                console.log(err);
+            });
+    else
+        script.
+            localforage.getItem("me")
+                        .then(function(me) {
+                            ko.applyBindings(me);
+                        }).catch(function(err) {
+                            console.log(err);
+                        });

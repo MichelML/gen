@@ -2,7 +2,7 @@ var express = require('express'),
     app = express(),
     EventEmitter = require('events'),
     pageRenderer = new EventEmitter();
-gapi = require('../../lib/gapi.js'),
+    gapi = require('../../lib/gapi.js'),
     usersTable = require('../../models/users');
 
 app.get('/googleauth', (req, res) => {
@@ -20,12 +20,10 @@ app.get('/googleauth', (req, res) => {
 
     pageRenderer.once('peopleAreRetrieved', () => {
         pageRenderer.removeAllListeners('peopleReady')
-        res.render('./app/blocks/event');
+        res.render('./app/blocks/eventchoice');
     });
 
 });
-
-module.exports = app;
 
 function getUserGooglePlusProfile() {
     // Retrieving google plus info of user
@@ -90,3 +88,5 @@ function getUserGoogleContacts(...pageTokenAndContactsAndShouldGetContacts) {
         pageRenderer.emit('peopleAreRetrieved');
     }
 }
+
+module.exports = app;

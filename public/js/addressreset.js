@@ -1,1 +1,1 @@
-setTimeout(function() {window.history.pushState({},'testing', '/event');}, 4);
+setTimeout(function() {window.history.pushState({},'testing', '/choices');}, 4);
