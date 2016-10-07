@@ -35,7 +35,7 @@ app.post('/signin', (request, response) => {
             else {
 
                 app.locals.me = user;
-                response.render('app/blocks/event');
+                response.render('app/blocks/choices');
 
             }
 
