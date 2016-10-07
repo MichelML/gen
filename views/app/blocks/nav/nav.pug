@@ -1,13 +1,13 @@
 block nav
     nav.purple-bg
       .nav-wrapper
-        a.brand-logo(href='/event') 
+        a.brand-logo(href='/') 
           img.nav-img(src='img/gen-gre.png', alt='GEN logo')
         a.button-collapse(href='#', data-activates='mobile-demo')
           i.material-icons.green-text.text-accent-3 menu
         ul.left.hide-on-med-and-down.margin-l-8
           li
-            a(href='/event') Create event +
+            a(href='/') Create event +
         ul.right.hide-on-med-and-down
           li
             a(href='#' onclick='signOut()') Sign out
@@ -30,7 +30,7 @@ block nav
                         img(alt='user image', data-bind="attr:{src:image}")
                         span(data-bind="text:name")
               .col.offset-s1.s10
-                  a(href='/event') Create event +
+                  a(href='/') Create event +
               .col.offset-s1.s10
                 hr.green.margin-l-1
           li
