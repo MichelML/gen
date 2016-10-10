@@ -61,18 +61,26 @@ app.post('/signup', (request, response) => {
         usersTable.add(pgObject)
 
         .then(data => {
+
             response.render('app/blocks/eventchoice');
+
         })
 
         .catch((err) => {
+
             if (err.detail.includes('already exists')) {
                 locals.error = 'this user already exists';
                 response.render('app/blocks/signup', locals);
+
             } 
+
             else {
+
                 locals.error = 'Oops! Something went wrong. Please try again!';
                 response.render('app/blocks/signup', locals);
+
             }
+
         });
 
     }
