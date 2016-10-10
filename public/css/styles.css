@@ -280,7 +280,9 @@ datalist {
 }
 
 input[type='email'][id$='account']:focus,
-input[type='password'][id$='account']:focus {
+input[type='email'][id$='account']:focus,
+input[id$='event']:focus, 
+input[id$='event']:focus {
   border-bottom: 1px solid #673ab7;
   -webkit-box-shadow: 0 1px 0 0 #673ab7;
   -moz-box-shadow: 0 1px 0 0 #673ab7;
