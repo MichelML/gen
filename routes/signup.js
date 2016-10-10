@@ -64,11 +64,15 @@ app.post('/signup', (request, response) => {
             response.render('app/blocks/eventchoice');
         })
 
-        .catch(() => {
-            
-            locals.error = 'Oops! Something went wrong<br>Please try again!';
-            response.render('app/blocks/signup', locals);
-
+        .catch((err) => {
+            if (err.detail.includes('already exists')) {
+                locals.error = 'this user already exists';
+                response.render('app/blocks/signup', locals);
+            } 
+            else {
+                locals.error = 'Oops! Something went wrong. Please try again!';
+                response.render('app/blocks/signup', locals);
+            }
         });
 
     }
