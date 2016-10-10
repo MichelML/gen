@@ -17,6 +17,7 @@ const indexView = require('./routes/index');
 const signinView = require('./routes/signin');
 const eventChoiceView = require('./routes/eventchoice');
 const eventView = require('./routes/eventsocial');
+const personalEventView = require('./routes/eventpersonal');
 const profileView = require('./routes/profile');
 const eventSumView = require('./routes/eventsummary');
 const signupView = require('./routes/signup');
@@ -50,6 +51,7 @@ app.use('/', signinView);
 app.use('/', signupView);
 app.use('/', eventChoiceView);
 app.use('/', eventView);
+app.use('/', personalEventView);
 app.use('/', profileView);
 app.use('/', eventSumView);
 
