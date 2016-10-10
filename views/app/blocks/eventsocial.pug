@@ -83,7 +83,7 @@ block main
                 label(for="details-event").teal-text.text-accent-4 What other information your guests should know?
                 textarea#details-event.event-input.materialize-textarea(name="details-event", placeholder="Type information your guests should know before the event.\nStick to the essential.")
 
-                button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
+                button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='submitEvent();')
                   | Create My Event
                   i.material-icons.right send
 block scripts
@@ -94,6 +94,7 @@ block scripts
 
     script(src='bower_components/pickadate/lib/compressed/picker.js')
     script(src='bower_components/pickadate/lib/compressed/picker.time.js')
+    script(src='js/defaultdateandtime.js')
     script(src='bower_components/selectize/dist/js/standalone/selectize.js')
 
     script(src='bower_components/materialize/dist/js/materialize.min.js')
