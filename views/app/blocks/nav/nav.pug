@@ -17,7 +17,7 @@ block nav
             a(href='/me') 
                 .chip
                     img#me-image(alt='user image', data-bind="attr:{src:image}")
-                    span#me-name(data-bind="text:name")
+                    span#me-name(data-bind="text:displayname")
           li
             span#me-email.hide(data-bind="text:email")
           li
@@ -28,7 +28,7 @@ block nav
               .col.offset-s1.s10
                     .chip
                         img(alt='user image', data-bind="attr:{src:image}")
-                        span(data-bind="text:name")
+                        span(data-bind="text:displayname")
               .col.offset-s1.s10
                   a(href='/') Create event +
               .col.offset-s1.s10

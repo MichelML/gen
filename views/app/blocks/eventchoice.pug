@@ -53,22 +53,30 @@ block scripts
     script(src='bower_components/knockout/dist/knockout.js')
 
     script(src='js/navinit.js')
-
     if me
         script.
-            var me = {};
-            me.name = "#{me.displayname}" || "";
-            me.image = "#{me.image}" || "img/gen-green.png";
-            me.imageBig = "#{me.imagebig}" || "img/gen-green.png";
-            me.email = "#{me.email}" || "";
-            me.firstname = "#{me.firstname}" || "";
-            localforage.setItem("me", me).then(function() {
-                return localforage.getItem("me");
-            }).then(function(me) {
-                ko.applyBindings(me);
-            }).catch(function(err) {
-                console.log(err);
+            $.get('/user/' + '#{me.email}', function (user) {
+                user.contacts = JSON.parse(user.contacts);
+                console.log(user);
+                return user;
+            })
+            .then(function(user) {
+
+                localforage.setItem("me", user).then(function() {
+
+                    return localforage.getItem("me");
+
+                }).then(function(me) {
+                    console.dir(me);
+                    ko.applyBindings(me);
+
+                }).catch(function(err) {
+
+                    console.log(err);
+
+                });
             });
+
     else
         script.
             localforage.getItem("me")
