@@ -24,7 +24,7 @@ block main
                     span(data-bind="text:firstname")
                     | , so you want to organize an event...
         .row
-            form.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
+            form#event-creation.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
                 label(for="name-event").teal-text.text-accent-4 What name should we give to this event?
                 input#name-event.event-input(type="text", name="name-event", placeholder="Type the event's name here", autofocus)
 
@@ -56,7 +56,7 @@ block main
                 label(for="details-event").teal-text.text-accent-4 Should you leave extra details for yourself?
                 textarea#details-event.event-input.materialize-textarea(name="details-event", placeholder="Type important information you might be at risk of forgetting.")
 
-                button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
+                button#event-button.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='')
                   | Create My Event
                   i.material-icons.right send
 block scripts
@@ -75,6 +75,7 @@ block scripts
 
     script(src='js/navinit.js')
     script(src='js/eventmain.js')
+    script(src="js/eventpersonal.js")
 
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
 
