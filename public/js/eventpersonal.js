@@ -89,7 +89,7 @@ function submitForm() {
         formData[$elem.attr('id')] = $elem.val();
     });
 
-    localforage.setItem('event', function() {var h;})
+    localforage.setItem('event', formData)
 
     .then(function(event) {
 
