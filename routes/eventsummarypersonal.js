@@ -1,7 +1,7 @@
 var express = require('express'),
     app = express();
 
-app.get('/summary', function(request, response) {
+app.get('/summaryp', function(request, response) {
   response.render('./app/blocks/eventsummarypersonal');
 });
 
