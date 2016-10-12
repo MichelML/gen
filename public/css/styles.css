@@ -303,7 +303,6 @@ input[id$='event']:focus {
 
 #main {
     position:relative;
-    z-index:0;
 }
 
 #spinnerdiv-white {

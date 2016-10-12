@@ -89,19 +89,21 @@ function submitForm() {
         formData[$elem.attr('id')] = $elem.val();
     });
 
-    localforage.setItem('event', formData)
+    $('#confirm-form').click();
 
-    .then(function(event) {
+    //post.setItem('event', formData);
 
-        window.location.replace('/summaryp');
+    //.then(function(event) {
 
-    })
+        //window.location.replace('/eventpersonal#main');
 
-    .catch(function(err) {
+    //})
 
-        $('form').append('<div class="col s12 margin-t-1 white-text"> <div class="chip red z-depth-2"> Please review your answers. <i class="close material-icons">close</i></div></div>')
-        console.log(err);
+    //.catch(function(err) {
+    
+        //$('form').append('<div class="col s12 margin-t-1 white-text"> <div class="chip red z-depth-2"> Please review your answers. <i class="close material-icons">close</i></div></div>')
+        //console.log(err);
 
-    });
+    //});
 
 }

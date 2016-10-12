@@ -57,9 +57,20 @@ block main
                 label(for="details-event").teal-text.text-accent-4 Should you leave extra details for yourself?
                 textarea#details-event.event-input.materialize-textarea(name="details-event", placeholder="Type important information you might be at risk of forgetting.")
 
-                button#event-button.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(disabled, type="button", onclick='submitForm()')
+                button#event-button.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7.modal-trigger(disabled, type="button", data-target="modal1")
                   | Create My Event
                   i.material-icons.right send
+                #modal1.modal
+                  .modal-content
+                    h4.center-align 
+                        span(data-bind="text:firstname")
+                        | , is your information accurate?
+                    p.center-align.margin-b-4 This is the final step before we create your event. If you want, you can take some time to make sure all necessary details are present.
+                    .row
+                      .col.s12.m6.center-align
+                        button.btn.green.accent-4.center-align.modal-action.modal-close.waves-effect.waves-green.margin-b-2(type="button") Create event
+                      .col.s12.m6.center-align
+                        button.btn.deep-purple.center-align.modal-action.modal-close.waves-effect.waves-green(type="button") Review event
 block scripts
     script(src='bower_components/jquery/dist/jquery.min.js')
 

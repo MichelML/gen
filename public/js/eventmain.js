@@ -30,11 +30,11 @@ $(document).ready(function() {
         $nav = $('nav'),
         $footer = $('footer');
 
-        function setSpinnerHeight() {
+    function setSpinnerHeight() {
 
-            $spinnerdiv.css('height', '' + ($window.height() - $nav.height()) + 'px');
-        }
-        setSpinnerHeight();
+        $spinnerdiv.css('height', '' + ($window.height() - $nav.height()) + 'px');
+    }
+    setSpinnerHeight();
 
     $window.resize(function() {
 
@@ -42,4 +42,16 @@ $(document).ready(function() {
 
     });
 
-})
+});
+
+$(window).on('beforeunload', function() {
+
+    return 'Your event\'s information will be lost if you quit this page.';
+
+});
+
+$(document).ready(function() {
+
+    $('.modal-trigger').leanModal();
+
+});
