@@ -341,3 +341,7 @@ input[id$='event']:focus {
     left:0;
     background-color:#fff;
 }
+
+#success-message {
+    position:relative;
+}
