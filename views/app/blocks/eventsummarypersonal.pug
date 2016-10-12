@@ -1,0 +1,74 @@
+extends ../app_layout.pug
+
+include ./nav/nav.pug
+
+include ./spinner.pug
+
+block main
+    main
+        .row.margin-t-2.center-align
+            .col.s10.offset-s1.m12.l8.offset-l2
+                h5#intro.blue-grey-text.text-accent-3: small 
+                    | Great Job 
+                    span(data-bind='text:firstname')
+                    | !<br>One more thing before we generate your 
+                    span(data-bind='text:event.type') event.
+                p: small.blue-grey-text.text-accent-3 Please review the information below.<br>Click/Tap on any information to be edited.
+                hr
+            .col.s10.offset-s1.m12.l8.offset-l2
+                section#event-review
+                    p Your Event
+                    .card.z-depth-2.card-padding
+                        h4.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.name") name of the event
+                        h5.deep-purple-text: small.editable(contenteditable="true",data-bind="text:event.type, visible:!!event.type") type of the event
+                        h5: small 
+                            | hosted by
+                            br
+                            span.editable.deep-purple-text(contenteditable="true",data-bind="text:event.host") Michel ML
+                        p: small
+                            | Location of the event
+                            br
+                            span.editable.deep-purple-text(contenteditable="true", data-bind="text:event.location") Chocolats Favoris Cap-Rouge
+                        .row
+                            .col.s12
+                                small   
+                                    | The event will start on  
+                            .col.s5.l4.offset-l1
+                                small
+                                    input.deep-purple-text(type="date", data-bind="value:event.startdate")
+                            .col.s2
+                                small
+                                    | at
+                            .col.s5.l4
+                                small
+                                    input.deep-purple-text(type="time", data-bind="value:event.starttime")
+                            .col.s12
+                                small   
+                                    | and will end on  
+                            .col.s5.l4.offset-l1
+                                small
+                                    input.deep-purple-text(type="date", data-bind="value:event.enddate")
+                            .col.s2
+                                small
+                                    | at
+                            .col.s5.l4
+                                small
+                                    input.deep-purple-text(type="time", data-bind="value:event.endtime")
+                section#details.margin-t-3: p: small 
+                    | Details
+                    br
+                    div.left-align.card.z-depth-2.card-padding
+                        span(data-bind="text:event.details") some details
+                button#create-account.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='button', onclick='console.log("button works.")')
+                  | Create event
+                  i.material-icons.right send
+
+block scripts
+    script(src='bower_components/jquery/dist/jquery.min.js')
+    script(src="bower_components/localforage/dist/localforage.min.js")
+    include ./redirect.pug
+    script(src='bower_components/materialize/dist/js/materialize.min.js')
+    script(src='bower_components/knockout/dist/knockout.js')
+    script(src='js/navinit.js')
+    script(src='js/getprofile.js')
+    script(src='js/eventsum.js')
