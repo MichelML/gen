@@ -79,7 +79,7 @@ block main
                 label(for="details-event").teal-text.text-accent-4 What other information your guests should know?
                 textarea#details-event.event-input.materialize-textarea(name="details-event", placeholder="Type information your guests should know before the event.\nStick to the essential.", maxlength="10000")
 
-                button#event-button.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='submit', name='action', disabled, onclick='submitEvent();')
+                button#event-button.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7(type='button', disabled, onclick='submitForm()')
                   | Create My Event
                   i.material-icons.right send
 block scripts

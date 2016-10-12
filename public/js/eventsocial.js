@@ -148,3 +148,38 @@ $(document).ready(function(event) {
 
 });
 
+$(document).ready(function() {
+
+    setTimeout(function() {
+        $('.selectize-control').removeClass('event-input');
+        $('.selectize-dropdown').removeClass('event-input')
+    }, 1000);
+
+});
+
+function submitForm() {
+
+    var formData = {};
+    var $elem;
+
+    $('.event-input').each(function() {
+        $elem = $(this);
+        formData[$elem.attr('id')] = $elem.val();
+    });
+
+    localforage.setItem('event', formData)
+
+    .then(function(event) {
+
+        window.location.replace('/summary');
+
+    })
+
+    .catch(function(err) {
+
+        $('form').append('<div class="col s12 margin-t-1 white-text"> <div class="chip red z-depth-2"> Please review your answers. <i class="close material-icons">close</i></div></div>')
+        console.log(err);
+
+    });
+
+}
