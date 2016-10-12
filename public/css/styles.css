@@ -291,7 +291,7 @@ input[id$='event']:focus {
 
 #spinnerdiv {
     position:fixed;
-    z-index:1000;
+    z-index:1002;
     height:100%;
     min-height:100%;
     width:100%;
@@ -307,7 +307,6 @@ input[id$='event']:focus {
 
 #spinnerdiv-white {
     position:absolute;
-    display:none;
     z-index:1000;
     width:100%;
     min-width:100%;
@@ -335,7 +334,6 @@ input[id$='event']:focus {
 
 #success-submit {
     position:absolute;
-    display:none;
     z-index:1000;
     width:100%;
     min-width:100%;

@@ -28,7 +28,12 @@ $(document).ready(function() {
     var $window = $(window),
         $spinnerdiv = $('#spinnerdiv-white'),
         $nav = $('nav'),
-        $footer = $('footer');
+        $successMessage = $('#success-submit');
+    
+    // these elements must be initiated with jquery 
+    // so they vertical align properly
+    $spinnerdiv.hide();
+    $successMessage.hide();
 
     function setSpinnerHeight() {
 
