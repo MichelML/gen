@@ -44,12 +44,6 @@ $(document).ready(function() {
 
 });
 
-$(window).on('beforeunload', function() {
-
-    return 'Your event\'s information will be lost if you quit this page.';
-
-});
-
 $(document).ready(function() {
 
     $('.modal-trigger').leanModal();
