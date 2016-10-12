@@ -12,8 +12,9 @@ app.get('/user/:email', ( req, res )=>{
       })
 
       .catch(err=>{
-        
-        res.send(err);
+
+        var error = 'Please try again. There was a problem on our side.' 
+        res.render('signin.pug', error);
 
       });
 
