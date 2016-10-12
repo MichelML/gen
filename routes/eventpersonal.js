@@ -7,7 +7,7 @@ app.get('/eventpersonal', (request, response) => {
 
 app.post('/eventpersonal', (request, response) => {
     var reqBody = request.body;
-   response.send('success'); 
+    response.send('success'); 
 });
 
 module.exports = app;
