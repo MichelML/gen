@@ -301,7 +301,27 @@ input[id$='event']:focus {
     background-color:#5e35b1;
 }
 
+#main {
+    position:relative;
+}
+
+#spinnerdiv-white {
+    position:absolute;
+    display:none;
+    z-index:1000;
+    width:100%;
+    min-width:100%;
+    top:0;
+    left:0;
+    background-color:#fff;
+}
+
 #spinner {
+    position:relative;
+    z-index:1001;
+}
+
+#spinner-green {
     position:relative;
     z-index:1001;
 }
@@ -312,3 +332,5 @@ input[id$='event']:focus {
     min-width:100%;
     width:100%;
 }
+
+

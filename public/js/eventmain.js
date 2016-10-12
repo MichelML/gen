@@ -22,3 +22,30 @@ function initAutocomplete() {
     var searchBox = new google.maps.places.SearchBox(input);
 
 }
+
+$(document).ready(function() {
+
+    var $window = $(window),
+        $spinnerdiv = $('#spinnerdiv-white'),
+        $nav = $('nav'),
+        $footer = $('footer');
+
+    function setSpinnerHeight() {
+
+        $spinnerdiv.css('height', '' + ($window.height() - $nav.height()) + 'px');
+    }
+    setSpinnerHeight();
+
+    $window.resize(function() {
+
+        setSpinnerHeight();
+
+    });
+
+});
+
+$(document).ready(function() {
+
+    $('.modal-trigger').leanModal();
+
+});
