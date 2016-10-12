@@ -6,6 +6,7 @@ app.get('/eventpersonal', (request, response) => {
 });
 
 app.post('/eventpersonal', (request, response) => {
+    var reqBody = request.body;
 
 });
 
