@@ -22,4 +22,3 @@ function initAutocomplete() {
     var searchBox = new google.maps.places.SearchBox(input);
 
 }
-
