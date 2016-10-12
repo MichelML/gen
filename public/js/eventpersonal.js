@@ -93,7 +93,7 @@ function submitForm() {
 
     .then(function(event) {
 
-        window.location.replace('/summary');
+        window.location.replace('/summaryp');
 
     })
 

@@ -20,6 +20,7 @@ const eventView = require('./routes/eventsocial');
 const personalEventView = require('./routes/eventpersonal');
 const profileView = require('./routes/profile');
 const eventSumView = require('./routes/eventsummary');
+const eventSumPersonalView = require('./routes/eventsummarypersonal');
 const signupView = require('./routes/signup');
 const googleSignin = require('./routes/auth/google-signin.js');
 const userData = require('./routes/rest/user.js');
@@ -55,6 +56,7 @@ app.use('/', eventView);
 app.use('/', personalEventView);
 app.use('/', profileView);
 app.use('/', eventSumView);
+app.use('/', eventSumPersonalView);
 app.use('/', userData);
 
 app.listen(app.get('port'), () => console.log('Node app is running on port', app.get('port')));
