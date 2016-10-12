@@ -14,13 +14,11 @@ $(document).ready(function(event) {
 
         if (formIsValid()) {
 
-           $createEvent.prop('disabled', false);
+            $createEvent.prop('disabled', false);
 
-        }
+        } else {
 
-        else {
-            
-           $createEvent.prop('disabled', true);
+            $createEvent.prop('disabled', true);
 
         }
 
@@ -28,14 +26,14 @@ $(document).ready(function(event) {
 
     function formIsValid() {
 
-        return  validator.checkEventName($eventName.val()) && 
-                validator.checkEventType($eventType.val()) &&
-                validator.checkEventLocation($eventLocation.val()) &&
-                validator.checkEventDate($eventStartDate.val()) && 
-                validator.checkEventTime($eventStartTime.val()) &&
-                validator.checkEventDate($eventEndDate.val()) && 
-                validator.checkEventTime($eventEndTime.val()) &&
-                validator.checkEventDetails($eventDetails.val());
+        return validator.checkEventName($eventName.val()) &&
+            validator.checkEventType($eventType.val()) &&
+            validator.checkEventLocation($eventLocation.val()) &&
+            validator.checkEventDate($eventStartDate.val()) &&
+            validator.checkEventTime($eventStartTime.val()) &&
+            validator.checkEventDate($eventEndDate.val()) &&
+            validator.checkEventTime($eventEndTime.val()) &&
+            validator.checkEventDetails($eventDetails.val());
 
     }
 
@@ -54,7 +52,7 @@ $(document).ready(function(event) {
         },
 
         checkEventLocation: function(eventLocation) {
-        
+
             return /^.{1,1000}$/.test(eventLocation);
 
         },
@@ -80,3 +78,31 @@ $(document).ready(function(event) {
     };
 
 });
+
+function submitForm() {
+
+    var formData = {};
+    var $elem;
+
+    $('.event-input').each(function() {
+        $elem = $(this);
+        formData[$elem.attr('id')] = $elem.val();
+    });
+
+    localforage.setItem('event', function() {var h;})
+
+    .then(function(event) {
+
+        console.log(event);
+        window.location.replace('/summary');
+
+    })
+
+    .catch(function(err) {
+
+        $('form').append('<div class="col s12 margin-t-1 white-text"> <div class="chip red z-depth-2"> Please review your answers. <i class="close material-icons">close</i></div></div>')
+        console.log(err);
+
+    });
+
+}
