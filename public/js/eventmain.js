@@ -30,11 +30,15 @@ $(document).ready(function() {
         $nav = $('nav'),
         $footer = $('footer');
 
-        $spinnerdiv.css('height', '' + ($window.height() - $nav.height() - $footer.height()) + 'px');
+        function setSpinnerHeight() {
+
+            $spinnerdiv.css('height', '' + ($window.height() - $nav.height()) + 'px');
+        }
+        setSpinnerHeight();
 
     $window.resize(function() {
 
-        $spinnerdiv.css('height', '' + ($window.height() - $nav.height() - $footer.height()) + 'px');
+        setSpinnerHeight();
 
     });
 
