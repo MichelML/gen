@@ -24,7 +24,7 @@ block main
                     span(data-bind="text:firstname")
                     | , let's create your event together
         .row
-            form#event-creation.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
+            form#event-creation.col.s10.offset-s1.m8.offset-m2.l8.offset-l2(action="/eventpersonal", method="post")
                 label(for="name-event").teal-text.text-accent-4 What name should we give to this event?
                 input#name-event.event-input(type="text", name="name-event", placeholder="Type the event's name here", autofocus)
 
