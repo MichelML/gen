@@ -8,7 +8,7 @@ $(document).ready(function(event) {
         $eventEndTime = $('#endtime-event'),
         $eventLocation = $('#place-event'),
         $eventDetails = $('#details-event'),
-        $createEvent = $('#event-button');
+        $createEvent = $('#event-button'); 
 
     $('#event-creation').on('keyup', function() {
 
