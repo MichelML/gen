@@ -79,9 +79,15 @@ $(document).ready(function(event) {
 
 });
 
-function submitForm() {
+function submitEvent() {
+    var $spinner = $('#spinnerdiv-white');
+    $spinner.show();
+
+    var $eventForm = $('#event-creation');
+    $form.hide();
 
     var formData = {};
+    formData.type = 'personal';
     var $elem;
 
     $('.event-input').each(function() {
@@ -89,21 +95,25 @@ function submitForm() {
         formData[$elem.attr('id')] = $elem.val();
     });
 
-    $('#confirm-form').click();
 
-    //post.setItem('event', formData);
+    $.post('/eventpersonal', formData)
 
-    //.then(function(event) {
+    .then(function() {
 
-        //window.location.replace('/eventpersonal#main');
+        $spinner.hide();
 
-    //})
+        var $successDiv = $('#success-submit');
+        $successDiv.show();
 
-    //.catch(function(err) {
+    })
+
+    .catch(function(err) {
     
-        //$('form').append('<div class="col s12 margin-t-1 white-text"> <div class="chip red z-depth-2"> Please review your answers. <i class="close material-icons">close</i></div></div>')
-        //console.log(err);
+        $eventForm.append('<div class="col s12 margin-t-1 white-text"> <div class="chip red z-depth-2"> Please review your answers. <i class="close material-icons">close</i></div></div>');
+        $spinner.fadeOut();
+        $eventForm.show();
+        console.log(err);
 
-    //});
+    });
 
 }

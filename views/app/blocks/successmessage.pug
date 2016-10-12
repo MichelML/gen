@@ -1,0 +1,11 @@
+#success-submit.row.valign-wrapper
+    .col.s12.valign.center-align
+        h4.green-text.text-accent-4 EVENT CREATION SUCCESSFUL!
+        h5.green-text.text-accent-4 
+            | Great work 
+            span(data-bind="text:firstname") !
+        p: small What would you like to do next?
+        div
+            a.btn.deep-purple(href="/choices") Create new event
+        div
+            a.btn.deep-purple.accent-3(href="/me#my-events") See my events
