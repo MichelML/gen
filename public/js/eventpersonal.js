@@ -93,7 +93,6 @@ function submitForm() {
 
     .then(function(event) {
 
-        console.log(event);
         window.location.replace('/summary');
 
     })
