@@ -1,7 +1,7 @@
 var express = require('express'),
     app = express();
 
-app.get('/me', function(request, response) {
+app.get('/me', (request, response) => {
 
   response.render('./app/blocks/profile');
 
