@@ -2,14 +2,13 @@
 function eventsActions(obj) {
     return {
         addPersonalEvent: function (form) {
-            return obj.one('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16) RETURNING eventname', 
+            return obj.one('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING eventname', 
                     [form['user'],
                     form['type'], 
                     form['name-event'], 
                     form['type-event'], 
-                    form['guests-event'], 
                     // a personal event does not have a host and guests information
-                    // those entries are therefore empty
+                    // the related entries related to them are therefore empty
                     '', '', '', '', '', 
                     form['place-event'], 
                     form['startdate-event'], 
@@ -21,14 +20,11 @@ function eventsActions(obj) {
         },
 
         addSocialEvent: function (form) {
-            return obj.one('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16)', 
+            return obj.one('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', 
                     [form['user'],
                     form['type'], 
                     form['name-event'], 
                     form['type-event'], 
-                    form['guests-event'], 
-                    // a personal event does not have a host and guests information
-                    // those entries are therefore empty
                     form['host-event'], 
                     form['tel-event'], 
                     form['mail-event'], 

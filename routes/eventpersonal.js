@@ -15,7 +15,7 @@ app.post('/eventpersonal', (request, response) => {
 
     if (isEventFormValid(form)) {
 
-        eventsTable.add(form)
+        eventsTable.addPersonalEvent(form)
         
         .then(function() {
 
@@ -31,7 +31,6 @@ app.post('/eventpersonal', (request, response) => {
         });
         
     }
-
 
 });
 

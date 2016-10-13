@@ -159,6 +159,12 @@ $(document).ready(function() {
 
 function submitForm() {
 
+    var $spinner = $('#spinnerdiv-white');
+    $spinner.show();
+
+    var $eventForm = $('#event-creation');
+    $eventForm.hide();
+
     var formData = {};
     formData.type = 'social';
     var $elem;
