@@ -96,30 +96,32 @@ function submitEvent() {
         formData[$elem.attr('id')] = $elem.val();
     });
 
-    localforage.getItem('me', function(me) {
-        
-        formData.user = me.email;
-        
-        $.post('/eventpersonal', formData)
+    localforage.getItem('me')
 
-        .then(function() {
+        .then(function(me) {
+            alert(me); 
+            formData.user = me.email;
+            
+            $.post('/eventpersonal', formData)
 
-            $spinner.hide();
+            .then(function() {
 
-            var $successDiv = $('#success-submit');
-            $successDiv.show();
+                $spinner.hide();
 
-        })
+                var $successDiv = $('#success-submit');
+                $successDiv.show();
 
-        .catch(function(err) {
-        
-            $eventForm.prepend('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
-            $spinner.fadeOut();
-            $eventForm.show();
-            console.log(err);
+            })
+
+            .catch(function(err) {
+            
+                $eventForm.prepend('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
+                $spinner.fadeOut();
+                $eventForm.show();
+                console.log(err);
+
+            });
 
         });
-
-    });
 
 }

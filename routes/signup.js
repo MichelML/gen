@@ -2,7 +2,7 @@ var express = require('express'),
     app = express(),
     bodyParser = require('body-parser'),
     validate = require('../lib/validation.js'),
-    usersTable = require('../models/users.js'),
+    usersTable = require('../models/db.js').users,
     bcrypt = require('bcrypt-nodejs'),
     reqBody = {};
 
