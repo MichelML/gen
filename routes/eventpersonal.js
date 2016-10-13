@@ -1,6 +1,7 @@
-var express = require('express'),
+const express = require('express'),
     app = express(),
-    validator = require('../lib/formvalidation.js');
+    isEventFormValid = require('../lib/formvalidation.js').form.personalEventFormIsValid,
+    pg = require('pg-promise');
 
 app.get('/eventpersonal', (request, response) => {
 
@@ -10,7 +11,12 @@ app.get('/eventpersonal', (request, response) => {
 
 app.post('/eventpersonal', (request, response) => {
 
-    var form = request.body;
+    const form = request.body;
+
+    if (isEventFormValid(form)) {
+        
+    }
+
     response.send('success'); 
 
 });
