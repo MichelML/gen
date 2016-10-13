@@ -26,7 +26,6 @@ function userActions(obj) {
         add: function (user) {
             return obj.one('INSERT INTO users VALUES($1,$2,$3,$4,$5,$6,current_date,$7,$8,$9) RETURNING contacts', [user.firstname,user.lastname,user.displayname,user.email,user.pw,user.googlelogin,user.image,user.imagebig,JSON.stringify(user.contacts)])
                 .then(data=> {
-                    console.log(JSON.parse(data.contacts));
                     return JSON.parse(data.contacts);
                 });
         },
