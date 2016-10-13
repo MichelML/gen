@@ -1,7 +1,7 @@
 const express = require('express'),
     app = express(),
     isEventFormValid = require('../lib/formvalidation.js').form.personalEventFormIsValid,
-    pg = require('pg-promise');
+    eventsTable = require('../models/db.js').events;
 
 app.get('/eventpersonal', (request, response) => {
 
@@ -15,11 +15,23 @@ app.post('/eventpersonal', (request, response) => {
 
     if (isEventFormValid(form)) {
 
+        eventsTable.add(form)
+        
+        .then(function() {
 
+            response.status(200);
+            response.send('success'); 
+        
+        })
+        
+        .catch(function(err) {
+        
+            response.send(err);
+
+        });
         
     }
 
-    response.send('success'); 
 
 });
 

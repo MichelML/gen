@@ -1,5 +1,5 @@
 const app = require('express')(),
-      usersTable = require('../../models/users.js');
+      usersTable = require('../../models/db.js').users;
 
 app.get('/user/:email', ( req, res )=>{
    usersTable.find(req.params.email)
