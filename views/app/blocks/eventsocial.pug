@@ -84,17 +84,7 @@ block main
                 button#event-button.btn.green.accent-4.waves-effect.waves-light.margin-t-2.em0p7.modal-trigger(disabled, type="button", data-target="modal1")
                   | Create My Event
                   i.material-icons.right send
-                #modal1.modal
-                  .modal-content
-                    h4 
-                        span(data-bind="text:firstname")
-                        | , is your information accurate?
-                    p.margin-b-4 This is the final step before we create your event. If you want, you can take some time to make sure all necessary details are present.
-                    .row
-                      .col.s12.m6.center-align
-                        button.btn.green.accent-4.center-align.modal-action.modal-close.waves-effect.waves-green.margin-b-2(type="button" , onclick="submitEvent()") Create event
-                      .col.s12.m6.center-align
-                        button.btn.deep-purple.center-align.modal-action.modal-close.waves-effect.waves-green(type="button") Review event
+                include ./eventconfirm.pug
 block scripts
     script(src='bower_components/jquery/dist/jquery.min.js')
 
