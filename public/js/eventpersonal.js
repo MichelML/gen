@@ -41,13 +41,13 @@ $(document).ready(function(event) {
 
         checkEventName: function(eventName) {
 
-            return /^[a-zA-Z0-9\-]{1,200}$/.test(eventName);
+            return /^[a-zA-Z0-9\-\s]{1,200}$/.test(eventName);
 
         },
 
         checkEventType: function(eventType) {
 
-            return /^[a-zA-Z\-]{1,200}$/.test(eventType) || !eventType;
+            return /^[a-zA-Z\-\s]{1,200}$/.test(eventType) || !eventType;
 
         },
 
@@ -99,7 +99,6 @@ function submitEvent() {
     localforage.getItem('me')
 
         .then(function(me) {
-            alert(me); 
             formData.user = me.email;
             
             $.post('/eventpersonal', formData)

@@ -80,19 +80,19 @@ $(document).ready(function(event) {
 
         checkEventName: function(eventName) {
 
-            return /^[a-zA-Z0-9\-]{1,200}$/.test(eventName);
+            return /^[a-zA-Z0-9\-\s]{1,200}$/.test(eventName);
 
         },
 
         checkEventType: function(eventType) {
 
-            return /^[a-zA-Z\-]{1,200}$/.test(eventType) || !eventType;
+            return /^[a-zA-Z\-\s]{1,200}$/.test(eventType) || !eventType;
 
         },
 
         checkEventHost: function(eventHost) {
 
-            return /^[a-zA-Z\-]{1,200}$/.test(eventHost);
+            return /^[a-zA-Z\-\s]{1,200}$/.test(eventHost);
 
         },
 
@@ -157,7 +157,7 @@ $(document).ready(function() {
 
 });
 
-function submitForm() {
+function submitEvent() {
 
     var $spinner = $('#spinnerdiv-white');
     $spinner.show();
@@ -174,30 +174,31 @@ function submitForm() {
         formData[$elem.attr('id')] = $elem.val();
     });
 
-    localforage.getItem('me', function(me) {
-        
-        formData.user = me.email;
-        
-        $.post('/eventsocial', formData)
+    localforage.getItem('me')
 
-        .then(function() {
+        .then(function(me) {
+            formData.user = me.email;
+            
+            $.post('/eventsocial', formData)
 
-            $spinner.hide();
+            .then(function() {
 
-            var $successDiv = $('#success-submit');
-            $successDiv.show();
+                $spinner.hide();
 
-        })
+                var $successDiv = $('#success-submit');
+                $successDiv.show();
 
-        .catch(function(err) {
-        
-            $eventForm.prepend('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
-            $spinner.fadeOut();
-            $eventForm.show();
-            console.log(err);
+            })
+
+            .catch(function(err) {
+            
+                $eventForm.prepend('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
+                $spinner.fadeOut();
+                $eventForm.show();
+                console.log(err);
+
+            });
 
         });
-
-    });
 
 }

@@ -2,7 +2,7 @@
 function eventsActions(obj) {
     return {
         addPersonalEvent: function (form) {
-            return obj.one('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING eventname', 
+            return obj.none('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING eventname', 
                     [form['user'],
                     form['type'], 
                     form['name-event'], 
@@ -20,7 +20,7 @@ function eventsActions(obj) {
         },
 
         addSocialEvent: function (form) {
-            return obj.one('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', 
+            return obj.none('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', 
                     [form['user'],
                     form['type'], 
                     form['name-event'], 
@@ -40,7 +40,7 @@ function eventsActions(obj) {
         },
 
         findAll: function (email) {
-            return obj.one("SELECT eventname,eventstartdate,eventstarttime FROM events WHERE createdby = $1", email);
+            return obj.many("SELECT eventname,eventstartdate,eventstarttime,style FROM events WHERE createdby = $1", email);
         },
 
         find: function (id) {

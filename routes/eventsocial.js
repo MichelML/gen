@@ -30,6 +30,14 @@ app.post('/eventsocial', (request, response) => {
 
         });
         
+    } 
+
+    else {
+
+        var err = new Error(); 
+        response.status(500);
+        response.send(err);
+
     }
 
 });

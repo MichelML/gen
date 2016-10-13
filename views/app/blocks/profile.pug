@@ -24,8 +24,10 @@ block main
         #my-events.row.blue-grey-text
             .col.s10.offset-s1.m8.offset-m2.left-align
                 h5: small My Events
-            .col.s10.offset-s1.m8.offset-m2.left-align
-                p.blue-grey-text.text-lighten-4: small You have no events created thus far                 
+            #events-list-div.col.s10.offset-s1.m8.offset-m2.left-align
+                include ./spinnerwhite.pug
+                p#no-events.blue-grey-text.text-lighten-4: small You have no events created thus far                 
+                ul#events-list.collection
 
 
 block scripts
@@ -36,3 +38,4 @@ block scripts
     script(src='bower_components/knockout/dist/knockout.js')
     script(src='js/navinit.js')
     script(src='js/getprofile.js')
+    script(src='js/getevent.js')
