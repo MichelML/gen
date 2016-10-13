@@ -160,6 +160,7 @@ $(document).ready(function() {
 function submitForm() {
 
     var formData = {};
+    formData.type = 'social';
     var $elem;
 
     $('.event-input').each(function() {
@@ -167,18 +168,29 @@ function submitForm() {
         formData[$elem.attr('id')] = $elem.val();
     });
 
-    localforage.setItem('event', formData)
+    localforage.getItem('me', function(me) {
+        
+        formData.user = me.email;
+        
+        $.post('/eventpersonal', formData)
 
-    .then(function(event) {
+        .then(function() {
 
-        window.location.replace('/summary');
+            $spinner.hide();
 
-    })
+            var $successDiv = $('#success-submit');
+            $successDiv.show();
 
-    .catch(function(err) {
+        })
 
-        $('form').append('<div class="col s12 margin-t-1 white-text"> <div class="chip red z-depth-2"> Please review your answers. <i class="close material-icons">close</i></div></div>')
-        console.log(err);
+        .catch(function(err) {
+        
+            $eventForm.append('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
+            $spinner.fadeOut();
+            $eventForm.show();
+            console.log(err);
+
+        });
 
     });
 

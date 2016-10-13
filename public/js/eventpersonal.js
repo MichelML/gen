@@ -80,6 +80,7 @@ $(document).ready(function(event) {
 });
 
 function submitEvent() {
+
     var $spinner = $('#spinnerdiv-white');
     $spinner.show();
 
@@ -95,24 +96,29 @@ function submitEvent() {
         formData[$elem.attr('id')] = $elem.val();
     });
 
+    localforage.getItem('me', function(me) {
+        
+        formData.user = me.email;
+        
+        $.post('/eventpersonal', formData)
 
-    $.post('/eventpersonal', formData)
+        .then(function() {
 
-    .then(function() {
+            $spinner.hide();
 
-        $spinner.hide();
+            var $successDiv = $('#success-submit');
+            $successDiv.show();
 
-        var $successDiv = $('#success-submit');
-        $successDiv.show();
+        })
 
-    })
+        .catch(function(err) {
+        
+            $eventForm.append('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
+            $spinner.fadeOut();
+            $eventForm.show();
+            console.log(err);
 
-    .catch(function(err) {
-    
-        $eventForm.append('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
-        $spinner.fadeOut();
-        $eventForm.show();
-        console.log(err);
+        });
 
     });
 
