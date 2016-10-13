@@ -14,6 +14,8 @@ app.post('/eventpersonal', (request, response) => {
     const form = request.body;
 
     if (isEventFormValid(form)) {
+
+
         
     }
 
