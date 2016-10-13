@@ -1,24 +1,3 @@
-'use strict';
-var pgpLib = require('pg-promise');
-var monitor = require('pg-monitor');
- 
-// pg-promise initialization options:
-var options = {
-    capTX: true, // capitalize transaction commands;
-    extend: function () {
-        // our 'users' repository extension:
-        this.users = userActions(this);
-    }
-};
- 
-monitor.attach(options); // attaching to all events;
-monitor.setTheme('matrix'); // changing default theme;
- 
-var pgp = pgpLib(options); // initializing pg-promise;
- 
-// instantiating the database:
-var db = pgp("postgres://mimolap@localhost:5432/gen");
-
 // Users repository
 function userActions(obj) {
     return {
@@ -52,4 +31,4 @@ function userActions(obj) {
     }
 }
 
-module.exports = db.users;
+module.exports = userActions;
