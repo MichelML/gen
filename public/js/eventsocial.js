@@ -172,7 +172,7 @@ function submitForm() {
         
         formData.user = me.email;
         
-        $.post('/eventpersonal', formData)
+        $.post('/eventsocial', formData)
 
         .then(function() {
 
