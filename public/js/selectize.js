@@ -1,15 +1,16 @@
-var contacts = [],
-    names = $('.contact-name'),
-    emails = $('.contact-email');
+$('#contacts').on('click', function(event) {
 
-names.each(function(i) {
-    contacts.push({
-        name: $(this).text(),
-        email: $(emails[i]).text()
-    })
-});
+    var contacts = [],
+        names = $('.contact-name'),
+        emails = $('.contact-email');
 
-$(document).ready(function(event) {
+    names.each(function(i) {
+        contacts.push({
+            name: $(this).text(),
+            email: $(emails[i]).text()
+        })
+    });
+
     var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' + '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
     var $guestsEvent = $('#guests-event').selectize({
         plugins: ['remove_button'],
