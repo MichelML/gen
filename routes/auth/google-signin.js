@@ -3,7 +3,7 @@ var express = require('express'),
     EventEmitter = require('events'),
     pageRenderer = new EventEmitter();
     gapi = require('../../lib/gapi.js'),
-    usersTable = require('../../models/users');
+    usersTable = require('../../models/db.js').users;
 
 app.get('/googleauth', (req, res) => {
     gapi.client.getToken(req.query.code, (err, tokens) => {
