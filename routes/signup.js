@@ -60,7 +60,7 @@ app.post('/signup', (request, response) => {
 
         usersTable.add(pgObject)
 
-        .then(data => {
+        .then(() => {
 
             response.render('app/blocks/eventchoice');
 
