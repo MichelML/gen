@@ -1,6 +1,8 @@
 // Users repository
 function userActions(obj) {
+
     return {
+
         // Add a new user record, given name + active values, and return the new id
         add: function (user) {
 
@@ -35,7 +37,9 @@ function userActions(obj) {
             return obj.none("UPDATE users SET bio=$1 WHERE email=$2", [user.bio,user.email]);
 
         }
+
     }
+
 }
 
 module.exports = userActions;
