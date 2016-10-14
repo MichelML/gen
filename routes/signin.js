@@ -18,12 +18,13 @@ app.post('/signin', (request, response) => {
 
             if (user.googlelogin) {
                 
-                locals.error = 'Please use Google Sign-In';
+                locals.error = 'This user should use Google Sign-In';
                 response.render('app/blocks/signin', locals);
 
             }
 
             else if (!validate.isValidEmail(reqBody['email-account']) || 
+
                 !validate.isValidPassword(reqBody['password-account']) || 
                 !bcrypt.compareSync(reqBody['password-account'], user.pw)) {
 
