@@ -16,7 +16,7 @@ function userActions(obj) {
                 });
         },
         find: function (email) {
-            return obj.one("SELECT firstname,lastname,displayname,email,image,imagebig,contacts,googlelogin from users WHERE email = $1", email)
+            return obj.one("SELECT firstname,lastname,displayname,email,image,imagebig,contacts,googlelogin,bio from users WHERE email = $1", email)
                 .then(data=> {
                     return data
                 });

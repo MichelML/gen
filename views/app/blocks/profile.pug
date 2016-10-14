@@ -20,8 +20,8 @@ block main
             .col.s10.offset-s1.m8.offset-m2.left-align
                 h5: small My Bio
             .col.s10.offset-s1.m8.offset-m2.center-align
-                textarea#personal-bio.materialize-textarea(placeholder='Tell the world who you are')
-        #my-events.row.blue-grey-text
+                textarea#personal-bio.materialize-textarea(placeholder='Tell the world who you are', data-bind="value:bio")
+        section#my-events.row.blue-grey-text
             .col.s10.offset-s1.m8.offset-m2.left-align
                 h5: small My Events
             #events-list-div.col.s10.offset-s1.m8.offset-m2.left-align
