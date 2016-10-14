@@ -1,7 +1,8 @@
 (function() {
 
     var $bio = $('#personal-bio textarea'),
-        originalBio;
+        originalBio,
+        newBio;
 
     $bio.on('focusin', function() {
 
@@ -11,45 +12,39 @@
 
     $bio.on('focusout', function () {
 
-        localforage.getItem('me')
-        
-        .then(function(me) {
+        newBio = $bio.val();
 
-            me.bio = $bio.val() || '';
+        if (bioHasChanged(newBio, originalBio)) {
 
-            localforage.setItem('me', me)
-
-            .then(function(me) {
+            localforage.getItem('me')
             
-                $.post('/user/bio', {bio: me.bio, email:me.email})
+            .then(function(me) {
+
+                me.bio = $bio.val() || '';
+
+                localforage.setItem('me', me)
 
                 .then(function(me) {
                 
-                      Materialize.toast('Bio successfully updated', 2000);          
+                    updateBioInDataBase(me);
 
                 })
 
                 .catch(function(err) {
 
                     showErrorToastAndResetBioValue();
-                
+
                 });
             
             })
 
             .catch(function(err) {
-
+                
                 showErrorToastAndResetBioValue();
 
             });
-        
-        })
 
-        .catch(function(err) {
-            
-            showErrorToastAndResetBioValue();
-
-        });
+        }
 
     });
 
@@ -57,6 +52,30 @@
     
             Materialize.toast('Error occured', 2000);          
             $bio.val(originalBio);
+
+    }
+
+    function updateBioInDataBase(user) {
+
+            $.post('/user/bio', {bio: user.bio, email:user.email})
+
+            .then(function(me) {
+            
+                  Materialize.toast('Bio successfully updated', 2000);          
+
+            })
+
+            .catch(function(err) {
+
+                showErrorToastAndResetBioValue();
+            
+            });
+    
+    }
+
+    function bioHasChanged(bio1,bio2) {
+    
+        return bio1 !== bio2;
 
     }
 
