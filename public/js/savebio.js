@@ -16,13 +16,12 @@
         .then(function(me) {
 
             me.bio = $bio.val() || '';
-            var ME = me;
 
             localforage.setItem('me', me)
 
-            .then(function() {
+            .then(function(me) {
             
-                $.post('/user/bio', {bio: ME.bio, email:ME.email})
+                $.post('/user/bio', {bio: me.bio, email:me.email})
 
                 .then(function(me) {
                 
