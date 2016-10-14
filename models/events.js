@@ -40,7 +40,7 @@ function eventsActions(obj) {
         },
 
         findAll: function (email) {
-            return obj.many("SELECT eventname,eventstartdate,eventstarttime,style FROM events WHERE createdby = $1", email);
+            return obj.any("SELECT eventname,eventstartdate,eventstarttime,style FROM events WHERE createdby = $1", email);
         },
 
         find: function (id) {

@@ -13,7 +13,10 @@ app.post('/events/:email', ( req, res ) => {
 
       .catch(err=>{
 
-            res.send(err);
+            res.status(500);
+            //The error message will show in the 'responseText' property
+            //on the response object on the client side
+            res.send(err.message);
 
       });
 

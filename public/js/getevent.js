@@ -1,9 +1,9 @@
-var $spinner = $('#spinnerdiv-white');
-$spinner.hide();
+var $spinnerwhite = $('#spinnerdiv-white');
+$spinnerwhite.hide();
 
 $(document).ready(function() {
 
-    $spinner.show();
+    $spinnerwhite.show();
 
     localforage.getItem('me')
 
@@ -19,27 +19,32 @@ $(document).ready(function() {
         
         .then(function(events) {
         
-           $('#no-events').hide();
-           $spinner.fadeOut();
+           $spinnerwhite.fadeOut();
 
-           var eventHTMLStrings = createEventsHTMLEntries(events);
-           $('#events-list').append(eventHTMLStrings); 
+           if (events.length > 0) {
+           
+               $('#no-events').hide();
+
+               var eventHTMLStrings = createEventsHTMLEntries(events);
+               $('#events-list').append(eventHTMLStrings); 
+           
+           }
             
         })
 
         .catch(function(err) {
-        
-            if (err.message !== "No data returned from the query.") {
+
+            if (err.responseText !== "No data returned from the query.") {
             
                 $('#no-events').text('An error occured while retrieving your events.');
                 
-                $spinner.hide();
+                $spinnerwhite.hide();
 
             }
 
             else {
             
-                $spinner.hide(); 
+                $spinnerwhite.hide(); 
             
             } 
 
