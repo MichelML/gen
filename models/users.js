@@ -4,7 +4,7 @@ function userActions(obj) {
     return {
 
         // Add a new user record, given name + active values, and return the new id
-        add: function (user) {
+        add: (user) => {
 
             return obj.none('INSERT INTO users VALUES($1,$2,$3,$4,$5,$6,current_date,$7,$8,$9)', 
                     [user.firstname,
@@ -19,20 +19,20 @@ function userActions(obj) {
 
         },
 
-        find: function (email) {
+        find: (email) => {
 
             return obj.one("SELECT firstname,lastname,displayname,email,image,imagebig,contacts,googlelogin,bio from users WHERE email = $1", email);
 
         },
 
         // Delete users by name and return the number of users deleted
-        delete: function (email) {
+        delete: (email) => {
 
             return obj.result("DELETE FROM users WHERE email=$1", email);
 
         },
 
-        updatebio: function (user) {
+        updatebio: (user) => {
         
             return obj.none("UPDATE users SET bio=$1 WHERE email=$2", [user.bio,user.email]);
 
