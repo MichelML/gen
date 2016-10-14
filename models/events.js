@@ -1,9 +1,9 @@
 // Events repository
-function eventsActions(obj) {
+eventsActions(obj) => {
 
     return {
 
-        addPersonalEvent: function (form) {
+        addPersonalEvent: (form) => {
 
             return obj.none('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', 
                     [form['user'],
@@ -22,7 +22,7 @@ function eventsActions(obj) {
                     );
         },
 
-        addSocialEvent: function (form) {
+        addSocialEvent: (form) => {
 
             return obj.none('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', 
                     [form['user'],
@@ -44,18 +44,18 @@ function eventsActions(obj) {
 
         },
 
-        findAll: function (email) {
+        findAll: (email) => {
 
             return obj.any("SELECT eventname,eventstartdate,eventstarttime,style FROM events WHERE createdby = $1", email);
 
         },
 
-        find: function (id) {
+        find: (id) => {
 
             return obj.one("SELECT * FROM events WHERE SERIAL = $1", id);
         },
 
-        delete: function (id) {
+        delete: (id) => {
 
             return obj.result("DELETE FROM events WHERE id=$1", id);
 
