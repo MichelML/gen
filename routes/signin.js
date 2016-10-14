@@ -11,9 +11,12 @@ app.get('/signin', function(request, response) {
 });
 
 app.post('/signin', (request, response) => {
+
     var locals = {};
     reqBody = request.body;
+
     usersTable.find(reqBody['email-account'])
+
         .then(user=>{
 
             if (user.googlelogin) {
@@ -41,12 +44,14 @@ app.post('/signin', (request, response) => {
             }
 
         })
+
         .catch(error=>{
 
             locals.error = 'user does not exist';
             response.render('app/blocks/signin', locals);
 
         });
+
 });
 
 
