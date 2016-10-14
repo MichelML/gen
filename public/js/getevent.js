@@ -60,7 +60,7 @@ $(document).ready(function() {
 
     function createEventsHTMLEntries(events) {
         var allEventsHTML = ' ';
-        var template = '<li class="collection-item avatar"><i class="material-icons circle">event</i><span class="title">%name%</span> <p>%date%<br>%time%</p> <a href="#!" class="secondary-content"><i class="material-icons">%type%</i></a> </li>'; 
+        var template = '<li class="collection-item avatar"><i class="material-icons circle deep-purple">event</i><span class="title blue-grey-text text-darken-2">%name%</span> <p><small>%date%<br>%time%</small></p> <a href="#!" class="secondary-content"><i class="material-icons green-text text-accent-3">%type%</i></a> </li>'; 
         var entry;
 
         events.forEach(function (event) {
