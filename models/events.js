@@ -8,7 +8,7 @@ function eventsActions(obj) {
                     form['name-event'], 
                     form['type-event'], 
                     // a personal event does not have a host and guests information
-                    // the related entries related to them are therefore empty
+                    // the entries related to them are therefore empty
                     '', '', '', '', '', 
                     form['place-event'], 
                     form['startdate-event'], 
