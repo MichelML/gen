@@ -59,7 +59,6 @@ $(document).ready(function() {
     });
 
     function createEventsHTMLEntries(events) {
-        console.dir(events);
         var allEventsHTML = ' ';
         var template = '<li class="collection-item avatar"><i class="material-icons circle">event</i><span class="title">%name%</span> <p>%date%<br>%time%</p> <a href="#!" class="secondary-content"><i class="material-icons">%type%</i></a> </li>'; 
         var entry;
