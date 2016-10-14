@@ -3,7 +3,10 @@
     h4 
         span(data-bind="text:firstname")
         | , is your information accurate?
-    p.margin-b-4 This is the final step before we create your event. If you want, you can take some time to make sure all necessary details are present.
+    p.margin-b-4 
+        | This is the final step before we create your event. 
+        br
+        | If you want, you can take some time to make sure all necessary details are present.
     .row
       .col.s12.m6.center-align
         button.btn.green.accent-4.center-align.modal-action.modal-close.waves-effect.waves-green.margin-b-2(type="button", onclick='submitEvent()') Create event

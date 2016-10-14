@@ -1,5 +1,5 @@
 // Events repository
-function eventsActions(obj) => {
+function eventsActions(obj) {
 
     return {
 
