@@ -2,7 +2,7 @@
 function eventsActions(obj) {
     return {
         addPersonalEvent: function (form) {
-            return obj.none('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15) RETURNING eventname', 
+            return obj.none('INSERT INTO events VALUES(DEFAULT,$1,current_date,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15)', 
                     [form['user'],
                     form['type'], 
                     form['name-event'], 
