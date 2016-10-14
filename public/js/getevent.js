@@ -72,6 +72,7 @@ $(document).ready(function() {
 
             allEventsHTML += entry; 
 
+            // reset entry for next event string
             entry = template;
 
         });

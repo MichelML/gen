@@ -305,6 +305,10 @@ input[id$='event']:focus {
     position:relative;
 }
 
+#events-list-div {
+    position:relative;
+}
+
 #spinnerdiv-white {
     position:absolute;
     z-index:1000;
@@ -313,6 +317,10 @@ input[id$='event']:focus {
     top:0;
     left:0;
     background-color:#fff;
+}
+
+.fixed-hg-spinner {
+    height:100px;
 }
 
 #spinner {
