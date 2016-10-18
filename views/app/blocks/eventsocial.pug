@@ -69,14 +69,14 @@ block main
                     .col.s6
                         input#startdate-event.event-input(type="date", placeholder="Pick a date").datepicker
                     .col.s6
-                        input#starttime-event.event-input(type="time", placeholder="Pick a time").timepicker
+                        input#starttime-event.event-input(type="text", placeholder="Pick a time").timepicker
                 
                 .row
                     h5.label.teal-text.text-accent-4 When does this event end?
                     .col.s6
                         input#enddate-event.event-input(type="date", placeholder="Pick a date").datepicker
                     .col.s6
-                        input#endtime-event.event-input(type="time", placeholder="Pick a time").timepicker
+                        input#endtime-event.event-input(type="text", placeholder="Pick a time").timepicker
                 
                 label(for="details-event").teal-text.text-accent-4 What other information your guests should know?
                 textarea#details-event.event-input.materialize-textarea(name="details-event", placeholder="Type information your guests should know before the event.\nStick to the essential.", maxlength="10000")
@@ -93,7 +93,6 @@ block scripts
 
     script(src='bower_components/pickadate/lib/compressed/picker.js')
     script(src='bower_components/pickadate/lib/compressed/picker.time.js')
-    script(src='js/defaultdateandtime.js')
     script(src='bower_components/selectize/dist/js/standalone/selectize.js')
 
     script(src='bower_components/materialize/dist/js/materialize.min.js')

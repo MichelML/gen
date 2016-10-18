@@ -53,7 +53,7 @@ block main
                     .col.s6
                         input#enddate-event.event-input(type="date", placeholder="Pick a date").datepicker
                     .col.s6
-                        input#endtime-event.event-input(type="time", placeholder="Pick a time").timepicker
+                        input#endtime-event.event-input(type="text", placeholder="Pick a time").timepicker
                 
                 label(for="details-event").teal-text.text-accent-4 Should you leave extra details for yourself?
                 textarea#details-event.event-input.materialize-textarea(name="details-event", placeholder="Type important information you might be at risk of forgetting.")
@@ -70,7 +70,6 @@ block scripts
 
     script(src='bower_components/pickadate/lib/compressed/picker.js')
     script(src='bower_components/pickadate/lib/compressed/picker.time.js')
-    script(src='js/defaultdateandtime.js')
 
     script(src='bower_components/materialize/dist/js/materialize.min.js')
 
