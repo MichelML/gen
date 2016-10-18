@@ -10,28 +10,34 @@ $(document).ready(function(event) {
 
         selectMonths: true,
         selectYears: 10,
-        format: 'dd-mm-yyyy',
+        format: 'd mmmm, yy',
         min: [today.day, today.month, today.year].join('-') 
 
     });
 
     $('.timepicker').pickatime({
 
-        interval: 15
+        interval: 15,
+        format: 'H:i'
 
     });
 
     var $startdate = $('#startdate-event').pickadate();
-    var picker = $startdate.pickadate('picker');
-    picker.set('select', [tomorrow.year, tomorrow.month, tomorrow.day]);
+    var startDatePicker = $startdate.pickadate('picker');
+    startDatePicker.set('select', [tomorrow.year, tomorrow.month, tomorrow.day]);
 
-    $starttime = $('#starttime-event').val('12:00 PM');
+    var $starttime = $('#starttime-event').pickatime();
+    var startTimePicker = $starttime.pickatime('picker');
+    startTimePicker.set('select', '12:00');
 
-    $enddate = $('#enddate-event').pickadate();
-    picker = $enddate.pickadate('picker');
-    picker.set('select', [tomorrow.year, tomorrow.month, tomorrow.day]);
+    var $enddate = $('#enddate-event').pickadate();
+    var endDatePicker = $enddate.pickadate('picker');
+    endDatePicker.set('select', [tomorrow.year, tomorrow.month, tomorrow.day]);
 
-    $endtime = $('#endtime-event').val('1:00 PM');
+    var $endtime = $('#endtime-event').pickatime();
+    var endTimePicker = $endtime.pickatime('picker');
+    endTimePicker.set('select', '13:00');
+
 
     function getASpecificDate() {
 
@@ -80,7 +86,7 @@ $(document).ready(function(event) {
 
     }
 
-    function convertInRealDateObject(date) {
+    function reconvertInRealDateObject(date) {
     
         return new Date(date.year,date.month,date.day);
 
