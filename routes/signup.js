@@ -51,12 +51,12 @@ app.post('/signup', (request, response) => {
             imagebig: 'img/gen-green.png',
             email: reqBody['email-account'],
             contacts: [reqBody['email-account']],
-            bio: ''
+            bio: '',
+            googlelogin: false
         };
 
         var pgObject = {};
         pgObject.pw = bcrypt.hashSync(reqBody["password-account"]);
-        pgObject.googlelogin = false;
         Object.setPrototypeOf(pgObject, app.locals.me);
 
         usersTable.add(pgObject)
