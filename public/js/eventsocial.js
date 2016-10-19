@@ -151,8 +151,10 @@ $(document).ready(function(event) {
 $(document).ready(function() {
 
     setTimeout(function() {
+
         $('.selectize-control').removeClass('event-input');
         $('.selectize-dropdown').removeClass('event-input')
+
     }, 1000);
 
 });
@@ -170,14 +172,19 @@ function submitEvent() {
     var $elem;
 
     $('.event-input').each(function() {
+
         $elem = $(this);
         formData[$elem.attr('id')] = $elem.val();
+
     });
 
     localforage.getItem('me')
 
         .then(function(me) {
+
             formData.user = me.email;
+            formData.googlelogin = me.googlelogin;
+            formData.timezoneOffset = (new Date()).getTimezoneOffset();
             
             $.post('/eventsocial', formData)
 

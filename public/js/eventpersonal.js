@@ -100,6 +100,7 @@ function submitEvent() {
 
         .then(function(me) {
             formData.user = me.email;
+            formData.googlelogin = me.googlelogin;
             
             $.post('/eventpersonal', formData)
 
