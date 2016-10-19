@@ -1,17 +1,14 @@
 // INITIALIZE THE DATE AND TIME INPUTS WITH PICKADATE.JS PLUGIN
 $(document).ready(function(event) {
 
-    var dates = getASpecificDate(),
-        defaultDay = dates.getTomorrow(),
-        yesterday = dates.getYesterday(),
-        minimumDay = dates.getToday();
+    var dayInMilliSeconds = 24 * 60 * 60 * 1000,
+        timeZoneAdjustment = new Date().getTimezoneOffset() * 60 * 1000;
 
     $('.datepicker').pickadate({
 
         selectMonths: true,
         selectYears: 10,
-        format: 'yyyy-mm-dd',
-        min: [minimumDay.year, minimumDay.month, minimumDay.day].join('-')
+        format: 'yyyy-mm-dd'
 
     });
 
@@ -23,10 +20,10 @@ $(document).ready(function(event) {
     });
 
     var $startdate = $('#startdate-event').pickadate();
-    var startDatePicker = $startdate.pickadate('picker');
-    startDatePicker.set('select', [defaultDay.year, defaultDay.month, defaultDay.day]);
+    startDatePicker = $startdate.pickadate('picker');
+    startDatePicker.set('select', Date.now() + dayInMilliSeconds);
     var startDateCurrentVal = $startdate.val();
-    var startDate = new Date(startDateCurrentVal);
+    startDatePicker.set('min', Date.now());
 
     var $starttime = $('#starttime-event').pickatime();
     var startTimePicker = $starttime.pickatime('picker');
@@ -34,9 +31,9 @@ $(document).ready(function(event) {
 
     var $enddate = $('#enddate-event').pickadate();
     var endDatePicker = $enddate.pickadate('picker');
-    endDatePicker.set('select', [defaultDay.year, defaultDay.month, defaultDay.day]);
+    endDatePicker.set('select', Date.now() + dayInMilliSeconds);
     var endDateCurrentVal = $enddate.val();
-    var endDate = new Date(endDateCurrentVal);
+    endDatePicker.set('min', startDateCurrentVal);
 
     var $endtime = $('#endtime-event').pickatime();
     var endTimePicker = $endtime.pickatime('picker');
@@ -44,40 +41,32 @@ $(document).ready(function(event) {
     endTimePicker.set('min', '12:15');
 
     $startdate.on('change', function() {
-        
+
         startDateCurrentVal = $startdate.val();
-        startDate.setFullYear(startDateCurrentVal.substr(0,4), startDateCurrentVal.substr(5,2), startDateCurrentVal.substr(8)); 
 
         //set enddate picker to startdate value
-        if (startDate > endDate) {
+        if (Date.parse(startDateCurrentVal) > Date.parse(endDateCurrentVal)) {
         
-            endDateCurrentVal = startDateCurrentVal;
-            endDate.setFullYear(startDate.getFullYear(), startDate.getMonth(), startDate.getDate());
-            endDatePicker.set('select', endDateCurrentVal, {format: 'yyyy-mm-dd'});
-            endDatePicker.set('min', endDateCurrentVal, {format: 'yyyy-mm-dd'});
+            endDateCurrentVal = $startdate.val();
+            endDatePicker.set('select', endDateCurrentVal);
 
         }
 
-        else if (areDatesEqual(startDate, endDate) && isEndTimeInferiorOrEqual($starttime, $endtime)) {
+        else if (areDatesEqual(startDateCurrentVal, endDateCurrentVal) && isEndTimeInferiorOrEqual($starttime, $endtime)) {
         
             setEndDateAndTimeValuesOnEqualDates($starttime.val()); 
         
         } 
 
-        else {
-        
-            endDatePicker.set('min', startDate.getTime());
-        
-        }
+        endDatePicker.set('min', startDateCurrentVal);
 
     });
 
     $enddate.on('change', function() {
     
         endDateCurrentVal = $enddate.val();
-        endDate.setFullYear(endDateCurrentVal.substr(0,4), endDateCurrentVal.substr(5,2), endDateCurrentVal.substr(8)); 
 
-        if (areDatesEqual(startDate, endDate) && isEndTimeInferiorOrEqual($starttime, $endtime)) {
+        if (areDatesEqual(startDateCurrentVal, endDateCurrentVal) && isEndTimeInferiorOrEqual($starttime, $endtime)) {
         
             setEndDateAndTimeValuesOnEqualDates($starttime.val()); 
         
@@ -93,60 +82,19 @@ $(document).ready(function(event) {
 
     $starttime.on('change', function() {
 
-        if (areDatesEqual(startDate, endDate) && isEndTimeInferiorOrEqual($starttime, $endtime)) {
+        if (areDatesEqual(startDateCurrentVal, endDateCurrentVal) && isEndTimeInferiorOrEqual($starttime, $endtime)) {
         
             setEndDateAndTimeValuesOnEqualDates($starttime.val()); 
         
         } 
 
+        else if (areDatesEqual(startDateCurrentVal, endDateCurrentVal)) {
+        
+            setEndTimeMinValue($starttime.val()); 
+        
+        }
+
     });
-
-    function getASpecificDate() {
-
-        var tomorrow = new Date(new Date().getTime() + 24 * 60 * 60 * 1000);
-        var yesterday = new Date(new Date().getTime() - 24 * 60 * 60 * 1000);
-        var today = new Date(new Date().getTime());
-        var dateGiver = {};
-
-        dateGiver.getTomorrow = function() {
-
-            return {
-
-                year: tomorrow.getFullYear(),
-                month: tomorrow.getMonth(),
-                day: tomorrow.getDate()
-
-            };
-
-        };
-
-        dateGiver.getYesterday = function() {
-
-            return {
-
-                year: yesterday.getFullYear(),
-                month: yesterday.getMonth(),
-                day: yesterday.getDate()
-
-            };
-
-        };
-
-        dateGiver.getToday = function() {
-
-            return {
-
-                year: today.getFullYear(),
-                month: today.getMonth(),
-                day: today.getDate()
-
-            };
-
-        };
-
-        return dateGiver;
-
-    }
 
     function setEndDateAndTimeValuesOnEqualDates(starttime) {
 
@@ -154,8 +102,8 @@ $(document).ready(function(event) {
         
             endTimePicker.set('min', '00:00');
             endTimePicker.set('select', '00:00');
-            endDate.setFullYear(startDate.getFullYear(), startDate.getMonth(), startDate.getDate() + 1);
-            endDatePicker.set('select', endDate);
+            endDatePicker.set('select', [parseInt(startDateCurrentVal.substr(0,4)), parseInt(startDateCurrentVal.substr(5,2)) - 1, parseInt(startDateCurrentVal.substr(8)) + 1]);
+
         }
 
         else if (/^[0-9]{1,2}:45$/.test(starttime)) {
@@ -174,6 +122,22 @@ $(document).ready(function(event) {
 
     }
 
+    function setEndTimeMinValue(starttime) {
+    
+        if (/^[0-9]{1,2}:45$/.test(starttime)) {
+
+            endTimePicker.set('min', starttime.substr(0, 1) + (parseInt(starttime[1]) + 1) + ":00");       
+
+        }
+        
+        else {
+
+            endTimePicker.set('min', starttime.substr(0, 3) + (parseInt(starttime.substr(3)) + 15));       
+        
+        }
+
+    }
+
     function isEndTimeInferiorOrEqual(starttime, endtime) {
     
         // uses a fake date (01/01/2011) to compare time
@@ -183,7 +147,7 @@ $(document).ready(function(event) {
 
     function areDatesEqual(startdt,enddt) {
         
-        return startdt.getTime() === enddt.getTime();
+        return Date.parse(startdt) === Date.parse(enddt);
     
     }
 
