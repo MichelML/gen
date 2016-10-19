@@ -7,7 +7,6 @@ const express = require('express'),
 
 app.get('/googleauth', (req, res) => {
     
-    let TOKENS;
     let methodCompleted = 0;
     let user = {};
 
@@ -16,7 +15,6 @@ app.get('/googleauth', (req, res) => {
         if (!err) {
 
             gapi.client.setCredentials(tokens);
-            TOKENS = tokens;
             pageRenderer.emit('credentialsAreSet');
 
         }
@@ -25,7 +23,7 @@ app.get('/googleauth', (req, res) => {
 
     pageRenderer.on('credentialsAreSet', () => {
 
-        getUserGooglePlusProfile(user, TOKENS);
+        getUserGooglePlusProfile(user);
         getUserGoogleContacts(user, undefined, undefined, true);
 
     });
@@ -77,7 +75,6 @@ function getUserGooglePlusProfile(user, tokenz) {
             user.imagebig = (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/, '?sz=128') : 'images/gen-green.png';
             user.email = response.emails[0].value;
             user.bio = '';
-            user.tokens = JSON.stringify(tokenz); 
 
             pageRenderer.emit('methodCompleted');
 
