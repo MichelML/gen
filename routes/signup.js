@@ -50,7 +50,8 @@ app.post('/signup', (request, response) => {
             image: 'img/gen-green.png',
             imagebig: 'img/gen-green.png',
             email: reqBody['email-account'],
-            contacts: [reqBody['email-account']]
+            contacts: [reqBody['email-account']],
+            bio: ''
         };
 
         var pgObject = {};

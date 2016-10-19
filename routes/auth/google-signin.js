@@ -46,12 +46,14 @@ function getUserGooglePlusProfile() {
                 image: (response.image && response.image.url) ? response.image.url : 'images/gen-green.png',
                 imagebig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/, '?sz=128') : 'images/gen-green.png',
                 email: response.emails[0].value,
+                bio: ''
             };
         }
     });
 }
 
 function getUserGoogleContacts(...pageTokenAndContactsAndShouldGetContacts) {
+
     var contacts = (pageTokenAndContactsAndShouldGetContacts[1]) ? pageTokenAndContactsAndShouldGetContacts[1] : [];
     var shouldGetContacts = (pageTokenAndContactsAndShouldGetContacts[2]);
     if (shouldGetContacts) {
