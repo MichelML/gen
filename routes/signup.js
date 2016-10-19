@@ -44,6 +44,7 @@ app.post('/signup', (request, response) => {
 
         var tempName = reqBody['email-account'].replace(/@.+/, '');
         app.locals.me = {
+
             displayname: tempName,
             firstname: tempName,
             lastname: tempName,
@@ -53,6 +54,7 @@ app.post('/signup', (request, response) => {
             contacts: [reqBody['email-account']],
             bio: '',
             googlelogin: false
+
         };
 
         var pgObject = {};
@@ -70,6 +72,7 @@ app.post('/signup', (request, response) => {
         .catch((err) => {
 
             if (err.detail.includes('already exists')) {
+
                 locals.error = 'this user already exists';
                 response.render('app/blocks/signup', locals);
 
