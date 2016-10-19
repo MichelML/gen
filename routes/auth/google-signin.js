@@ -1,4 +1,4 @@
-var express = require('express'),
+const express = require('express'),
     app = express(),
     EventEmitter = require('events'),
     pageRenderer = new EventEmitter();
@@ -54,25 +54,41 @@ function getUserGooglePlusProfile() {
 
 function getUserGoogleContacts(...pageTokenAndContactsAndShouldGetContacts) {
 
-    var contacts = (pageTokenAndContactsAndShouldGetContacts[1]) ? pageTokenAndContactsAndShouldGetContacts[1] : [];
-    var shouldGetContacts = (pageTokenAndContactsAndShouldGetContacts[2]);
+    let contacts = (pageTokenAndContactsAndShouldGetContacts[1]) ? pageTokenAndContactsAndShouldGetContacts[1] : [];
+    let shouldGetContacts = (pageTokenAndContactsAndShouldGetContacts[2]);
+
     if (shouldGetContacts) {
-        var optionsForPeopleApiRequest = {
+
+        let optionsForPeopleApiRequest = {
+
             'resourceName': 'people/me',
             'pageSize': 500,
             'auth': gapi.client,
             'requestMask.includeField': 'person.names,person.email_addresses'
+
         };
-        var pageToken = (pageTokenAndContactsAndShouldGetContacts[0]) ? pageTokenAndContactsAndShouldGetContacts[0] : '';
-        if (pageToken) optionsForPeopleApiRequest.pageToken = pageToken;
+        let pageToken = (pageTokenAndContactsAndShouldGetContacts[0]) ? pageTokenAndContactsAndShouldGetContacts[0] : '';
+
+        if (pageToken) {
+            
+            optionsForPeopleApiRequest.pageToken = pageToken;
+        
+        }
 
         gapi.google.people('v1').people.connections.list(optionsForPeopleApiRequest, (err, response) => {
+
             // handle err and response
-            if (err) console.log(err);
+            if (err) {
+                
+                console.log(err);
+            
+            }
+
             else {
-                var shouldGetContacts = (response.connections) ? response.connections.length === 500 : false;
-                var pageToken = response.nextPageToken || '';
-                var newContacts = (response.connections) ? response.connections.filter(contact => contact.emailAddresses)
+
+                let shouldGetContacts = (response.connections) ? response.connections.length === 500 : false;
+                let pageToken = response.nextPageToken || '';
+                let newContacts = (response.connections) ? response.connections.filter(contact => contact.emailAddresses)
                     .map(contact => {
                         return {
                             name: (contact.names) ? contact.names[0].displayName : '',
@@ -81,14 +97,20 @@ function getUserGoogleContacts(...pageTokenAndContactsAndShouldGetContacts) {
                     }) : [];
                 contacts = contacts.concat(newContacts);
                 getUserGoogleContacts(pageToken, contacts, shouldGetContacts);
+
             }
+
         });
-    } else {
-        console.log('number of contacts: ' + contacts.length);
+    } 
+    
+    else {
+
         app.locals.me.contacts = contacts;
         usersTable.add(app.locals.me);
         pageRenderer.emit('peopleAreRetrieved');
+
     }
+
 }
 
 module.exports = app;
