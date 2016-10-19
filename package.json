@@ -32,6 +32,7 @@
     "pg-monitor": "^0.5.11",
     "pg-promise": "^5.3.4",
     "pug": "^2.0.0-beta6",
-    "serve-static": "^1.11.1"
+    "serve-static": "^1.11.1",
+    "validator": "^6.1.0"
   }
 }

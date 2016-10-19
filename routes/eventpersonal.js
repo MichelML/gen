@@ -1,7 +1,7 @@
-const express = require('express'),
-    app = express(),
-    isEventFormValid = require('../lib/formvalidation.js').form.personalEventFormIsValid,
-    eventsTable = require('../models/db.js').events;
+const   express = require('express'),
+        app = express(),
+        isEventFormValid = require('../lib/formvalidation.js').form.personalEventFormIsValid,
+        eventsTable = require('../models/db.js').events;
 
 app.get('/eventpersonal', (request, response) => {
 
