@@ -1,4 +1,5 @@
 localforage.getItem("me")
+
     .then(function(me) {
 
         ko.applyBindings(me);
@@ -7,9 +8,15 @@ localforage.getItem("me")
         // see selectize.js for the rest of initiation strategy
         var $contactsList = $('#contacts');
         if ($contactsList[0]) {
+
             $contactsList.click();
+
         }
 
-    }).catch(function(err) {
+    })
+
+    .catch(function(err) {
+
         console.log(err);
+
     });
