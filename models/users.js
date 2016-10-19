@@ -6,7 +6,7 @@ function userActions(obj) {
         // Add a new user record, given name + active values, and return the new id
         add: (user) => {
 
-            return obj.none('INSERT INTO users VALUES($1,$2,$3,$4,$5,$6,current_date,$7,$8,$9)', 
+            return obj.none('INSERT INTO users VALUES($1,$2,$3,$4,$5,$6,current_date,$7,$8,$9,$10)', 
                     [user.firstname,
                     user.lastname,
                     user.displayname,
@@ -15,7 +15,8 @@ function userActions(obj) {
                     user.googlelogin,
                     user.image,
                     user.imagebig,
-                    JSON.stringify(user.contacts)]);
+                    user.contacts,
+                    user.bio]);
 
         },
 

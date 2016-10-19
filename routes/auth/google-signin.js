@@ -6,53 +6,88 @@ const express = require('express'),
     usersTable = require('../../models/db.js').users;
 
 app.get('/googleauth', (req, res) => {
+    
+    let TOKENS;
+    let methodCompleted = 0;
+    let user = {};
+
     gapi.client.getToken(req.query.code, (err, tokens) => {
+
         if (!err) {
+
             gapi.client.setCredentials(tokens);
+            TOKENS = tokens;
             pageRenderer.emit('credentialsAreSet');
+
         }
+
     });
 
-    pageRenderer.once('credentialsAreSet', () => {
-        getUserGooglePlusProfile();
-        getUserGoogleContacts(undefined, undefined, true);
+    pageRenderer.on('credentialsAreSet', () => {
+
+        getUserGooglePlusProfile(user, TOKENS);
+        getUserGoogleContacts(user, undefined, undefined, true);
+
     });
 
-    pageRenderer.once('peopleAreRetrieved', () => {
-        pageRenderer.removeAllListeners('peopleReady')
-        res.render('./app/blocks/eventchoice');
+    pageRenderer.on('methodCompleted', () => {
+
+        methodCompleted += 1;
+
+        if (methodCompleted === 2) {
+
+            usersTable.add(user);
+            app.locals.me = { email: user.email };
+            res.render('./app/blocks/eventchoice');
+        
+        }
+
     });
 
 });
 
-function getUserGooglePlusProfile() {
+function getUserGooglePlusProfile(user, tokenz) {
     // Retrieving google plus info of user
     gapi.google.plus('v1').people.get({
+
         userId: 'me',
         auth: gapi.client,
         params: {
+
             fields: ['emails', 'displayName', 'image', 'name/givenName']
+
         }
+
     }, (err, response) => {
-        // handle err and response
-        if (err) console.log(err);
-        else {
-            app.locals.me = {
-                displayname: response.displayName || 'user',
-                firstname: response.name.givenName,
-                lastname: response.name.familyName,
-                pw: '',
-                googlelogin: true,
-                image: (response.image && response.image.url) ? response.image.url : 'images/gen-green.png',
-                imagebig: (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/, '?sz=128') : 'images/gen-green.png',
-                email: response.emails[0].value,
-                bio: ''
-            };
+
+        if (err) {
+            
+            console.log(err);
+        
         }
+
+        else {
+
+            user.displayname = response.displayName || 'user';
+            user.firstname = response.name.givenName;
+            user.lastname = response.name.familyName;
+            user.pw = '';
+            user.googlelogin = true;
+            user.image = (response.image && response.image.url) ? response.image.url : 'images/gen-green.png';
+            user.imagebig = (response.image && response.image.url) ? response.image.url.replace(/\?sz=50/, '?sz=128') : 'images/gen-green.png';
+            user.email = response.emails[0].value;
+            user.bio = '';
+            user.tokens = JSON.stringify(tokenz); 
+
+            pageRenderer.emit('methodCompleted');
+
+        }
+
     });
+
 }
 
-function getUserGoogleContacts(...pageTokenAndContactsAndShouldGetContacts) {
+function getUserGoogleContacts(user, ...pageTokenAndContactsAndShouldGetContacts) {
 
     let contacts = (pageTokenAndContactsAndShouldGetContacts[1]) ? pageTokenAndContactsAndShouldGetContacts[1] : [];
     let shouldGetContacts = (pageTokenAndContactsAndShouldGetContacts[2]);
@@ -105,9 +140,8 @@ function getUserGoogleContacts(...pageTokenAndContactsAndShouldGetContacts) {
     
     else {
 
-        app.locals.me.contacts = contacts;
-        usersTable.add(app.locals.me);
-        pageRenderer.emit('peopleAreRetrieved');
+        user.contacts = JSON.stringify(contacts);
+        pageRenderer.emit('methodCompleted');
 
     }
 

@@ -99,6 +99,7 @@ function submitEvent() {
     localforage.getItem('me')
 
         .then(function(me) {
+            
             formData.user = me.email;
             formData.googlelogin = me.googlelogin;
             formData.timezoneOffset = (new Date()).getTimezoneOffset();

@@ -185,6 +185,7 @@ function submitEvent() {
             formData.user = me.email;
             formData.googlelogin = me.googlelogin;
             formData.timezoneOffset = (new Date()).getTimezoneOffset();
+            formData.tokens = me.tokens;
             
             $.post('/eventsocial', formData)
 
