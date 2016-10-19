@@ -4,8 +4,9 @@ localforage.getItem("me")
 
         ko.applyBindings(me);
 
-        // strategy to initiate contact lists in guests input
-        // see selectize.js for the rest of initiation strategy
+        // Strategy to initiate contact lists in guests input. 
+        // See self-made selectize.js in public/js
+        // for the rest of the contacts initiation strategy
         var $contactsList = $('#contacts');
         if ($contactsList[0]) {
 
