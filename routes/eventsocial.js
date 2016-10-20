@@ -35,7 +35,7 @@ app.post('/eventsocial', (request, response) => {
                     
                     if (err) {
                     
-                        console.log(err);
+                        response.status(500);
                         response.send(err);
 
                     }
@@ -63,6 +63,7 @@ app.post('/eventsocial', (request, response) => {
 
         .catch(function(err) {
         
+            response.status(500);
             response.send(err);
 
         });
@@ -71,7 +72,6 @@ app.post('/eventsocial', (request, response) => {
 
     else {
 
-        var err = new Error(); 
         response.status(500);
         response.send(err);
 
