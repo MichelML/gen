@@ -37,6 +37,7 @@ app.post('/eventpersonal', (request, response) => {
                         if (err) {
                         
                             console.log('There was an error contacting the Calendar service: ' + err);
+                            response.status(500);
                             response.send(err);
 
                         }
@@ -64,6 +65,7 @@ app.post('/eventpersonal', (request, response) => {
         
         .catch(function(err) {
         
+            response.status(500);
             response.send(err);
 
         });
