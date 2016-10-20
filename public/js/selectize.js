@@ -5,10 +5,14 @@ $('#contacts').on('click', function(event) {
         emails = $('.contact-email');
 
     names.each(function(i) {
+
         contacts.push({
+
             name: $(this).text(),
             email: $(emails[i]).text()
-        })
+
+        });
+
     });
 
     var REGEX_EMAIL = '([a-z0-9!#$%&\'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&\'*+/=?^_`{|}~-]+)*@' + '(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)';
@@ -60,6 +64,7 @@ $('#contacts').on('click', function(event) {
             return false;
         }
     });
+
     var $guestsInput = $("#guests-event-selectized");
     $('#lab-guests').css('font-size', $('label').first().css('font-size'));
     $('h5.label').css('font-size', $('label').first().css('font-size'));
@@ -68,8 +73,19 @@ $('#contacts').on('click', function(event) {
 
     // Sort contacts selected by name then by email only
     $guestsInput.on('keyup focus click', function() {
-        if (!$guestsInput.val()) $selectize.close();
-        else $selectize.open();
+
+        if (!$guestsInput.val()) {
+            
+            $selectize.close();
+        
+        }
+
+        else {
+            
+            $selectize.open();
+        
+        }
+
     });
 
 });
