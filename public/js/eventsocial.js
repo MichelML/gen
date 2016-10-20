@@ -189,7 +189,6 @@ function submitEvent() {
             
             $.post('/eventsocial', formData)
 
-
             .then(function() {
 
                 $spinner.hide();

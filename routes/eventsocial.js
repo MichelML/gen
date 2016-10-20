@@ -14,8 +14,8 @@ app.get('/eventsocial', function(request, response) {
 
 app.post('/eventsocial', (request, response) => {
 
-    const form = request.body,
-          isGoogleLogin = form.googlelogin;
+    let form = request.body,
+        isGoogleLogin = (form.googlelogin === "true") ? true : false;
 
     if (isEventFormValid(form)) {
 

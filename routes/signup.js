@@ -45,13 +45,16 @@ app.post('/signup', (request, response) => {
         var tempName = reqBody['email-account'].replace(/@.+/, '');
         app.locals.me = {
 
-            displayname: tempName,
-            firstname: tempName,
-            lastname: tempName,
+            displayname: tempName.substr(0,14),
+            firstname: tempName.substr(0,14),
+            lastname: tempName.substr(0,14),
             image: 'img/gen-green.png',
             imagebig: 'img/gen-green.png',
             email: reqBody['email-account'],
-            contacts: [reqBody['email-account']],
+            contacts: JSON.stringify([ {
+                name: '',
+                email: reqBody['email-account'] 
+            }]),
             bio: '',
             googlelogin: false
 
