@@ -100,6 +100,7 @@ function getUserGoogleContacts(user, ...pageTokenAndContactsAndShouldGetContacts
             'requestMask.includeField': 'person.names,person.email_addresses'
 
         };
+
         let pageToken = (pageTokenAndContactsAndShouldGetContacts[0]) ? pageTokenAndContactsAndShouldGetContacts[0] : '';
 
         if (pageToken) {
@@ -129,11 +130,12 @@ function getUserGoogleContacts(user, ...pageTokenAndContactsAndShouldGetContacts
                         };
                     }) : [];
                 contacts = contacts.concat(newContacts);
-                getUserGoogleContacts(pageToken, contacts, shouldGetContacts);
+                getUserGoogleContacts(user, pageToken, contacts, shouldGetContacts);
 
             }
 
         });
+
     } 
     
     else {
