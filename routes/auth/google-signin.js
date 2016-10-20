@@ -7,7 +7,7 @@ const express = require('express'),
 
 app.get('/googleauth', (req, res) => {
     
-    let methodCompleted = 0;
+    let methodCompletedCount = 0;
     let user = {};
 
     gapi.client.getToken(req.query.code, (err, tokens) => {
@@ -15,6 +15,7 @@ app.get('/googleauth', (req, res) => {
         if (!err) {
 
             gapi.client.setCredentials(tokens);
+            console.log(gapi.client);
             pageRenderer.emit('credentialsAreSet');
 
         }
@@ -30,9 +31,9 @@ app.get('/googleauth', (req, res) => {
 
     pageRenderer.on('methodCompleted', () => {
 
-        methodCompleted += 1;
+        methodCompletedCount += 1;
 
-        if (methodCompleted === 2) {
+        if (methodCompletedCount === 2) {
 
             usersTable.add(user);
             app.locals.me = { email: user.email };
