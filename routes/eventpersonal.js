@@ -30,6 +30,7 @@ app.post('/eventpersonal', (request, response) => {
 
                   auth: gapi.client,
                   calendarId: 'primary',
+                  sendNotifications: true,
                   resource: personalevent
 
                 }, function(err, event) {

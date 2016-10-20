@@ -25,13 +25,14 @@ app.post('/eventsocial', (request, response) => {
             if (isGoogleLogin) { 
             
                 let socialevent = convertFormDataToCalendarEvent(form);
-                gapi.client.calendar.events.insert({
+                gapi.google.calendar('v3').events.insert({
 
                   auth: gapi.client,
                   calendarId: 'primary',
+                  sendNotifications: true,
                   resource: socialevent
 
-                }, function(err, theevent) {
+                }, function(err, event) {
                     
                     if (err) {
                     
