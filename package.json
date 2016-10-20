@@ -28,6 +28,7 @@
     "jade": "^1.11.0",
     "method-override": "^2.3.6",
     "morgan": "^1.7.0",
+    "nodemailer": "^2.6.4",
     "pg": "^6.1.0",
     "pg-monitor": "^0.5.11",
     "pg-promise": "^5.3.4",

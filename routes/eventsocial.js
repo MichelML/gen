@@ -3,7 +3,8 @@ const express = require('express'),
     isEventFormValid = require('../lib/formvalidation.js').form.socialEventFormIsValid,
     eventsTable = require('../models/db.js').events,
     convertFormDataToCalendarEvent = require('../lib/calendarevent.js').convertSocialFormDataToCalendarEvent,
-    gapi = require('../lib/gapi.js');
+    gapi = require('../lib/gapi.js'),
+    nodemailer = require('../lib/nodemailer.js');
 
 app.get('/eventsocial', function(request, response) {
 
@@ -45,6 +46,11 @@ app.post('/eventsocial', (request, response) => {
                     else {
                     
                         console.log('Event created: %s', event.htmlLink);
+
+                        var email = nodemailer.prepareEmail(form);
+                        var mailOptions = nodemailer.setMailOptions(form, email);
+                        nodemailer.sendMailToGuests(mailOptions);
+
                         response.status(200);
                         response.send('success'); 
                         
@@ -55,6 +61,10 @@ app.post('/eventsocial', (request, response) => {
             } 
 
             else {
+
+                var email = nodemailer.prepareEmail(form);
+                var mailOptions = nodemailer.setMailOptions(form, email);
+                nodemailer.sendMailToGuests(mailOptions);
             
                 response.status(200);
                 response.send('success'); 
