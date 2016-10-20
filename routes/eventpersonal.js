@@ -65,6 +65,7 @@ app.post('/eventpersonal', (request, response) => {
         
         .catch(function(err) {
         
+            console.log('There was an error in the SQL transaction: ' + err);
             response.status(500);
             response.send(err);
 
@@ -74,7 +75,8 @@ app.post('/eventpersonal', (request, response) => {
 
     else {
 
-        response.status(500);
+        console.log('There was an error in the form provided: ' + err);
+        response.status(400);
         response.send(err);
 
     }

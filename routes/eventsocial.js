@@ -35,6 +35,7 @@ app.post('/eventsocial', (request, response) => {
                     
                     if (err) {
                     
+                        console.log('There was an error contacting the Calendar service: ' + err);
                         response.status(500);
                         response.send(err);
 
@@ -42,7 +43,7 @@ app.post('/eventsocial', (request, response) => {
 
                     else {
                     
-                        console.log(theevent);
+                        console.log('Event created: %s', event.htmlLink);
                         response.status(200);
                         response.send('success'); 
                         
@@ -63,6 +64,7 @@ app.post('/eventsocial', (request, response) => {
 
         .catch(function(err) {
         
+            console.log('There was an error in the SQL transaction: ' + err);
             response.status(500);
             response.send(err);
 
@@ -71,8 +73,9 @@ app.post('/eventsocial', (request, response) => {
     } 
 
     else {
-
-        response.status(500);
+        
+        console.log('There was an error in the form provided: ' + err);
+        response.status(400);
         response.send(err);
 
     }
