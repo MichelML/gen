@@ -201,7 +201,7 @@ function submitEvent() {
 
             .catch(function(err) {
             
-                $eventForm.prepend('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> Please review your answers. <i class="close material-icons">close</i></div></div>');
+                $eventForm.prepend('<div class="col s12 margin-t-1"> <div class="chip red z-depth-2 white-text"> There are errors in your form. <i class="close material-icons">close</i></div></div>');
                 $spinner.fadeOut();
                 $eventForm.show();
                 console.log(err);

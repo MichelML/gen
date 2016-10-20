@@ -72,6 +72,13 @@ app.post('/eventpersonal', (request, response) => {
         
     }
 
+    else {
+
+        response.status(500);
+        response.send(err);
+
+    }
+
 });
 
 module.exports = app;
