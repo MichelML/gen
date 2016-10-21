@@ -27,6 +27,6 @@ monitor.setTheme('matrix'); // changing default theme;
 var pgp = pgpLib(options); // initializing pg-promise;
 
 // instantiating the database:
-var db = pgp(process.env.PG_URI || "postgres://mimolap@localhost:5432/gen");
+var db = pgp(process.env.DATABASE_URL || "postgres://mimolap@localhost:5432/gen");
 
 module.exports = db;
