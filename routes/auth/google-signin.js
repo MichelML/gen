@@ -26,7 +26,7 @@ app.get('/googleauth', (req, res) => {
     pageRenderer.on('credentialsAreSet', () => {
 
         getUserGooglePlusProfile(user);
-        getUserGoogleContacts(user, undefined, undefined, true);
+        getUserGoogleContacts(user, '', '', true);
 
     });
 
@@ -86,10 +86,10 @@ function getUserGooglePlusProfile(user, tokenz) {
 
 }
 
-function getUserGoogleContacts(user, ...pageTokenAndContactsAndShouldGetContacts) {
+function getUserGoogleContacts(user, pagetoken, currentcontacts, shouldgetcontacts) {
 
-    let contacts = (pageTokenAndContactsAndShouldGetContacts[1]) ? pageTokenAndContactsAndShouldGetContacts[1] : [];
-    let shouldGetContacts = (pageTokenAndContactsAndShouldGetContacts[2]);
+    let contacts = (currentcontacts) ? currentcontacts : [];
+    let shouldGetContacts = shouldgetcontacts;
 
     if (shouldGetContacts) {
 
@@ -102,7 +102,7 @@ function getUserGoogleContacts(user, ...pageTokenAndContactsAndShouldGetContacts
 
         };
 
-        let pageToken = (pageTokenAndContactsAndShouldGetContacts[0]) ? pageTokenAndContactsAndShouldGetContacts[0] : '';
+        let pageToken = (pagetoken) ? pagetoken : '';
 
         if (pageToken) {
             
