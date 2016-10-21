@@ -44,7 +44,7 @@ app.post('/signup', (request, response) => {
     else {
 
         var tempName = reqBody['email-account'].replace(/@.+/, '');
-        app.locals.me = {
+        app.locals.me = { 
 
             displayname: tempName.substr(0,14),
             firstname: tempName.substr(0,14),

@@ -34,3 +34,13 @@ html
                              window.location.replace('/');                   
                         });
                 }
+
+                $('.signout').each(function() {
+                
+                    $(this).on('click', function() {
+                    
+                        signOut();
+
+                    });
+                
+                });
