@@ -319,6 +319,17 @@ input[id$='event']:focus {
     background-color:#fff;
 }
 
+#spinnerdiv-white-event {
+    position:absolute;
+    z-index:1000;
+    width:100%;
+    min-width:100%;
+    top:0;
+    left:0;
+    background-color:#fff;
+    visibility:hidden;
+}
+
 .fixed-hg-spinner {
     height:100px;
 }
