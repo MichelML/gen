@@ -16,7 +16,6 @@ app.get('/googleauth', (req, res) => {
         if (!err) {
 
             gapi.client.setCredentials(tokens);
-            console.log(gapi.client);
             pageRenderer.emit('credentialsAreSet');
 
         }

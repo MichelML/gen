@@ -15,7 +15,7 @@ app.get('/eventpersonal', (request, response) => {
 app.post('/eventpersonal', (request, response) => {
 
     const form = request.body;
-          isGoogleLogin = form.googlelogin;
+          isGoogleLogin = (form.googlelogin === 'true') ? true : false;
 
     if (isEventFormValid(form)) {
 
