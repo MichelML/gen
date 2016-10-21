@@ -1,13 +1,12 @@
-'use strict';
 require('dotenv').config();
 
-var pgpLib = require('pg-promise');
-var monitor = require('pg-monitor');
-var eventsActions = require('./events.js');
-var userActions = require('./users.js');
+const pgpLib = require('pg-promise');
+const monitor = require('pg-monitor');
+const eventsActions = require('./events.js');
+const userActions = require('./users.js');
  
 // pg-promise initialization options:
-var options = {
+const options = {
 
     capTX: true, // capitalize transaction commands;
 
@@ -26,9 +25,9 @@ var options = {
 monitor.attach(options); // attaching to all events;
 monitor.setTheme('matrix'); // changing default theme;
  
-var pgp = pgpLib(options); // initializing pg-promise;
+const pgp = pgpLib(options); // initializing pg-promise;
 
 // instantiating the database:
-var db = pgp(process.env.DATABASE_URL || "postgres://mimolap@localhost:5432/gen");
+const db = pgp(((process.env.NODE_ENV !== 'development') ? process.env.DATABASE_URL : "postgres://mimolap@localhost:5432/gen"));
 
 module.exports = db;
