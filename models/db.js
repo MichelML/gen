@@ -1,4 +1,6 @@
 'use strict';
+require('dotenv').config();
+
 var pgpLib = require('pg-promise');
 var monitor = require('pg-monitor');
 var eventsActions = require('./events.js');
