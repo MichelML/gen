@@ -194,6 +194,7 @@ function submitEvent() {
                 $spinner.hide();
 
                 var $successDiv = $('#success-submit');
+                $successDiv.css('visibility', 'visible');
                 $successDiv.show();
 
             })
