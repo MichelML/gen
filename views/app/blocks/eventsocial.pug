@@ -49,13 +49,13 @@ block main
                 .margin-t-1
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 phone
-                    input#tel-event.event-input.validate(type='tel', placeholder='use numbers only', pattern="^[0-9]{10,15}$", maxlength="15")
+                    input#tel-event.event-input(type='tel', placeholder='use numbers only', pattern="^[0-9]{10,15}$", maxlength="15")
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 mail
-                    input#mail-event.event-input.validate(type='email', placeholder='example@gmail.com', maxlength="200", pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/")
+                    input#mail-event.event-input(type='email', placeholder='example@gmail.com', maxlength="200", pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/")
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 link
-                    input#link-event.event-input.validate(type='url', placeholder='website, facebook page, etc.', pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/")
+                    input#link-event.event-input(type='url', placeholder='website, facebook page, etc.', pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/")
                     
                 label#lab-guests(for="guests-event").teal-text.text-accent-4 Who should we invite?
                 input#guests-event.event-input(type="text", name="guests-event", placeholder="Enter email addresses or contacts", required)
