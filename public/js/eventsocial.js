@@ -161,7 +161,7 @@ $(document).ready(function() {
 
 function submitEvent() {
 
-    var $spinner = $('#spinnerdiv-white');
+    var $spinner = $('#spinnerdiv-white-event');
     $spinner.css('visibility', 'visible');
     $spinner.show();
 
