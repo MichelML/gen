@@ -52,10 +52,10 @@ jenēv
 *.swp
 
 # environment variables
-# .env
+.env
 
 #bower modules
-# bower_components
+bower_components
 
 #
 *.sql
