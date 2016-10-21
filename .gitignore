@@ -55,7 +55,7 @@ jenēv
 # .env
 
 #bower modules
-bower_components
+# bower_components
 
 #
 *.sql
