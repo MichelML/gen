@@ -62,11 +62,13 @@ function getUserGooglePlusProfile(user, tokenz) {
         if (err) {
             
             console.log(err);
+            throw err;
         
         }
 
         else {
 
+            console.log(response);
             user.displayname = response.displayName || 'user';
             user.firstname = response.name.givenName;
             user.lastname = response.name.familyName;
