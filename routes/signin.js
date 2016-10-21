@@ -1,6 +1,7 @@
+'use strict';
 var express = require('express'),
     app = express(),
-    validate = require('../lib/validation.js')
+    validate = require('../lib/validation.js'),
     usersTable = require('../models/db.js').users,
     bcrypt = require('bcrypt-nodejs');
 

@@ -1,7 +1,8 @@
+'use strict';
 const   express = require('express'),
         app = express(),
         EventEmitter = require('events'),
-        pageRenderer = new EventEmitter();
+        pageRenderer = new EventEmitter(),
         gapi = require('../../lib/gapi.js'),
         usersTable = require('../../models/db.js').users;
 

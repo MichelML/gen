@@ -1,3 +1,4 @@
+'use strict';
 // Events repository
 function eventsActions(obj) {
 

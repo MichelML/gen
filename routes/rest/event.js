@@ -1,3 +1,4 @@
+'use strict';
 const app = require('express')(),
       eventsTable = require('../../models/db.js').events;
 

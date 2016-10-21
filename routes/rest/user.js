@@ -1,3 +1,4 @@
+'use strict';
 const app = require('express')(),
       usersTable = require('../../models/db.js').users;
 
