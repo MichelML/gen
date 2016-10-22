@@ -3,7 +3,7 @@ var express = require('express'),
     app = express(),
     validate = require('../lib/validation.js'),
     usersTable = require('../models/db.js').users,
-    bcrypt = require('bcrypt-nodejs');
+    bcrypt = require('bcrypt');
 
 app.get('/signin', function(request, response) {
 
@@ -15,12 +15,14 @@ app.post('/signin', (request, response) => {
 
     var locals = {};
     var reqBody = request.body;
+    var email = reqBody['email-account'];
 
-    usersTable.find(reqBody['email-account'])
+    usersTable.find(email)
 
         .then(user=>{
 
-            if (user.googlelogin) {
+            console.log(user);
+            if (user.googlelogin === 'true') {
                 
                 locals.error = 'This user should use Google Sign-In';
                 response.render('app/blocks/signin', locals);
@@ -28,9 +30,8 @@ app.post('/signin', (request, response) => {
             }
 
             else if (!validate.isValidEmail(reqBody['email-account']) || 
-
-                !validate.isValidPassword(reqBody['password-account']) || 
-                !bcrypt.compareSync(reqBody['password-account'], user.pw)) {
+                    !validate.isValidPassword(reqBody['password-account']) || 
+                    !bcrypt.compareSync(reqBody['password-account'], user.pw)) {
 
                 locals.error = 'wrong email or password';
                 response.render('app/blocks/signin', locals);
@@ -48,6 +49,7 @@ app.post('/signin', (request, response) => {
 
         .catch(error=>{
 
+            console.log(error);
             locals.error = 'user does not exist';
             response.render('app/blocks/signin', locals);
 

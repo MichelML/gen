@@ -23,7 +23,7 @@ function userActions(obj) {
 
         find: (email) => {
 
-            return obj.one("SELECT firstname,lastname,displayname,email,image,imagebig,contacts,googlelogin,bio from users WHERE email = $1", email);
+            return obj.one("SELECT firstname,lastname,displayname,email,image,imagebig,contacts,googlelogin,bio,pw from users WHERE email = $1", email);
 
         },
 

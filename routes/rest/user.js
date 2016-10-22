@@ -6,9 +6,10 @@ app.get('/user/:email', ( req, res )=>{
 
    usersTable.find(req.params.email)
 
-      .then(data=>{
+      .then(user=>{
 
-        res.send(data);
+        user.pw = '';
+        res.send(user);
 
       })
 

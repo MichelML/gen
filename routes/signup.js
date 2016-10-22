@@ -4,7 +4,7 @@ var express = require('express'),
     bodyParser = require('body-parser'),
     validate = require('../lib/validation.js'),
     usersTable = require('../models/db.js').users,
-    bcrypt = require('bcrypt-nodejs'),
+    bcrypt = require('bcrypt'),
     reqBody = {};
 
 
@@ -62,7 +62,7 @@ app.post('/signup', (request, response) => {
         };
 
         var pgObject = {};
-        pgObject.pw = bcrypt.hashSync(reqBody["password-account"]);
+        pgObject.pw = bcrypt.hashSync(reqBody["password-account"], 10);
         Object.setPrototypeOf(pgObject, app.locals.me);
 
         usersTable.add(pgObject)
