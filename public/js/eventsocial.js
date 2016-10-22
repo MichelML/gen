@@ -162,7 +162,6 @@ $(document).ready(function() {
 function submitEvent() {
 
     var $spinner = $('#spinnerdiv-white-event');
-    $spinner.css('visibility', 'visible');
     $spinner.show();
 
     var $eventForm = $('#event-creation');
@@ -193,7 +192,6 @@ function submitEvent() {
             .then(function() {
 
                 $spinner.hide();
-                $spinner.css('visibility', 'hidden');
 
                 var $successDiv = $('#success-submit');
                 $successDiv.css('visibility', 'visible');

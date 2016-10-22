@@ -165,7 +165,7 @@ function initAutocomplete() {
 $(document).ready(function() {
 
     var $window = $(window),
-        $spinnerdiv = $('#spinnerdiv-white'),
+        $spinnerdiv = $('#spinnerdiv-white-event'),
         $nav = $('nav'),
         $successMessage = $('#success-submit');
 
@@ -177,6 +177,7 @@ $(document).ready(function() {
     function setSpinnerHeight() {
 
         $spinnerdiv.css('height', '' + ($window.height() - $nav.height()) + 'px');
+
     }
     setSpinnerHeight();
 

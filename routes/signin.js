@@ -14,7 +14,7 @@ app.get('/signin', function(request, response) {
 app.post('/signin', (request, response) => {
 
     var locals = {};
-    reqBody = request.body;
+    var reqBody = request.body;
 
     usersTable.find(reqBody['email-account'])
 

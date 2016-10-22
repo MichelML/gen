@@ -17,7 +17,7 @@ app.get('/signup', (request, response) => {
 app.post('/signup', (request, response) => {
 
     var locals = {};
-    reqBody = request.body;
+    var reqBody = request.body;
 
     if (!validate.isValidEmail(reqBody['email-account'])) {
 
