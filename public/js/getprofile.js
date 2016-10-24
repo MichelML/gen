@@ -14,6 +14,8 @@ localforage.getItem("me")
 
         }
 
+        $.post( '/setcreds', { email: me.email } );
+
     })
 
     .catch(function(err) {

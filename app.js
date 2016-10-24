@@ -22,6 +22,7 @@ const personalEventView = require('./routes/eventpersonal');
 const profileView = require('./routes/profile');
 const signupView = require('./routes/signup');
 const googleSignin = require('./routes/auth/google-signin.js');
+const googleCredentials = require('./routes/auth/google-creds.js');
 const userData = require('./routes/rest/user.js');
 const eventsData = require('./routes/rest/event.js');
 const saveBio = require('./routes/rest/bio.js');
@@ -47,6 +48,7 @@ app.use(express.static(__dirname + '/public'));
 
 // Set Login Processes
 app.use('/', googleSignin);
+app.use('/', googleCredentials);
 
 // Set routes 
 app.use('/', indexView);

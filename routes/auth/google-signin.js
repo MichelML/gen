@@ -4,18 +4,21 @@ const   express = require('express'),
         EventEmitter = require('events'),
         pageRenderer = new EventEmitter(),
         gapi = require('../../lib/gapi.js'),
-        usersTable = require('../../models/db.js').users;
+        usersTable = require('../../models/db.js').users,
+        tokenlib = require('../../lib/tokens.js');
 
 app.get('/googleauth', (req, res) => {
     
     let methodCompletedCount = 0;
     let user = {};
+    let TOKENS;
 
     gapi.client.getToken(req.query.code, (err, tokens) => {
 
         if (!err) {
 
             gapi.client.setCredentials(tokens);
+            TOKENS = tokens;
             pageRenderer.emit('credentialsAreSet');
 
         }
@@ -36,6 +39,7 @@ app.get('/googleauth', (req, res) => {
         if (methodCompletedCount === 2) {
 
             usersTable.add(user);
+            tokenlib.storeToken(TOKENS, user.email);
             app.locals.me = { email: user.email };
             res.render('./app/blocks/eventchoice');
         
