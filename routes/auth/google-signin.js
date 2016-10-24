@@ -8,8 +8,7 @@ const   express = require('express'),
 
 app.get('/googleauth', (req, res) => {
     
-    let isGoogleProfileRetrieved = false;
-    let AreGoogleContactsRetrieved = false;
+    let methodCompletedCount = 0;
     let user = {};
 
     gapi.client.getToken(req.query.code, (err, tokens) => {
@@ -34,7 +33,7 @@ app.get('/googleauth', (req, res) => {
 
         methodCompletedCount += 1;
 
-        if (isGoogleProfileRetrieved && areGoogleContactsRetrieved) {
+        if (methodCompletedCount === 2) {
 
             usersTable.add(user);
             app.locals.me = { email: user.email };
