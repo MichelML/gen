@@ -51,9 +51,15 @@ jenēv
 # vim files
 *.swp
 
+<<<<<<< HEAD
+# environment variables and hidden files and folders
+.*
+!/.gitignore
+=======
 # environment variables
-# .env
+.env
 
+>>>>>>> 6cb0fe8a1f1273d1732ce491974ab02eaab8ff05
 #bower modules
 bower_components
 
