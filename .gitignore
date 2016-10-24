@@ -53,7 +53,7 @@ jenēv
 
 # environment variables and hidden files and folders
 .*
-
+!/.gitignore
 #bower modules
 bower_components
 
