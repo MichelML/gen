@@ -51,8 +51,8 @@ jenēv
 # vim files
 *.swp
 
-# environment variables
-# .env
+# environment variables and hidden files and folders
+.*
 
 #bower modules
 bower_components
