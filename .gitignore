@@ -55,9 +55,8 @@ jenēv
 #.*
 !/.gitignore
 
-
 #bower modules
-bower_components
+#bower_components
 
 #
 *.sql
