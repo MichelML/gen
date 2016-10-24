@@ -41,6 +41,7 @@ app.get('/googleauth', (req, res) => {
             usersTable.add(user);
             tokenlib.storeToken(TOKENS, user.email);
             app.locals.me = { email: user.email };
+            app.locals.email = user.email;
             res.render('./app/blocks/eventchoice');
         
         }
