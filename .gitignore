@@ -52,11 +52,11 @@ jenēv
 *.swp
 
 # environment variables and hidden files and folders
-#.*
+.*
 !/.gitignore
 
 #bower modules
-#bower_components
+bower_components
 
 #
 *.sql
