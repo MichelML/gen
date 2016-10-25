@@ -33,7 +33,7 @@ block main
         .row
             form#event-creation.col.s10.offset-s1.m8.offset-m2.l8.offset-l2
                 label(for="name-event").teal-text.text-accent-4 What name should we give to this event?
-                input#name-event.event-input(type="text", name="name-event", placeholder="Type the event's name here", pattern="^[a-zA-Z0-9\-]{1,200}$", maxlength="200", autofocus, required)
+                input#name-event.event-input(type="text", name="name-event", placeholder="Type the event's name here", maxlength="200", autofocus, required)
 
                 - var eventTypes = ["Annual Shareholder Meeting", "Award Ceremonie", "Birthday", "Board Meeting", "Business Dinner", "Conference", "Executive Retreat", "Family Event", "Friend Gathering", "Golf Event", "Incentive Event", "Incentive Travel", "Meeting", "Networking Event", "Opening Ceremonie", "Press Conference", "Product Launch", "Seminar", "Team Building Event", "Theme Party", "Trade Fair", "Trade Show", "Vip Event", "Wedding Anniversarie", "Wedding"];
                 label(for="type-event").teal-text.text-accent-4 What type of event is it?
@@ -41,6 +41,9 @@ block main
                 datalist#type-event-list
                     each event in eventTypes
                         option(value= event)
+
+                label(for="place-event").teal-text.text-accent-4.margin-t-2 Where is this event taking place?
+                input#place-event.event-input(type="text", name="place-event", placeholder="Enter location, full address, or else", maxlength="500", required)
 
                 label(for="host-event").teal-text.text-accent-4 Who is hosting this event?
                 input#host-event.event-input(type="text", name="host-event", placeholder="Type the host's name here", maxlength="200", pattern="^[a-zA-Z0-9\-]{1,200}$", required)
@@ -59,10 +62,6 @@ block main
                     
                 label#lab-guests(for="guests-event").teal-text.text-accent-4 Who should we invite?
                 input#guests-event.event-input(type="text", name="guests-event", placeholder="Enter email addresses or contacts", required)
-
-                label(for="place-event").teal-text.text-accent-4.margin-t-2 Where is this event taking place?
-                input#place-event.event-input(type="text", name="place-event", placeholder="Enter location, full address, or else", maxlength="500", required)
-
                 
                 .row.margin-t-2
                     h5.label.teal-text.text-accent-4 When does this event start?

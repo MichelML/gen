@@ -58,23 +58,82 @@ $(document).ready(function(event) {
 
     });
 
-    function formIsValid() {
+    var showLettersAndNumbersErrorMessage = toastMessager('use letters and numbers only');
+    $eventName.on('keyup', function() {
+    
+        toggleValidationClasses($eventName, validator.checkEventName, showLettersAndNumbersErrorMessage); 
 
-        return  validator.checkEventName($eventName.val()) && 
-                validator.checkEventType($eventType.val()) &&
-                validator.checkEventHost($eventHost.val()) &&
-                validator.checkEventTel($eventTel.val()) &&
-                validator.checkEventEmail($eventEmail.val()) &&
-                validator.checkEventUrl($eventUrl.val()) &&
-                validator.checkEventGuests($eventGuests.val()) &&
-                validator.checkEventLocation($eventLocation.val()) &&
-                validator.checkEventDate($eventStartDate.val()) && 
-                validator.checkEventTime($eventStartTime.val()) &&
-                validator.checkEventDate($eventEndDate.val()) && 
-                validator.checkEventTime($eventEndTime.val()) &&
-                validator.checkEventDetails($eventDetails.val());
+    });
 
-    }
+    var showLettersErrorMessage = toastMessager('use letters only');
+    $eventType.on('keyup blur change', function() {
+    
+        toggleValidationClasses($eventType, validator.checkEventType, showLettersErrorMessage); 
+
+    });
+
+    $eventHost.on('keyup', function() {
+    
+        toggleValidationClasses($eventHost, validator.checkEventHost, showLettersErrorMessage); 
+
+    });
+
+    $eventLocation.on('blur', function() {
+    
+        toggleValidationClasses($eventLocation, validator.checkEventLocation); 
+
+    });
+
+    $eventStartDate.on('change', function() {
+    
+        toggleValidationClasses($eventStartDate, validator.checkEventDate); 
+
+    });
+
+    $eventStartTime.on('change', function() {
+    
+        toggleValidationClasses($eventStartTime, validator.checkEventTime); 
+
+    });
+
+    $eventEndDate.on('change', function() {
+    
+        toggleValidationClasses($eventEndDate, validator.checkEventDate); 
+
+    });
+
+    $eventEndTime.on('change', function() {
+    
+        toggleValidationClasses($eventEndTime, validator.checkEventTime); 
+
+    });
+
+    var showTelErrorMessage = toastMessager('enter 10 to 15 digits');
+    $eventTel.on('blur', function() {
+    
+        toggleValidationClasses($eventTel, validator.checkEventTel, showTelErrorMessage); 
+
+    });
+
+    var showEmailErrorMessage = toastMessager('enter valid email address');
+    $eventEmail.on('blur', function() {
+    
+        toggleValidationClasses($eventEmail, validator.checkEventEmail, showEmailErrorMessage); 
+
+    });
+
+    var showUrlErrorMessage = toastMessager('enter valid link');
+    $eventUrl.on('blur', function() {
+    
+        toggleValidationClasses($eventUrl, validator.checkEventUrl, showUrlErrorMessage); 
+
+    });
+
+    $eventDetails.on('blur', function() {
+    
+        toggleValidationClasses($eventDetails, validator.checkEventDetails); 
+
+    });
 
     var validator = {
 
@@ -115,8 +174,24 @@ $(document).ready(function(event) {
         },
 
         checkEventGuests: function(eventGuests) {
+
+            var emailRegexp = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
         
-            return eventGuests;
+            return eventGuests.split(',').reduce(function(old,newv) {
+            
+                if (true) {
+                    
+                    return emailRegexp.test(newv);     
+
+                }
+                
+                else {
+                
+                    return false; 
+                
+                }
+
+            },true);
 
         },
         
@@ -145,6 +220,82 @@ $(document).ready(function(event) {
         }
 
     };
+
+    function formIsValid() {
+
+        return  validator.checkEventName($eventName.val()) && 
+                validator.checkEventType($eventType.val()) &&
+                validator.checkEventHost($eventHost.val()) &&
+                validator.checkEventTel($eventTel.val()) &&
+                validator.checkEventEmail($eventEmail.val()) &&
+                validator.checkEventUrl($eventUrl.val()) &&
+                validator.checkEventGuests($eventGuests.val()) &&
+                validator.checkEventLocation($eventLocation.val()) &&
+                validator.checkEventDate($eventStartDate.val()) && 
+                validator.checkEventTime($eventStartTime.val()) &&
+                validator.checkEventDate($eventEndDate.val()) && 
+                validator.checkEventTime($eventEndTime.val()) &&
+                validator.checkEventDetails($eventDetails.val());
+
+    }
+
+    function toggleValidationClasses(elem, validatorFunction, showErrorMessage) {
+
+        var counter
+    
+        if (elem.val().length === 0) {
+        
+            elem.removeClass('invalid');
+            elem.removeClass('valid');
+
+        }
+
+        else if (validatorFunction(elem.val())) {
+        
+            elem.removeClass('invalid');
+            elem.addClass('valid');
+
+        }
+
+        else {
+        
+            elem.removeClass('valid');
+            elem.addClass('invalid');
+            if (showErrorMessage) {
+                
+                showErrorMessage();
+            
+            }
+        
+        }
+
+    }
+
+    function toastMessager(message) {
+
+        var count = 0;
+        var errorMessage = message;
+
+        function showToast() {
+
+            if (count < 1) {
+
+                   count++;
+                   Materialize.toast(errorMessage, 5000);
+
+            } 
+
+            else if (count === 1) {
+
+                   setTimeout(()=>{count=0},5000);
+
+            }
+
+        }
+
+        return showToast;
+            
+    }
 
 });
 
