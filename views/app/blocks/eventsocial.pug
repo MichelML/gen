@@ -37,7 +37,7 @@ block main
 
                 - var eventTypes = ["Annual Shareholder Meeting", "Award Ceremonie", "Birthday", "Board Meeting", "Business Dinner", "Conference", "Executive Retreat", "Family Event", "Friend Gathering", "Golf Event", "Incentive Event", "Incentive Travel", "Meeting", "Networking Event", "Opening Ceremonie", "Press Conference", "Product Launch", "Seminar", "Team Building Event", "Theme Party", "Trade Fair", "Trade Show", "Vip Event", "Wedding Anniversarie", "Wedding"];
                 label(for="type-event").teal-text.text-accent-4 What type of event is it?
-                input#type-event.event-input(list="type-event-list", name="type-event", pattern="^[a-zA-Z\-]{1,200}$", maxlength="200", placeholder="Birthday party, Conference, etc.")
+                input#type-event.event-input(list="type-event-list", name="type-event", pattern="^[a-zA-Z\-]{1,200}$", maxlength="200", value="Lunch Meeting", placeholder="Birthday party, Conference, etc.")
                 datalist#type-event-list
                     each event in eventTypes
                         option(value= event)
@@ -46,7 +46,7 @@ block main
                 input#place-event.event-input(type="text", name="place-event", placeholder="Enter location, full address, or else", maxlength="500", required)
 
                 label(for="host-event").teal-text.text-accent-4 Who is hosting this event?
-                input#host-event.event-input(type="text", name="host-event", placeholder="Type the host's name here", maxlength="200", pattern="^[a-zA-Z0-9\-]{1,200}$", required)
+                input#host-event.event-input(type="text", name="host-event", placeholder="Type the host's name here", data-bind='value:displayname', maxlength="200", pattern="^[a-zA-Z0-9\-]{1,200}$", required)
                 br
                 small Contact information for guest inquiries
                 .margin-t-1
@@ -55,7 +55,7 @@ block main
                     input#tel-event.event-input(type='tel', placeholder='use numbers only', pattern="^[0-9]{10,15}$", maxlength="15")
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 mail
-                    input#mail-event.event-input(type='email', placeholder='example@gmail.com', maxlength="200", pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/")
+                    input#mail-event.event-input(type='email', placeholder='example@gmail.com', data-bind='value:email', maxlength="200", pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/")
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 link
                     input#link-event.event-input(type='url', placeholder='website, facebook page, etc.', pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/")
