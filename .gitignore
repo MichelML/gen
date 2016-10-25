@@ -52,8 +52,9 @@ jenēv
 *.swp
 
 # environment variables and hidden files and folders
-#.*
+.env
 !/.gitignore
+!/.tks
 
 #bower modules
 bower_components
