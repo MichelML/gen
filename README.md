@@ -1,6 +1,6 @@
 <div align="center">
 <img src='gen_readme.png'>
-<h1> Gen </h1>
+<h1 style="text-decordation:none;">Gen</h1>
 <p>Create any kind of event in sync with Google Calendar.</p>
 </div>
 <br>
