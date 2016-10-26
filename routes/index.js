@@ -4,10 +4,10 @@ var express = require('express'),
     gapi = require('../lib/gapi.js');
 
 app.get('/', function(request, response) {
-
-  request.app.locals.settings.gapi = gapi.url;
-  response.render('./landing/landingpage', request.app.locals.settings.gapi);
-
+  var locals = {
+    url:gapi.url
+  }
+  response.render('./landing/landingpage', locals);
 });
 
 module.exports = app;

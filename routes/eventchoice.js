@@ -4,7 +4,7 @@ var express = require('express'),
 
 app.get('/choices', function(request, response) {
 
-    response.render('./app/blocks/eventchoice', request.app.locals.settings.gapi);
+    response.render('./app/blocks/eventchoice');
 
 });
 

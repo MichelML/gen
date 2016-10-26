@@ -29,7 +29,6 @@ const saveBio = require('./routes/rest/bio.js');
 
 // App settings and middlewares
 const app = express();
-app.set('gapis', { gmapkey: process.env.GMAP_KEY, gapiclient: process.env.GAPI_CLIENT});
 
 if (process.env.NODE_ENV === 'development') {
     // only use in development

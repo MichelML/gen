@@ -10,7 +10,7 @@ var express = require('express'),
 
 app.get('/signup', (request, response) => {
 
-    response.render('./app/blocks/signup', request.app.locals.settings.gapi);
+    response.render('./app/blocks/signup');
 
 });
 
