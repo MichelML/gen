@@ -1,4 +1,4 @@
-<img src='public/img/gen-green.png' style="display:block;margin:auto;">
+<img src='public/img/gen-green.png' style="display:block;margin:auto;box-shadow:">
 <img src='public/img/gen-purple.png' style="display:block;margin:auto;margin-top:-200px;padding-left:6px;">
 # GEN
 Create any kind of event in sync with Google Calendar.
