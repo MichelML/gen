@@ -1,0 +1,13 @@
+#success-submit.row
+    #success-message.col.s12.center-align.margin-t-4
+        h4.green-text.text-accent-4 EVENT CREATION SUCCESSFUL!
+        h5.blue-grey-text.text-accent-4 
+            | Great work 
+            span(data-bind="text:firstname") !
+        p: small What would you like to do next?
+        div
+            a.btn.deep-purple.accent-3(href="/choices") Create new event
+        div.margin-t-2
+            a.btn.deep-purple.accent-1(href="/me#my-events") View created events
+        div.margin-t-2.margin-b-4
+            a.btn.btn-small.blue-grey.lighten-1.accent-3(href="https://www.google.com/calendar", target="_blank") View Google Calendar
