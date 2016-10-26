@@ -8,7 +8,7 @@ const   express = require('express'),
 
 app.get('/eventpersonal', (request, response) => {
 
-    response.render('./app/blocks/eventpersonal');
+    response.render('./app/blocks/eventpersonal', request.app.locals.settings.gapi);
 
 });
 
