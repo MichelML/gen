@@ -53,8 +53,10 @@ jenēv
 
 # environment variables and hidden files and folders
 .env
+.*/google/*
 !/.gitignore
 !/.tks
+
 
 #bower modules
 bower_components
