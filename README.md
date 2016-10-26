@@ -1,18 +1,15 @@
-<img src='public/img/gen-green.png' style="display:block;margin:auto;box-shadow:">
-<img src='public/img/gen-purple.png' style="display:block;margin:auto;margin-top:-200px;padding-left:6px;">
+<div align="center">
+<img src='public/img/gen-purple.png' style="margin:auto">
+</div>
 # GEN
 Create any kind of event in sync with Google Calendar.
   
   
-## Use/Run the application  
-<br>
-You have options for testing and using GEN. 
-<br>                                                              
+## Use/Run the application 
+You have options for testing and using GEN.                         
 ### Use GEN live on the Web
-<br>
-You can view the application directly in your browser at the following [link](http://genevents.herokuapp.com/).  
+You can view the application directly in your browser at the following [link](http://genevents.herokuapp.com/).    
 ### Run GEN locally
-<br>
 Once [Node.js](https://nodejs.org/en/), [Npm](https://www.npmjs.com/), and [Git](https://git-scm.com/) are installed on your computer, go to the local directory of your choice from your terminal, and run the following command:  
  
 ```  
@@ -26,11 +23,9 @@ Now the project being on your computer, you can preview the application locally 
 3. View the application in your favorite browser at the following address: `http://127.0.0.1/8080`  
   
 ## Edit the application  
-<br>
-After cloning the project on your computer, you can also edit the application to your taste.
+After cloning the project on your computer, you can also edit the application to your taste.  
 
 ### Build process  
-<br>
 This application also comes bundled with Gulp and basic build tasks helping you move from the development version of the project to distribution. After cloning the repository, run the following command from the project's root directory (`q/`) to install all dependencies of the build process:   
 
 ```  
