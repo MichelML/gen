@@ -31,8 +31,8 @@ block main
 
 block scripts
     script(src="bower_components/localforage/dist/localforage.min.js")
-    include ./redirect.pug
     script(src='js/eventchoice.js')
+    include ./redirect.pug
     if me
         script.
             $.get('/user/' + '#{me.email}', function (user) {

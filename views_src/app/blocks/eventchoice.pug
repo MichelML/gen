@@ -31,7 +31,6 @@ block main
 
 block scripts
     script(src="bower_components/localforage/dist/localforage.min.js")
-    include ./redirect.pug
     //////eventchoice
     script(src='js/addressreset.js')
 
@@ -43,6 +42,7 @@ block scripts
 
     script(src='js/navinit.js')
     //////
+    include ./redirect.pug
     if me
         script.
             $.get('/user/' + '#{me.email}', function (user) {
