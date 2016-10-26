@@ -26,8 +26,7 @@ Now the project being on your computer, you can preview the application locally 
 2. Run the command `node index.js` in your terminal  
 3. View the application in your favorite browser at the following address: `http://127.0.0.1/8080`  
 <br>
-<br>
-<br>
+<br>  
   
 # Edit the application  
 After cloning the project on your computer, you can also edit the application to your taste.  
@@ -52,7 +51,6 @@ gulp <name of the task>
 ```    
 
 To learn more about what is Gulp and how to use it, [visit Gulp's website](http://gulpjs.com/).        
-<br>
 <br>
 <br>
 # Technology stack    
@@ -94,9 +92,11 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 * [Google People API](https://developers.google.com/people/) - Access user's contacts to invite them as guests    
 * [Google+ API](https://developers.google.com/+/web/api/rest/) - Access user's profile    
 <br>
-<br> 
 
+## Contributors
+to be completed   
 
+  
 ## MIT License    
 Copyright (c) 2016 Michel Moreau  
   
