@@ -54,21 +54,6 @@ block main
 block scripts
     script(src="bower_components/localforage/dist/localforage.min.js")
     include ./redirect.pug
-    //////eventpersonal
-    script(src='bower_components/jquery/dist/jquery.min.js')
-
-    script(src='bower_components/pickadate/lib/compressed/picker.js')
-    script(src='bower_components/pickadate/lib/compressed/picker.time.js')
-
-    script(src='bower_components/materialize/dist/js/materialize.min.js')
-
-    script(src='bower_components/knockout/dist/knockout.js')
-
-    script(src='js/navinit.js')
-    script(src='js/eventmain.js')
-    script(src="js/eventpersonal.js")
-
-    script(src="js/getprofile.js")
-    //////
+    script(src='js/eventpersonal.js')
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
 
