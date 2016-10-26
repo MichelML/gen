@@ -7,7 +7,7 @@
 <br>
   
   
-# Running the application 
+# Run the application 
 You have two options for testing and using GEN.    
                        
 ## Run GEN live on the Web
@@ -62,7 +62,6 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 
 #### Database
 * [PostgreSQL](https://www.postgresql.org/) - The world's most advanced open source database
-
     
 #### Design    
 * [Materialize](http://materializecss.com/) - Material Design appearance of the application  
@@ -96,6 +95,7 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 * [Google+ API](https://developers.google.com/+/web/api/rest/) - Access user's profile    
 <br>
 <br> 
+
 
 ## MIT License    
 Copyright (c) 2016 Michel Moreau  
