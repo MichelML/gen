@@ -56,10 +56,10 @@ To learn more about what is Gulp and how to use it, [visit Gulp's website](http:
 # Technology stack    
 As of the last edit of this README, GEN is mostly supported by the following technologies:
 #### Web framework  
-* [Express](http://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
+* [Express](http://expressjs.com/) - Minimalist web framework for Node.js
 
 #### Database
-* [PostgreSQL](https://www.postgresql.org/) - The world's most advanced open source database
+* [PostgreSQL](https://www.postgresql.org/) - Open source SQL database for users and events storing
     
 #### Design    
 * [Materialize](http://materializecss.com/) - Material Design appearance of the application  
@@ -73,19 +73,19 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 * [Pickadate](http://amsul.ca/pickadate.js/) - Mobile-friendly and responsive jQuery date and time input picker
 
 #### Templating 
-* [Pug](https://github.com/pugjs/pug) - Cleaner html with back-end side variables injection and conditionals
+* [Pug](https://github.com/pugjs/pug) - Cleaner html allowing back-end to front-end data injection and conditionals
 
 #### Emailing module
-* [Node-mailer](https://github.com/nodemailer/nodemailer) - Sending e-mails from Node.js
+* [Node-mailer](https://github.com/nodemailer/nodemailer) - E-mail sender via  Node.js
 
 #### Data-binding and MVVM framework    
 * [Knockout.js](http://knockoutjs.com/) - Data-binding and MVVM framework    
   
 #### Local storage technology    
-* [localForage](https://github.com/localForage/localForage) - Augmented client side storage functionalities  
+* [localForage](https://github.com/localForage/localForage) - Augmented client side storage functionalities for faster info retrieval
   
 #### Development    
-* [Gulp](http://gulpjs.com/) - Build process/Automation of various development tasks (see `gulpfile.js` for all gulp packages utilized)     
+* [Gulp](http://gulpjs.com/) - Build process and automation of various development tasks (see `gulpfile.js` for all gulp packages utilized)     
 
 #### API    
 * [Google Maps API](https://developers.google.com/maps/web/?hl=en) - Search for event locations      
