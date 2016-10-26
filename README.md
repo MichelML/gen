@@ -1,6 +1,5 @@
 <div align="center">
-<img src='public/img/gen-green.png' style="display:inline-block">
-<img src='public/img/gen-purple.png' style="display:inline-block;margin-left:-204px;">
+<img src='public/img/gen-purple.png' style="display:inline-block;background-color:#69f0ae;border-radius:100%;box-shadow:-2px 3px 3px rgba(10,10,10,.4)">
 </div>
 # GEN
 Create any kind of event in sync with Google Calendar.
