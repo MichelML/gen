@@ -4,7 +4,7 @@ var express = require('express'),
 
 app.get('/me', (request, response) => {
 
-  response.render('./app/blocks/profile');
+  response.render('./app/blocks/profile', request.app.locals.settings.gapi);
 
 });
 
