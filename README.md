@@ -95,7 +95,6 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 * [Google People API](https://developers.google.com/people/) - Access user's contacts to invite them as guests    
 * [Google+ API](https://developers.google.com/+/web/api/rest/) - Access user's profile    
 <br>
-<br>
 <br> 
 
 ## MIT License    
