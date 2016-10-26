@@ -96,7 +96,7 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 * [Google+ API](https://developers.google.com/+/web/api/rest/) - Access user's profile    
 <br>
 <br>
-<hr>  
+<br> 
 
 ## MIT License    
 Copyright (c) 2016 Michel Moreau  
