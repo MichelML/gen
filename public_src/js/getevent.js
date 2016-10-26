@@ -15,7 +15,7 @@ $(document).ready(function() {
 
         }
 
-        $.post('/events/' + JSON.parse(me).email)
+        $.post('/events/' + me.email)
         
         .then(function(events) {
         

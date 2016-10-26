@@ -2,7 +2,7 @@ localforage.getItem("me")
 
     .then(function(me) {
 
-        ko.applyBindings(JSON.parse(me));
+        ko.applyBindings(me);
 
         // Strategy to initiate contact lists in guests input. 
         // See self-made selectize.js in public/js
@@ -14,7 +14,7 @@ localforage.getItem("me")
 
         }
 
-        $.post( '/setcreds', { email: JSON.parse(me).email } );
+        $.post( '/setcreds', { email: me.email } );
 
     })
 

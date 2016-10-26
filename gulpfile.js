@@ -107,7 +107,7 @@ gulp.task('replace-apphead', () => {
 
 });
 
-gulp.task('replace-landing', () => {
+gulp.task('replace-landing2', () => {
 
     gulp.src('./views_src/landing/headlanding.pug')
         .pipe(replace(/\/{6}apphead[\S\s]+\/{6}/m, getCSSStr('apphead.css')))
@@ -122,6 +122,7 @@ gulp.task('replace', ['replace-signin',
                       'replace-eventsocial', 
                       'replace-profile', 
                       'replace-landing', 
+                      'replace-landing2', 
                       'replace-apphead', 
                       'replace-landing']);
 
@@ -179,7 +180,7 @@ gulp.task('movejs-signin', () => {
               './public_src/js/navinit.js',
               './public_src/js/signin.js'])
               .pipe(concat('signin.js'))
-              //.pipe(jsmin())
+              .pipe(jsmin())
               .pipe(gulp.dest('public/js'))
 
 });
@@ -193,7 +194,7 @@ gulp.task('movejs-signup', () => {
               './public_src/js/navinit.js',
               './public_src/js/signup.js'])
               .pipe(concat('signup.js'))
-              //.pipe(jsmin())
+              .pipe(jsmin())
               .pipe(gulp.dest('public/js'))
 
 });
@@ -247,24 +248,6 @@ gulp.task('movejs-eventsocial', () => {
 
 });
 
-/*gulp.task('movejs-eventsocial-2', ['movejs-eventsocial'], () => {*/
-
-    //gulp.src(['./public_src/bower_components/selectize/dist/js/selectize.js',
-              //'./public_src/js/selectize.js'])
-        //.pipe(concat('selectize.js'))
-        //.pipe(gulp.dest('public/js'))
-
-//});
-
-//gulp.task('movejs-eventsocial-final', ['movejs-eventsocial-2'], () => {
-
-    //gulp.src(['./public/js/eventsocial_wo_selectize.js',
-              //'./public/js/selectize.js'])
-        //.pipe(concat('eventsocial.js'))
-        //.pipe(gulp.dest('public/js'))
-
-/*});*/
-
 gulp.task('movejs-profile', () => {
 
     gulp.src(['./public_src/bower_components/jquery/dist/jquery.min.js',
@@ -288,7 +271,7 @@ gulp.task('movejs-landing', () => {
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/js/landing.js'])
               .pipe(concat('landing.js'))
-              //.pipe(jsmin())
+              .pipe(jsmin())
               .pipe(gulp.dest('public/js'))
 
 });
