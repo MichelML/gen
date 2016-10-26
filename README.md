@@ -1,6 +1,6 @@
 <div align="center">
 <img src='gen_readme.png'>
-<h1 style="text-decordation:none;">Gen</h1>
+<h3 style="text-decordation:none;">Gen</h3>
 <p>Create any kind of event in sync with Google Calendar.</p>
 </div>
 <br>
@@ -96,7 +96,8 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 * [Google+ API](https://developers.google.com/+/web/api/rest/) - Access user's profile    
 <br>
 <br>
-<hr>
+<hr>  
+
 ## MIT License    
 Copyright (c) 2016 Michel Moreau  
   
