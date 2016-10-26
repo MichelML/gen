@@ -6,9 +6,11 @@ if !email
                             $('#spinnerdiv').fadeOut();
                         }
                         else { 
+                            console.log('me do not exist');
                             window.location.replace('/');
                         }
                     }).catch(function(err) {
+                        console.log('hey!')
                         window.location.replace('/');
                     });
 else
