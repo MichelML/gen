@@ -54,7 +54,6 @@ jenēv
 # environment variables and hidden files and folders
 .env
 !/.gitignore
-!/.tks
 
 
 #bower modules
