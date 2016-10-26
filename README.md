@@ -1,15 +1,19 @@
 <div align="center">
 <img src='gen_readme.png'>
+<h1> Gen </h1>
+<p>Create any kind of event in sync with Google Calendar.</p>
 </div>
-# GEN
-Create any kind of event in sync with Google Calendar.
+<br>
+<br>
   
   
-## Use/Run the application 
-You have options for testing and using GEN.                         
-### Use GEN live on the Web
+# Running the application 
+You have two options for testing and using GEN.    
+                       
+## Run GEN live on the Web
 You can view the application directly in your browser at the following [link](http://genevents.herokuapp.com/).    
-### Run GEN locally
+
+## Run GEN locally
 Once [Node.js](https://nodejs.org/en/), [Npm](https://www.npmjs.com/), and [Git](https://git-scm.com/) are installed on your computer, go to the local directory of your choice from your terminal, and run the following command:  
  
 ```  
@@ -21,11 +25,14 @@ Now the project being on your computer, you can preview the application locally 
 1. Go to the `dist` folder of the project directory  
 2. Run the command `node index.js` in your terminal  
 3. View the application in your favorite browser at the following address: `http://127.0.0.1/8080`  
+<br>
+<br>
+<br>
   
-## Edit the application  
+# Edit the application  
 After cloning the project on your computer, you can also edit the application to your taste.  
 
-### Build process  
+## A note on the build process  
 This application also comes bundled with Gulp and basic build tasks helping you move from the development version of the project to distribution. After cloning the repository, run the following command from the project's root directory (`q/`) to install all dependencies of the build process:   
 
 ```  
@@ -45,8 +52,10 @@ gulp <name of the task>
 ```    
 
 To learn more about what is Gulp and how to use it, [visit Gulp's website](http://gulpjs.com/).        
-    
-## Tech stack    
+<br>
+<br>
+<br>
+# Technology stack    
 As of the last edit of this README, GEN is mostly supported by the following technologies:
 #### Web framework  
 * [Express](http://expressjs.com/) - Fast, unopinionated, minimalist web framework for Node.js
@@ -85,7 +94,9 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 * [Google Maps API](https://developers.google.com/maps/web/?hl=en) - Search for event locations      
 * [Google People API](https://developers.google.com/people/) - Access user's contacts to invite them as guests    
 * [Google+ API](https://developers.google.com/+/web/api/rest/) - Access user's profile    
-    
+<br>
+<br>
+<hr>
 ## MIT License    
 Copyright (c) 2016 Michel Moreau  
   
