@@ -88,7 +88,6 @@ block main
                 include ./eventconfirm.pug
 block scripts
     script(src="bower_components/localforage/dist/localforage.min.js")
-    include ./redirect.pug
     //////eventsocial
     script(src='bower_components/jquery/dist/jquery.min.js')
 
@@ -106,6 +105,6 @@ block scripts
     script(src='js/selectize.js')
     script(src="js/getprofile.js")
     //////
-
+    include ./redirect.pug
     script(src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzhI1uGHALh8iAXoCRQVzVZ3Kj7cT8oAo&libraries=places&callback=initAutocomplete', async, defer)
 

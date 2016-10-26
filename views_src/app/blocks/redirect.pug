@@ -6,11 +6,10 @@ if !email
                             $('#spinnerdiv').fadeOut();
                         }
                         else { 
-                            console.log('me do not exist');
                             window.location.replace('/');
                         }
                     }).catch(function(err) {
-                        console.log('hey!')
+                        console.log(err);
                         window.location.replace('/');
                     });
 else
