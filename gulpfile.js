@@ -179,7 +179,7 @@ gulp.task('movejs-signin', () => {
               './public_src/js/navinit.js',
               './public_src/js/signin.js'])
               .pipe(concat('signin.js'))
-              .pipe(jsmin())
+              //.pipe(jsmin())
               .pipe(gulp.dest('public/js'))
 
 });
@@ -193,7 +193,7 @@ gulp.task('movejs-signup', () => {
               './public_src/js/navinit.js',
               './public_src/js/signup.js'])
               .pipe(concat('signup.js'))
-              .pipe(jsmin())
+              //.pipe(jsmin())
               .pipe(gulp.dest('public/js'))
 
 });
@@ -288,7 +288,7 @@ gulp.task('movejs-landing', () => {
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/js/landing.js'])
               .pipe(concat('landing.js'))
-              .pipe(jsmin())
+              //.pipe(jsmin())
               .pipe(gulp.dest('public/js'))
 
 });
