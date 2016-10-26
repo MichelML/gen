@@ -1,0 +1,47 @@
+{
+  "name": "Geneve",
+  "version": "1.0.0",
+  "description": "Easy-to-use interface for Google Calendar Events creation",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michel Moreau",
+  "license": "MIT",
+  "devDependencies": {
+    "browser-sync": "^2.14.0",
+    "errorhandler": "^1.4.3",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-cssmin": "^0.1.7",
+    "gulp-minify": "0.0.14",
+    "gulp-rename": "^1.2.2",
+    "gulp-replace": "^0.5.4",
+    "gulp-uglify": "^2.0.0",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.10.0"
+  },
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.2",
+    "dotenv": "^2.0.0",
+    "errorhandler": "^1.4.3",
+    "events": "^1.1.1",
+    "express": "^4.14.0",
+    "googleapis": "^13.0.0",
+    "gulp-nodemon": "^2.1.0",
+    "helmet": "^2.2.0",
+    "jade": "^1.11.0",
+    "method-override": "^2.3.6",
+    "morgan": "^1.7.0",
+    "nodemailer": "^2.6.4",
+    "pg": "^6.1.0",
+    "pg-monitor": "^0.5.11",
+    "pg-promise": "^5.3.4",
+    "pug": "^2.0.0-beta6",
+    "serve-static": "^1.11.1",
+    "validator": "^6.1.0"
+  }
+}
