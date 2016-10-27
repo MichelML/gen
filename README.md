@@ -8,10 +8,10 @@
 # Synopsis   
 There are two ways to use *GEN*.    
                        
-# Use GEN live
+# Deployed version
 You can use the live version of *GEN* in your favorite browser at the [following link](http://genevents.herokuapp.com/).    
 
-# Run GEN locally
+# Local version
 You can also run *GEN* locally by following all the steps below.
 
 ## Prerequisites
@@ -45,11 +45,13 @@ Gen also allows users to authenticate with Google Sign-In. To setup this feature
     1. Choose an **Email Address**, specify a **Product Name**, and press **Save**.  
   2. In the **Credentials** tab, select the **New credentials** drop-down list, and choose **OAuth client ID**.  
   3. Under **Application type**, select **Web application**. Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.
-    1. In the **Authorized JavaScript origins** field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. For our purpose, we will use the following url:
+    1. In the **Authorized JavaScript origins** field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. For our purpose, we will use the following url: 
+    
     ```
     http://localhost:3000  
     ```
     2. In the **Authorized redirect URI** field, we will enter the following URI:  
+    
     ```  
     http://localhost:3000/googleauth
     ```  
@@ -63,12 +65,13 @@ The last thing to do in the [Google API Console](https://console.developers.goog
   3. Click Continue to enable the API.
   4. On the Credentials page, get an API key.  
   5. In the **Accept requests from these HTTP referrers (web sites)** field, enter the following url:  
+  
   ```  
   http://localhost:3000/*  
   ```  
   
 #### Nodemailer setup 
-The last prerequisite before cloning the repository is to make sure you prepare a valid URI to create our [SMTP](https://github.com/nodemailer/nodemailer#send-using-smtp) transporter object for sending E-mails via [Nodemailer](https://github.com/nodemailer/nodemailer). You can easily do this if you have a gmail address, in which case your URI should look similar to this one:  
+The last prerequisite before cloning the repository is to make sure you prepare a valid URI to create your [SMTP](https://github.com/nodemailer/nodemailer#send-using-smtp) transporter object for sending E-mails via [Nodemailer](https://github.com/nodemailer/nodemailer). You can easily do this if you have a gmail address, in which case your URI should look similar to this one:  
   
 ```
 smtps://user%40gmail.com:YOURGMAILPASSWORD@smtp.gmail.com  
@@ -76,6 +79,7 @@ smtps://user%40gmail.com:YOURGMAILPASSWORD@smtp.gmail.com
 where `user%40gmail.com` represents your gmail address with the exception that the character `@` is replaced by `%40`.  
 
 Nonetheless, to use Gmail you may need to configure "[Allow Less Secure Apps](https://www.google.com/settings/security/lesssecureapps)" in your Gmail account unless you are using 2FA in which case you would have to create an [Application Specific](https://security.google.com/settings/security/apppasswords) password. You also may need to unlock your account with "[Allow access to your Google account](https://accounts.google.com/DisplayUnlockCaptcha)" to use SMTP.
+
 
 ## Additional steps required
 
@@ -97,9 +101,58 @@ npm install
 This could take a few minutes or less.
 
 #### Step 3: Environment variables
+Open the `.env` file in your favorite text editor. The file should look exactly like this:   
+
+```  
+PORT=3000  
+TOKEN_DIR=tks/google
+NODE_ENV=development
+GMAP_KEY=enter your Google API Web Service key goes here
+GAPIS_CLIENT=enter your Google OAuth 2.O Client ID
+GAPIS_SEC=enter your Google OAuth 2.O Client secret
+DATABASE_URL=enter your PostgresSQL Database URI
+MAIL_TRANSPORTER=enter your SMTP transporter URI
+EMAIL_ADDRESS=enter your email address - should be the same as the one utilized with the SMTP URI
+ORIGINE_URI=
+REDIRECT_URI=
+```  
+For the `PORT`, `TOKEN_DIR`, `NODE_ENV`, `ORIGINE_URI`, and `REDIRECT_URI` variables, leave what is after the equal sign as is. The `ORIGINE_URI` AND `REDIRECT_URI` are left empty because these are utilized only if the application is deployed remotely.  
+
+For the variables having instructions after the equal sign, please use the information you have gathered in the prerequisites section to replace those instructions with the proper value needed for each of these environment variables. Once you have completed this step, you can save and close the file.
 <br>
 <br>  
+
+#### Step 4: PostgreSQL database - creating tables
+The final step before finally running the application locally is to create two SQL tables in your PostgreSQL database. To do that, we will run the two SQL scripts that were provided in the GitHub repository. First, run the script to create the `users` table with the following command from within your local version of the GitHub repository:  
   
+```  
+psql -U yourusername -d yourDatabaseName -a -f userstable.sql
+```  
+
+Next, run the script to create the `events` table iwth the following command:  
+   
+```
+psql -U yourusername -d yourDatabaseName -a -f eventstable.sql
+```  
+If you are the root user, you might not need to provide a user name and run the scripts with simplified commands:  
+
+```
+psql -d yourDatabaseName -a -f userstable.sql
+
+```  
+
+```
+psql -d yourDatabaseName -a -f eventstable.sql
+
+```  
+
+#### Step 5: Run the application  
+With all these efforts, it is now time to run the application with the following command from the local version of the github repository:  
+
+```
+node app
+```  
+
 #### Step 6: Edit the application (optional) 
 After completing the prerequisites and steps 1 to 5, feel free to start editing the application to your taste.  
   
@@ -168,8 +221,10 @@ As of the last edit of this README, *GEN* is mostly supported by the following t
 <br>
 
 ## Contributors
-to be completed   
-
+Michel Moreau - [michel.moreau.lapointe@gmail.com](mailto:michel.moreau.lapointe@gmail.com?Subject=GEN%20Project)
+  
+## Maintainer 
+Michel Moreau - [michel.moreau.lapointe@gmail.com](mailto:michel.moreau.lapointe@gmail.com?Subject=GEN%20Project)
   
 ## MIT License    
 Copyright (c) 2016 Michel Moreau  
