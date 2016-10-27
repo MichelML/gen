@@ -1,36 +1,108 @@
 <div align="center">
 <img src='gen_readme.png'>
-<h3 style="text-decordation:none;">Gen</h3>
-<p>Create any kind of event in sync with Google Calendar.</p>
+<h3 style="text-decordation:none;">GEN</h3>
+<p>Create any kind of event in sync with Google Calendar</p>
 </div>
 <br>
-<br>
   
-  
-# Run the application 
-You have two options for testing and using GEN.    
+# Synopsis   
+There are two ways to use *GEN*.    
                        
-## Run GEN live on the Web
-You can view the application directly in your browser at the following [link](http://genevents.herokuapp.com/).    
+# Use GEN live
+You can use the live version of *GEN* in your favorite browser at the [following link](http://genevents.herokuapp.com/).    
 
-## Run GEN locally
-Once [Node.js](https://nodejs.org/en/), [Npm](https://www.npmjs.com/), and [Git](https://git-scm.com/) are installed on your computer, go to the local directory of your choice from your terminal, and run the following command:  
- 
-```  
-git clone https://github.com/MichelML/q.git
-```  
+# Run GEN locally
+You can also run *GEN* locally by following all the steps below.
 
-Now the project being on your computer, you can preview the application locally by following these steps:  
+## Prerequisites
+
+#### Installs
+First, you need to have installed [Node.js](https://nodejs.org/en/), [Npm](https://www.npmjs.com/), [Git](https://git-scm.com/), and [PostgreSQL](https://www.postgresql.org/download/) on your computer.   
+
+#### PostgreSQL Setup
   
-1. Go to the `dist` folder of the project directory  
-2. Run the command `node index.js` in your terminal  
-3. View the application in your favorite browser at the following address: `http://127.0.0.1/8080`  
+Also, before you go further, make sure to [set up a PostgreSQL database](http://www.techrepublic.com/blog/diy-it-guy/diy-a-postgresql-database-server-setup-anyone-can-handle/) on your computer for this project, and to possess the [URI](http://www.starkandwayne.com/blog/using-a-postgres-uri-with-psql/) for this database. The URI should look similar to this one:  
+
+```  
+postgres://USERNAME:PASSWORD@localhost:5432/DATABASENAME
+``` 
+Note that you might not need to provide a password if your local PostgreSQL user does not need one. In this case, the URI shoud look similar to the one below:  
+
+```  
+postgres://USERNAME@localhost:5432/DATABASENAME
+```   
+
+#### Google API Console Project Setup
+Since this project is using multiple APIs from Google, your next task is to initiate a project on the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library):
+  
+  1. Go to the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library)  
+  2. From the project drop-down, create a new project by selecting **Create a new project**.
+
+#### Google OAuth 2.0 Client ID setup  
+Gen also allows users to authenticate with Google Sign-In. To setup this feature, we will need a Google OAuth 2.0 Client ID. Always from the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library), follow these steps (inspired from [Google's documentation](https://developers.google.com/identity/sign-in/web/devconsole-project)):
+  
+  1. In the sidebar under "API Manager", select **Credentials**, then select the **OAuth consent screen** tab.  
+    1. Choose an **Email Address**, specify a **Product Name**, and press **Save**.  
+  2. In the **Credentials** tab, select the **New credentials** drop-down list, and choose **OAuth client ID**.  
+  3. Under **Application type**, select **Web application**. Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.
+    1. In the **Authorized JavaScript origins** field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. For our purpose, we will use the following url:
+    ```
+    http://localhost:3000  
+    ```
+    2. In the **Authorized redirect URI** field, we will enter the following URI:  
+    ```  
+    http://localhost:3000/googleauth
+    ```  
+    3. Press the **Create** button.  
+    
+#### Google Places API Web Service Key
+The last thing to do in the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library) is to obtain an API key for the Google Places API Web service that *GEN* uses to help users find an event's location more easily. To obtain this API key, follow these steps:  
+  
+  1. Go to the Google API Console via this [specific link](https://console.developers.google.com/flows/enableapi?apiid=places_backend&reusekey=true).
+  2. Select your project.
+  3. Click Continue to enable the API.
+  4. On the Credentials page, get an API key.  
+  5. In the **Accept requests from these HTTP referrers (web sites)** field, enter the following url:  
+  ```  
+  http://localhost:3000/*  
+  ```  
+  
+#### Nodemailer setup 
+The last prerequisite before cloning the repository is to make sure you prepare a valid URI to create our [SMTP](https://github.com/nodemailer/nodemailer#send-using-smtp) transporter object for sending E-mails via [Nodemailer](https://github.com/nodemailer/nodemailer). You can easily do this if you have a gmail address, in which case your URI should look similar to this one:  
+  
+```
+smtps://user%40gmail.com:YOURGMAILPASSWORD@smtp.gmail.com  
+```  
+where `user%40gmail.com` represents your gmail address with the exception that the character `@` is replaced by `%40`.  
+
+Nonetheless, to use Gmail you may need to configure "[Allow Less Secure Apps](https://www.google.com/settings/security/lesssecureapps)" in your Gmail account unless you are using 2FA in which case you would have to create an [Application Specific](https://security.google.com/settings/security/apppasswords) password. You also may need to unlock your account with "[Allow access to your Google account](https://accounts.google.com/DisplayUnlockCaptcha)" to use SMTP.
+
+## Additional steps required
+
+#### Step 1: Clone the github repository
+
+Move to an empty directory on your computer and clone the github repository with the following command:  
+
+```  
+git clone https://github.com/MichelML/gen.git
+```  
+After this command is executed,  move to the local directory created for the cloned github repository. It should be named `gen`.
+
+#### Step 2: Install project dependencies
+To install all the module dependencies of the project, run the following command on your computer:  
+
+```
+npm install  
+```  
+This could take a few minutes or less.
+
+#### Step 3: Environment variables
 <br>
 <br>  
   
-# Edit the application  
-After cloning the project on your computer, you can also edit the application to your taste.  
-
+#### Step 6: Edit the application (optional) 
+After completing the prerequisites and steps 1 to 5, feel free to start editing the application to your taste.  
+  
 ## A note on the build process  
 This application also comes bundled with Gulp and basic build tasks helping you move from the development version of the project to distribution. After cloning the repository, run the following command from the project's root directory (`q/`) to install all dependencies of the build process:   
 
@@ -54,7 +126,7 @@ To learn more about what is Gulp and how to use it, [visit Gulp's website](http:
 <br>
 <br>
 # Technology stack    
-As of the last edit of this README, GEN is mostly supported by the following technologies:
+As of the last edit of this README, *GEN* is mostly supported by the following technologies:
 #### Web framework  
 * [Express](http://expressjs.com/) - Minimalist web framework for Node.js
 
@@ -87,10 +159,12 @@ As of the last edit of this README, GEN is mostly supported by the following tec
 #### Development    
 * [Gulp](http://gulpjs.com/) - Build process and automation of various development tasks (see `gulpfile.js` for all gulp packages utilized)     
 
-#### API    
-* [Google Maps API](https://developers.google.com/maps/web/?hl=en) - Search for event locations      
+#### API  
+* [Google Places API Web Service](https://developers.google.com/maps/web/?hl=en) - Search for event locations    
+* [Google Maps API](https://developers.google.com/maps/web/?hl=en) - Search for event locations        
 * [Google People API](https://developers.google.com/people/) - Access user's contacts to invite them as guests    
 * [Google+ API](https://developers.google.com/+/web/api/rest/) - Access user's profile    
+* [Google Calendar API](https://developers.google.com/google-apps/calendar/) - Insert events in user's and guests' calendars
 <br>
 
 ## Contributors
