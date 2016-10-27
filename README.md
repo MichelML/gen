@@ -45,25 +45,25 @@ Gen also allows users to authenticate with Google Sign-In. To setup this feature
   
   1. In the sidebar under "API Manager", select **Credentials**, then select the **OAuth consent screen** tab.  
   
-    1. Choose an **Email Address**, specify a **Product Name**, and press **Save**.  
+    * Choose an **Email Address**, specify a **Product Name**, and press **Save**.  
     
   2. In the **Credentials** tab, select the **New credentials** drop-down list, and choose **OAuth client ID**.  
   
   3. Under **Application type**, select **Web application**. Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.  
   
-    1. In the **Authorized JavaScript origins** field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. For our purpose, we will use the following url: 
+    * In the **Authorized JavaScript origins** field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. For our purpose, we will use the following url: 
     
     ```
     http://localhost:3000  
     ```  
     
-    2. In the **Authorized redirect URI** field, we will enter the following URI:  
+    * In the **Authorized redirect URI** field, we will enter the following URI:  
     
     ```  
     http://localhost:3000/googleauth
     ```    
     
-    3. Press the **Create** button.  
+    * Press the **Create** button.  
     
 #### Google Places API Web Service Key
 The last thing to do in the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library) is to obtain an API key for the Google Places API Web service that *GEN* uses to help users find an event's location more easily. To obtain this API key, follow these steps:  
@@ -150,12 +150,10 @@ If you are the root user, you might not need to provide a user name and run the 
 
 ```
 psql -d yourDatabaseName -a -f userstable.sql
-
 ```  
 
 ```
 psql -d yourDatabaseName -a -f eventstable.sql
-
 ```  
 
 #### Step 5: Run the application  
