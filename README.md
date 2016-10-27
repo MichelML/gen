@@ -35,35 +35,47 @@ postgres://USERNAME@localhost:5432/DATABASENAME
 #### Google API Console Project Setup
 Since this project is using multiple APIs from Google, your next task is to initiate a project on the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library):
   
-  1. Go to the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library)  
-  2. From the project drop-down, create a new project by selecting **Create a new project**.
+  1. Go to the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library)   
+  
+  2. From the project drop-down, create a new project by selecting **Create a new project**.  
+  
 
 #### Google OAuth 2.0 Client ID setup  
 Gen also allows users to authenticate with Google Sign-In. To setup this feature, we will need a Google OAuth 2.0 Client ID. Always from the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library), follow these steps (inspired from [Google's documentation](https://developers.google.com/identity/sign-in/web/devconsole-project)):
   
   1. In the sidebar under "API Manager", select **Credentials**, then select the **OAuth consent screen** tab.  
+  
     1. Choose an **Email Address**, specify a **Product Name**, and press **Save**.  
+    
   2. In the **Credentials** tab, select the **New credentials** drop-down list, and choose **OAuth client ID**.  
-  3. Under **Application type**, select **Web application**. Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.
+  
+  3. Under **Application type**, select **Web application**. Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.  
+  
     1. In the **Authorized JavaScript origins** field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. For our purpose, we will use the following url: 
     
     ```
     http://localhost:3000  
-    ```
+    ```  
+    
     2. In the **Authorized redirect URI** field, we will enter the following URI:  
     
     ```  
     http://localhost:3000/googleauth
-    ```  
+    ```    
+    
     3. Press the **Create** button.  
     
 #### Google Places API Web Service Key
 The last thing to do in the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library) is to obtain an API key for the Google Places API Web service that *GEN* uses to help users find an event's location more easily. To obtain this API key, follow these steps:  
   
-  1. Go to the Google API Console via this [specific link](https://console.developers.google.com/flows/enableapi?apiid=places_backend&reusekey=true).
-  2. Select your project.
-  3. Click Continue to enable the API.
+  1. Go to the Google API Console via this [specific link](https://console.developers.google.com/flows/enableapi?apiid=places_backend&reusekey=true).  
+  
+  2. Select your project.  
+  
+  3. Click Continue to enable the API.  
+  
   4. On the Credentials page, get an API key.  
+  
   5. In the **Accept requests from these HTTP referrers (web sites)** field, enter the following url:  
   
   ```  
