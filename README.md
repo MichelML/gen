@@ -6,7 +6,7 @@
 <br>
   
 # Synopsis   
-There are two ways to use *GEN*.    
+*GEN* lets you create any kind of event in sync with Google Calendar. The application allows someone to name their event, search for a host location, invite guests, set the start and end dates and times, and input a description of the event.  
                        
 # Deployed version
 You can use the live version of *GEN* in your favorite browser at the [following link](http://genevents.herokuapp.com/).    
@@ -164,30 +164,23 @@ node app
 ```  
 
 #### Step 6: Edit the application (optional) 
-After completing the prerequisites and steps 1 to 5, feel free to start editing the application to your taste.  
-  
-## A note on the build process  
-This application also comes bundled with Gulp and basic build tasks helping you move from the development version of the project to distribution. After cloning the repository, run the following command from the project's root directory (`q/`) to install all dependencies of the build process:   
+After completing the prerequisites and steps 1 to 5, feel free to start editing the application to your taste. If you are to edit the views or elements in the `public` folder, make your edits in the `views_src` and the `public_src` first, and run the following command before rerunning the app:  
 
 ```  
-npm install
-```   
-
-Once all the dependencies are installed, you can run the default Gulp process by typing the following command in your terminal:   
-
+gulp move-views && gulp
 ```
-gulp
+If you are to add images to the application, you can either add them directly in the `public/img` folder, or add them in the `public_src/img` folder and run:
+
+```  
+gulp move-img
 ```  
 
-You can also run independent tasks by running the following command:   
- 
-```
+Lastly, if you were to take the time to human read `gulpfile.js`, you could also decide to run specific tasks with the following command:  
+
+```  
 gulp <name of the task>
-```    
+```  
 
-To learn more about what is Gulp and how to use it, [visit Gulp's website](http://gulpjs.com/).        
-<br>
-<br>
 # Technology stack    
 As of the last edit of this README, *GEN* is mostly supported by the following technologies:
 #### Web framework  
