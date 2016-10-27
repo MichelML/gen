@@ -183,6 +183,8 @@ Lastly, if you were to take the time to human read `gulpfile.js`, you could also
 gulp <name of the task>
 ```  
 
+No build process was utilized for the back-end of the application.
+
 # Technology stack    
 As of the last edit of this README, *GEN* is mostly supported by the following technologies:
 #### Web framework  
