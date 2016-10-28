@@ -29,6 +29,6 @@ monitor.setTheme('matrix'); // changing default theme;
 const pgp = pgpLib(options); // initializing pg-promise;
 
 // instantiating the database:
-const db = pgp(((process.env.NODE_ENV !== 'development') ? process.env.DATABASE_URL : "postgres://mimolap@localhost:5432/gen"));
+const db = pgp(((process.env.NODE_ENV !== 'development') ? process.env.DATABASE_URL : "postgresql://myapp:dbpass@localhost:15432/myapp"));
 
 module.exports = db;

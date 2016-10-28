@@ -5,8 +5,8 @@ var express = require('express'),
 
 app.get('/', function(request, response) {
 
-  request.app.locals.settings.gapi = gapi.url;
-  response.render('./landing/landingpage', request.app.locals.settings.gapi);
+  request.app.locals.settings.gapis.url = gapi.url;
+  response.render('./landing/landingpage', request.app.locals.settings.gapis);
 
 });
 

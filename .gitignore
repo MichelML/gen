@@ -51,5 +51,8 @@ jenēv
 # vim files
 *.swp
 
+# vagrant
+.vagrant
+
 # environment variables and hidden files and folders
 !/.gitignore
