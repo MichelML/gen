@@ -14,149 +14,44 @@
 You can use the live version of *GEN* in your favorite browser at the [following link](http://genevents.herokuapp.com/).    
 
 # Local version
-You can also run *GEN* locally by following all the steps below.
+You can also run *GEN* locally by following all the steps below.  
 
-## Prerequisites
-
-#### Installs
-First, you need to have installed [Node.js](https://nodejs.org/en/), [Npm](https://www.npmjs.com/), [Git](https://git-scm.com/), and [PostgreSQL](https://www.postgresql.org/download/) on your computer.   
-
-#### PostgreSQL Setup
-  
-Also, before you go further, make sure to [set up a PostgreSQL database](http://www.techrepublic.com/blog/diy-it-guy/diy-a-postgresql-database-server-setup-anyone-can-handle/) on your computer for this project, and to possess the [URI](http://www.starkandwayne.com/blog/using-a-postgres-uri-with-psql/) for this database. The URI should look similar to this one:  
-
-```  
-postgres://USERNAME:PASSWORD@localhost:5432/DATABASENAME
-``` 
-Note that you might not need to provide a password if your local PostgreSQL user does not need one. In this case, the URI shoud look similar to the one below:  
-
-```  
-postgres://USERNAME@localhost:5432/DATABASENAME
-```   
-
-#### Google API Console Project Setup
-Since this project is using multiple APIs from Google, your next task is to initiate a project on the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library):
-  
-  1. Go to the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library)   
-  
-  2. From the project drop-down, create a new project by selecting **Create a new project**.  
-  
-
-#### Google OAuth 2.0 Client ID setup  
-Gen also allows users to authenticate with Google Sign-In. To setup this feature, we will need a Google OAuth 2.0 Client ID. Always from the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library), follow these steps (inspired from [Google's documentation](https://developers.google.com/identity/sign-in/web/devconsole-project)):
-  
-  1. In the sidebar under "API Manager", select **Credentials**, then select the **OAuth consent screen** tab.  
-  
-    * Choose an **Email Address**, specify a **Product Name**, and press **Save**.  
-    
-  2. In the **Credentials** tab, select the **New credentials** drop-down list, and choose **OAuth client ID**.  
-  
-  3. Under **Application type**, select **Web application**. Register the origins from which your app is allowed to access the Google APIs, as follows. An origin is a unique combination of protocol, hostname, and port.  
-  
-    * In the **Authorized JavaScript origins** field, enter the origin for your app. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. For our purpose, we will use the following url: 
-    
-    ```
-    http://localhost:3000  
-    ```  
-    
-    * In the **Authorized redirect URI** field, we will enter the following URI:  
-    
-    ```  
-    http://localhost:3000/googleauth
-    ```    
-    
-    * Press the **Create** button.  
-    
-#### Google Places API Web Service Key
-The last thing to do in the [Google API Console](https://console.developers.google.com/project/_/apiui/apis/library) is to obtain an API key for the Google Places API Web service that *GEN* uses to help users find an event's location more easily. To obtain this API key, follow these steps:  
-  
-  1. Go to the Google API Console via this [specific link](https://console.developers.google.com/flows/enableapi?apiid=places_backend&reusekey=true).  
-  
-  2. Select your project.  
-  
-  3. Click Continue to enable the API.  
-  
-  4. On the Credentials page, get an API key.  
-  
-  5. In the **Accept requests from these HTTP referrers (web sites)** field, enter the following url:  
-  
-  ```  
-  http://localhost:3000/*  
-  ```  
-  
-#### Nodemailer setup 
-The last prerequisite before cloning the repository is to make sure you prepare a valid URI to create your [SMTP](https://github.com/nodemailer/nodemailer#send-using-smtp) transporter object for sending E-mails via [Nodemailer](https://github.com/nodemailer/nodemailer). You can easily do this if you have a gmail address, in which case your URI should look similar to this one:  
-  
-```
-smtps://user%40gmail.com:YOURGMAILPASSWORD@smtp.gmail.com  
-```  
-where `user%40gmail.com` represents your gmail address with the exception that the character `@` is replaced by `%40`.  
-
-Nonetheless, to use Gmail you may need to configure "[Allow Less Secure Apps](https://www.google.com/settings/security/lesssecureapps)" in your Gmail account unless you are using 2FA in which case you would have to create an [Application Specific](https://security.google.com/settings/security/apppasswords) password. You also may need to unlock your account with "[Allow access to your Google account](https://accounts.google.com/DisplayUnlockCaptcha)" to use SMTP.
+Note that all the environment variables necessary to run the project successfully are provided in the `.env` file already. Feel free to edit these variables with your own information in case you want to use this project as a starter for yours.
 
 
-## Additional steps required
+#### Step 1: Prerequisites
+First, you need to have installed [Node.js](https://nodejs.org/en/), [Npm](https://www.npmjs.com/), [Git](https://git-scm.com/), [PostgreSQL](https://www.postgresql.org/download/), [Virtual Box](https://www.virtualbox.org/), and [Vagrant](https://www.vagrantup.com/downloads.html) on your computer.   
 
-#### Step 1: Clone the github repository
+
+#### Step 2: Clone the github repository
 
 Move to an empty directory on your computer and clone the github repository with the following command:  
 
 ```  
 git clone https://github.com/MichelML/gen.git
 ```  
-After this command is executed,  move to the local directory created for the cloned github repository. It should be named `gen`.
+After this command is executed,  move to the local directory created for the cloned github repository with the following command:  
 
-#### Step 2: Install project dependencies
-To install all the module dependencies of the project, run the following command on your computer:  
+```  
+cd gen  
+```  
+
+#### Step 3: Install node dependencies
+To install all the node modules dependencies for the project, run the following command on your computer:  
 
 ```
 npm install  
 ```  
 This could take a few minutes or less.
 
-#### Step 3: Environment variables
-Open the `.env` file in your favorite text editor. The file should look exactly like this:   
+#### Step 4: Setup PostgreSQL database
+Your last step before running the application is to make sure the postgreSQL database is properly setup. To do that, simply run the automated process bundled with this repository with the following command:  
 
+```
+vagrant up
 ```  
-PORT=3000  
-TOKEN_DIR=tks/google
-NODE_ENV=development
-GMAP_KEY=enter your Google API Web Service key goes here
-GAPIS_CLIENT=enter your Google OAuth 2.O Client ID
-GAPIS_SEC=enter your Google OAuth 2.O Client secret
-DATABASE_URL=enter your PostgresSQL Database URI
-MAIL_TRANSPORTER=enter your SMTP transporter URI
-EMAIL_ADDRESS=enter your email address - should be the same as the one utilized with the SMTP URI
-ORIGINE_URI=
-REDIRECT_URI=
-```  
-For the `PORT`, `TOKEN_DIR`, `NODE_ENV`, `ORIGINE_URI`, and `REDIRECT_URI` variables, leave what is after the equal sign as is. The `ORIGINE_URI` AND `REDIRECT_URI` are left empty because these are utilized only if the application is deployed remotely.  
-
-For the variables having instructions after the equal sign, please use the information you have gathered in the prerequisites section to replace those instructions with the proper value needed for each of these environment variables. Once you have completed this step, you can save and close the file.
-<br>
-<br>  
-
-#### Step 4: PostgreSQL database - creating tables
-The final step before finally running the application locally is to create two SQL tables in your PostgreSQL database. To do that, we will run the two SQL scripts that were provided in the GitHub repository. First, run the script to create the `users` table with the following command from within your local version of the GitHub repository:  
   
-```  
-psql -U yourusername -d yourDatabaseName -a -f userstable.sql
-```  
-
-Next, run the script to create the `events` table iwth the following command:  
-   
-```
-psql -U yourusername -d yourDatabaseName -a -f eventstable.sql
-```  
-If you are the root user, you might not need to provide a user name and run the scripts with simplified commands:  
-
-```
-psql -d yourDatabaseName -a -f userstable.sql
-```  
-
-```
-psql -d yourDatabaseName -a -f eventstable.sql
-```  
+This could take a few minutes as well. After this step, your database should be up and running through a virtual machine on your computer.
 
 #### Step 5: Run the application  
 With all these efforts, it is now time to run the application with the following command from the local version of the github repository:  
@@ -218,6 +113,8 @@ As of the last edit of this README, *GEN* is mostly supported by the following t
   
 #### Development    
 * [Gulp](http://gulpjs.com/) - Build process and automation of various development tasks (see `gulpfile.js` for all gulp packages utilized)     
+* [Vagrant](https://www.vagrantup.com/) - Automation of the PostgreSQL database setup
+* [VirtualBox](https://www.virtualbox.org/) - Development environment provider
 
 #### API  
 * [Google Places API Web Service](https://developers.google.com/maps/web/?hl=en) - Search for event locations    
