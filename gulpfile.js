@@ -178,6 +178,7 @@ gulp.task('movejs-signin', () => {
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/js/navinit.js',
               './public_src/js/redirect_loggedin.js',
+              './public_src/js/error.js',
               './public_src/js/signin.js'])
               .pipe(concat('signin.js'))
               .pipe(jsmin())
@@ -192,6 +193,7 @@ gulp.task('movejs-signup', () => {
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/js/navinit.js',
               './public_src/js/redirect_loggedin.js',
+              './public_src/js/error.js',
               './public_src/js/signup.js'])
               .pipe(concat('signup.js'))
               .pipe(jsmin())
@@ -224,6 +226,7 @@ gulp.task('movejs-eventpersonal', () => {
               './public_src/bower_components/knockout/dist/knockout.js',
               './public_src/js/navinit.js',
               './public_src/js/eventmain.js',
+              './public_src/js/error.js',
               './public_src/js/eventpersonal.js',
               './public_src/js/getprofile.js',
               './public_src/js/redirect.js',
@@ -245,6 +248,7 @@ gulp.task('movejs-eventsocial', () => {
               './public_src/bower_components/knockout/dist/knockout.js',
               './public_src/js/navinit.js',
               './public_src/js/eventmain.js',
+              './public_src/js/error.js',
               './public_src/js/eventsocial.js',
               './public_src/js/selectize.js',
               './public_src/js/getprofile.js',

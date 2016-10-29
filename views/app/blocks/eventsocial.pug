@@ -43,28 +43,10 @@ block main
                 label(for="place-event").teal-text.text-accent-4.margin-t-2 Where is this event taking place?
                 input#place-event.event-input(type="text", name="place-event", placeholder="Enter location, full address, or else", maxlength="500", required)
 
-                label(for="host-event").teal-text.text-accent-4 Who is hosting this event?
-                input#host-event.event-input(type="text", name="host-event", placeholder="Type the host's name here", data-bind='value:displayname', maxlength="200", pattern="^[a-zA-Z0-9\-]{1,200}$", required)
-                br
-                small Contact information for guest inquiries
-                .margin-t-1
-                .input-field.col.s12.m12.l4
-                    i.material-icons.prefix.teal-text.text-accent-4 phone
-                    label.hide(for='tel-event') Please enter the host's phone here
-                    input#tel-event.event-input(type='tel', placeholder='use numbers only', pattern="^[0-9]{10,15}$", maxlength="15")
-                .input-field.col.s12.m12.l4
-                    i.material-icons.prefix.teal-text.text-accent-4 mail
-                    label.hide(for='mail-event') Please enter the host's email here
-                    input#mail-event.event-input(type='email', placeholder='example@gmail.com', data-bind='value:email', maxlength="200", pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/")
-                .input-field.col.s12.m12.l4
-                    i.material-icons.prefix.teal-text.text-accent-4 link
-                    label.hide(for='link-event') Please enter the event's website here
-                    input#link-event.event-input(type='url', placeholder='website, facebook page, etc.', pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/")
-                    
                 label#lab-guests(for="guests-event").teal-text.text-accent-4 Who should we invite?
                 input#guests-event.event-input(type="text", name="guests-event", placeholder="Enter email addresses or contacts", required)
                 
-                .row.margin-t-2
+                #starttimes.row.margin-t-2
                     h5.label.teal-text.text-accent-4 When does this event start?
                     .col.s6
                         input#startdate-event.event-input(type="date", placeholder="Pick a date").datepicker
@@ -77,6 +59,25 @@ block main
                         input#enddate-event.event-input(type="date", placeholder="Pick a date").datepicker
                     .col.s6
                         input#endtime-event.event-input(type="text", placeholder="Pick a time").timepicker
+
+                label(for="host-event").teal-text.text-accent-4 Who is hosting this event?
+                input#host-event.event-input(type="text", name="host-event", placeholder="Type the host's name here", data-bind='value:displayname', maxlength="200", pattern="^[a-zA-Z0-9\-]{1,200}$", required)
+                br
+                small Contact information for guest inquiries
+                .margin-t-1
+                .row
+                    .input-field.col.s12.m12.l4
+                        i.material-icons.prefix.teal-text.text-accent-4 phone
+                        label.hide(for='tel-event') Please enter the host's phone here
+                        input#tel-event.event-input(type='tel', placeholder='use numbers only', pattern="^[0-9]{10,15}$", maxlength="15")
+                    .input-field.col.s12.m12.l4
+                        i.material-icons.prefix.teal-text.text-accent-4 mail
+                        label.hide(for='mail-event') Please enter the host's email here
+                        input#mail-event.event-input(type='email', placeholder='example@gmail.com', data-bind='value:email', maxlength="200", pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/")
+                    .input-field.col.s12.m12.l4
+                        i.material-icons.prefix.teal-text.text-accent-4 link
+                        label.hide(for='link-event') Please enter the event's website here
+                        input#link-event.event-input(type='url', placeholder='website, facebook page, etc.', pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/")
                 
                 label(for="details-event").teal-text.text-accent-4 What other information your guests should know?
                 textarea#details-event.event-input.materialize-textarea(name="details-event", placeholder="Type information your guests should know before the event.\nStick to the essential.", maxlength="10000")

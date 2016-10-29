@@ -10,11 +10,13 @@ $(document).ready(function () {
     email.value = '';
     email.isValid = false;
     email.validationRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    email.errorMessage = initErrorMessage(email.elem, 'Enter email address in the format "abcd@domain.com"');
 
     var password = {};
     password.elem = $('#password-account');
     password.value = '';
     password.isValid = false;
+    password.errorMessage = initErrorMessage(password.elem, 'The password must follow the rules below');
 
     var passwordHelper = {};
     passwordHelper.elem = $('#password-helper');
@@ -23,19 +25,20 @@ $(document).ready(function () {
     passwordConfirm.elem = $('#password2-account');
     passwordConfirm.value = '';
     passwordConfirm.isValid = false;
+    passwordConfirm.errorMessage = initErrorMessage(passwordConfirm.elem, 'Both passwords should match');
 
     var createAccountButton = {};
     createAccountButton.elem = $('#create-account');
 
-    var passwordValidation = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/;
+    var passwordValidation = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])[0-9a-zA-Z]{6,20}$/;
 
     var areInputsAllValid = false;
-    email.elem.on('keyup', function() {
+    email.elem.on('keyup change blur', function() {
         isValidInput(email, email.validationRegExp);
         enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
     });
 
-    password.elem.on('keyup', function() {
+    password.elem.on('keyup change blur', function() {
        isValidInput(password, passwordValidation); 
        enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
        shouldShowHelper(password,passwordHelper);
@@ -46,39 +49,27 @@ $(document).ready(function () {
     password.elem.on('blur', function() {
        passwordHelper.elem.addClass('hide');
      });
-     passwordConfirm.elem.on('keyup', function() {
-       isValidInput(passwordConfirm, passwordValidation); 
-       isPasswordConfirmMatching(password,passwordConfirm);
+     passwordConfirm.elem.on('keyup change blur', function() {
+       isPasswordConfirmMatching(password,passwordConfirm, passwordValidation);
        enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
      });
 
-    function isValidInput(element, validationregexp) {
-        element.value = element.elem.val();
-        element.isValid = validationregexp.test(element.value);
-        if (!element.value) {
-            element.elem.removeClass()
-         }
-        else if (element.isValid) {
-            element.elem.removeClass('invalid');
-            element.elem.addClass('valid');
+    function isPasswordConfirmMatching(pw1,pw2, validationregexp) {
+        pw2.value = pw2.elem.val();
+        pw2.isValid = validationregexp.test(pw2.value);
+        if (!pw2.value) {
+            pw2.elem.removeClass();
+            pw2.errorMessage.addClass('hide');
         }
-        else {
-            element.elem.removeClass('valid');
-            element.elem.addClass('invalid');
-        }
-    }
-
-    function isPasswordConfirmMatching(pw1,pw2) {
-        if (!pw2.isValid) {
-            return;
-        }
-        else if (pw2.isValid && pw1.value !== pw2.value) {
+        else if (!pw2.isValid || pw1.value !== pw2.value) {
             pw2.elem.removeClass('valid');
             pw2.elem.addClass('invalid');
+            pw2.errorMessage.removeClass('hide');
         }
         else if (pw2.isValid && pw1.value === pw2.value) {
             pw2.elem.removeClass('invalid');
             pw2.elem.addClass('valid');
+            pw2.errorMessage.addClass('hide');
         }
     }
 

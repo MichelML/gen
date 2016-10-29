@@ -34,6 +34,7 @@ $(document).ready(function(event) {
         $eventEmail = $('#mail-event'),
         $eventUrl = $('#link-event'),
         $eventGuests = $('#guests-event'),
+        $timesRow = $('#starttimes'),
         $eventStartDate = $('#startdate-event'),
         $eventStartTime = $('#starttime-event'),
         $eventEndDate = $('#enddate-event'),
@@ -58,168 +59,96 @@ $(document).ready(function(event) {
 
     });
 
-    var showLettersAndNumbersErrorMessage = toastMessager('use letters and numbers only');
-    $eventName.on('keyup', function() {
+    var eventNameErrorMessage = initErrorMessage($eventName,'(required) use letters, numbers and spaces only');
+    $eventName.on('keyup blur change', function() {
     
-        toggleValidationClasses($eventName, validator.checkEventName, showLettersAndNumbersErrorMessage); 
+        toggleValidationClasses($eventName, validator.checkEventName, eventNameErrorMessage); 
 
     });
 
-    var showLettersErrorMessage = toastMessager('use letters only');
+    var eventTypeErrorMessage = initErrorMessage($eventType, 'use letters and spaces only, or leave empty');
     $eventType.on('keyup blur change', function() {
     
-        toggleValidationClasses($eventType, validator.checkEventType, showLettersErrorMessage); 
+        toggleValidationClasses($eventType, validator.checkEventType, eventTypeErrorMessage); 
 
     });
 
-    $eventHost.on('keyup', function() {
+    var eventHostErrorMessage = initErrorMessage($eventHost, '(required) use letters and space only');
+    $eventHost.on('keyup blur change', function() {
     
-        toggleValidationClasses($eventHost, validator.checkEventHost, showLettersErrorMessage); 
+        toggleValidationClasses($eventHost, validator.checkEventHost, eventHostErrorMessage); 
 
     });
 
-    $eventLocation.on('blur', function() {
+    var eventLocationErrorMessage = initErrorMessage($eventLocation, '(required) location must contain 1 to 1000 characters');
+    $eventLocation.on('keyup blur change', function() {
     
-        toggleValidationClasses($eventLocation, validator.checkEventLocation); 
+        toggleValidationClasses($eventLocation, validator.checkEventLocation, eventLocationErrorMessage); 
 
     });
 
+    var startDateErrorMessage = initErrorMessage($eventStartDate, '(required) a date must be selected');
     $eventStartDate.on('change', function() {
     
-        toggleValidationClasses($eventStartDate, validator.checkEventDate); 
+        toggleValidationClasses($eventStartDate, validator.checkEventDate, startDateErrorMessage); 
 
     });
 
+    var startTimeErrorMessage = initErrorMessage($eventStartTime, '(required) a time must be selected');
     $eventStartTime.on('change', function() {
     
-        toggleValidationClasses($eventStartTime, validator.checkEventTime); 
+        toggleValidationClasses($eventStartTime, validator.checkEventTime, startTimeErrorMessage); 
 
     });
 
+    var endDateErrorMessage = initErrorMessage($eventEndDate, '(required) a date must be selected');
     $eventEndDate.on('change', function() {
     
-        toggleValidationClasses($eventEndDate, validator.checkEventDate); 
+        toggleValidationClasses($eventEndDate, validator.checkEventDate, endDateErrorMessage); 
 
     });
 
+    var endTimeErrorMessage = initErrorMessage($eventEndTime, '(required) a time must be selected')
     $eventEndTime.on('change', function() {
     
-        toggleValidationClasses($eventEndTime, validator.checkEventTime); 
+        toggleValidationClasses($eventEndTime, validator.checkEventTime, endTimeErrorMessage); 
 
     });
 
-    var showTelErrorMessage = toastMessager('enter 10 to 15 digits');
-    $eventTel.on('blur', function() {
+    var telErrorMessage = initErrorMessage($eventTel, 'enter 10 to 15 digits or leave empty<div></div>');
+    $eventTel.on('blur keyup change', function() {
     
-        toggleValidationClasses($eventTel, validator.checkEventTel, showTelErrorMessage); 
+        toggleValidationClasses($eventTel, validator.checkEventTel, telErrorMessage); 
 
     });
 
-    var showEmailErrorMessage = toastMessager('enter valid email address');
-    $eventEmail.on('blur', function() {
+    var emailErrorMessage = initErrorMessage($eventEmail, 'enter valid email address or leave empty<br><br>');
+    $eventEmail.on('blur keyup change', function() {
     
-        toggleValidationClasses($eventEmail, validator.checkEventEmail, showEmailErrorMessage); 
+        toggleValidationClasses($eventEmail, validator.checkEventEmail, emailErrorMessage); 
 
     });
 
-    var showUrlErrorMessage = toastMessager('enter valid link');
-    $eventUrl.on('blur', function() {
+    var urlErrorMessage = initErrorMessage($eventUrl, 'enter valid link or leave empty<br><br>');
+    $eventUrl.on('blur keyup change', function() {
     
-        toggleValidationClasses($eventUrl, validator.checkEventUrl, showUrlErrorMessage); 
+        toggleValidationClasses($eventUrl, validator.checkEventUrl, urlErrorMessage); 
 
     });
 
-    $eventDetails.on('blur', function() {
+    var guestsErrorMessage = initErrorMessage($timesRow, 'provide at least one guest', 'before');
+    guestsErrorMessage.removeClass('hide');
+    $eventGuests.on('change', function() {
+        toggleValidationClassesSelectize($eventGuests, validator.checkEventGuests, guestsErrorMessage); 
+
+    });
+
+    var detailsErrorMessage = initErrorMessage($eventDetails, 'use less than 10000 characters');
+    $eventDetails.on('blur keyup change', function() {
     
-        toggleValidationClasses($eventDetails, validator.checkEventDetails); 
+        toggleValidationClasses($eventDetails, validator.checkEventDetails, detailsErrorMessage); 
 
     });
-
-    var validator = {
-
-        checkEventName: function(eventName) {
-
-            return /^[a-zA-Z0-9\-\s]{1,200}$/.test(eventName);
-
-        },
-
-        checkEventType: function(eventType) {
-
-            return /^[a-zA-Z\-\s]{1,200}$/.test(eventType) || !eventType;
-
-        },
-
-        checkEventHost: function(eventHost) {
-
-            return /^[a-zA-Z\-\s]{1,200}$/.test(eventHost);
-
-        },
-
-        checkEventTel: function(eventTel) {
-
-            return /^[0-9]{10,15}$/.test(eventTel) || !eventTel;
-
-        },
-
-        checkEventEmail: function(eventEmail) {
-
-            return /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/.test(eventEmail) || !eventEmail;
-
-        },
-
-        checkEventUrl: function(eventUrl) {
-
-            return /^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/.test(eventUrl) || !eventUrl;
-
-        },
-
-        checkEventGuests: function(eventGuests) {
-
-            var emailRegexp = /^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
-        
-            return eventGuests.split(',').reduce(function(old,newv) {
-            
-                if (true) {
-                    
-                    return emailRegexp.test(newv);     
-
-                }
-                
-                else {
-                
-                    return false; 
-                
-                }
-
-            },true);
-
-        },
-        
-        checkEventLocation: function(eventLocation) {
-        
-            return /^.{1,1000}$/.test(eventLocation);
-
-        },
-
-        checkEventDate: function(eventDate) {
-
-            return eventDate;
-
-        },
-
-        checkEventTime: function(eventTime) {
-
-            return eventTime;
-
-        },
-
-        checkEventDetails: function(eventDetails) {
-
-            return /^.{0,10000}/.test(eventDetails) || !eventDetails;
-
-        }
-
-    };
 
     function formIsValid() {
 
@@ -237,62 +166,6 @@ $(document).ready(function(event) {
                 validator.checkEventTime($eventEndTime.val()) &&
                 validator.checkEventDetails($eventDetails.val());
 
-    }
-
-    function toggleValidationClasses(elem, validatorFunction, showErrorMessage) {
-
-        if (elem.val().length === 0) {
-        
-            elem.removeClass('invalid');
-            elem.removeClass('valid');
-
-        }
-
-        else if (validatorFunction(elem.val())) {
-        
-            elem.removeClass('invalid');
-            elem.addClass('valid');
-
-        }
-
-        else {
-        
-            elem.removeClass('valid');
-            elem.addClass('invalid');
-            if (showErrorMessage) {
-                
-                showErrorMessage();
-            
-            }
-        
-        }
-
-    }
-
-    function toastMessager(message) {
-
-        var count = 0;
-        var errorMessage = message;
-
-        function showToast() {
-
-            if (count < 1) {
-
-                   count++;
-                   Materialize.toast(errorMessage, 5000);
-
-            } 
-
-            else if (count === 1) {
-
-                   setTimeout(function () {count=0},5000);
-
-            }
-
-        }
-
-        return showToast;
-            
     }
 
 });
