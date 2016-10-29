@@ -61,7 +61,7 @@ node app
 ```  
 
 #### Step 6: Edit the application (optional) 
-After completing the prerequisites and steps 1 to 5, feel free to start editing the application to your taste. If you are to edit the views or elements in the `public` folder, make your edits in the `views_src` and the `public_src` first, and run the following command before rerunning the app:  
+After completing steps 1 to 5, feel free to start editing the application to your taste. If you are to edit the views or elements in the `public` folder, make your edits in the `views_src` and the `public_src` first, and run the following command before rerunning the app:  
 
 ```  
 gulp move-views && gulp
