@@ -10,7 +10,7 @@ $(document).ready(function(event) {
         $eventDetails = $('#details-event'),
         $createEvent = $('#event-button'); 
 
-    $('#event-creation').on('keyup', function() {
+    $('#event-creation').on('keyup change', function() {
 
         if (formIsValid()) {
 
