@@ -50,12 +50,15 @@ block main
                 .margin-t-1
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 phone
+                    label.hide(for='tel-event') Please enter the host's phone here
                     input#tel-event.event-input(type='tel', placeholder='use numbers only', pattern="^[0-9]{10,15}$", maxlength="15")
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 mail
+                    label.hide(for='mail-event') Please enter the host's email here
                     input#mail-event.event-input(type='email', placeholder='example@gmail.com', data-bind='value:email', maxlength="200", pattern="/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/")
                 .input-field.col.s12.m12.l4
                     i.material-icons.prefix.teal-text.text-accent-4 link
+                    label.hide(for='link-event') Please enter the event's website here
                     input#link-event.event-input(type='url', placeholder='website, facebook page, etc.', pattern="/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/")
                     
                 label#lab-guests(for="guests-event").teal-text.text-accent-4 Who should we invite?
@@ -83,8 +86,6 @@ block main
                   i.material-icons.right send
                 include ./eventconfirm.pug
 block scripts
-    script(src="bower_components/localforage/dist/localforage.min.js")
     script(src='js/eventsocial.js')
-    include ./redirect.pug
     script(src=`https://maps.googleapis.com/maps/api/js?key=${gmapkey}&libraries=places&callback=initAutocomplete`, async, defer)
 

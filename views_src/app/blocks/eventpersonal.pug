@@ -52,8 +52,8 @@ block main
                   i.material-icons.right send
                 include ./eventconfirm.pug
 block scripts
-    script(src="bower_components/localforage/dist/localforage.min.js")
     //////eventpersonal
+    script(src="bower_components/localforage/dist/localforage.min.js")
     script(src='bower_components/jquery/dist/jquery.min.js')
 
     script(src='bower_components/pickadate/lib/compressed/picker.js')
@@ -68,7 +68,8 @@ block scripts
     script(src="js/eventpersonal.js")
 
     script(src="js/getprofile.js")
+    script(src="js/redirect.js")
+    script(src="js/signout.js")
     //////
-    include ./redirect.pug
     script(src=`https://maps.googleapis.com/maps/api/js?key=${gmapkey}&libraries=places&callback=initAutocomplete`, async, defer)
 

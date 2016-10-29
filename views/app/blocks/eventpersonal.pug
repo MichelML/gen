@@ -52,8 +52,6 @@ block main
                   i.material-icons.right send
                 include ./eventconfirm.pug
 block scripts
-    script(src="bower_components/localforage/dist/localforage.min.js")
     script(src='js/eventpersonal.js')
-    include ./redirect.pug
     script(src=`https://maps.googleapis.com/maps/api/js?key=${gmapkey}&libraries=places&callback=initAutocomplete`, async, defer)
 

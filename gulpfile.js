@@ -174,10 +174,10 @@ gulp.task('movejs-localforage', () => {
 gulp.task('movejs-signin', () => {
 
     gulp.src(['./public_src/bower_components/localforage/dist/localforage.min.js',
-              './public_src/js/redirect_loggedin.js',
               './public_src/bower_components/jquery/dist/jquery.min.js', 
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/js/navinit.js',
+              './public_src/js/redirect_loggedin.js',
               './public_src/js/signin.js'])
               .pipe(concat('signin.js'))
               .pipe(jsmin())
@@ -188,10 +188,10 @@ gulp.task('movejs-signin', () => {
 gulp.task('movejs-signup', () => {
 
     gulp.src(['./public_src/bower_components/localforage/dist/localforage.min.js',
-              './public_src/js/redirect_loggedin.js',
               './public_src/bower_components/jquery/dist/jquery.min.js', 
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/js/navinit.js',
+              './public_src/js/redirect_loggedin.js',
               './public_src/js/signup.js'])
               .pipe(concat('signup.js'))
               .pipe(jsmin())
@@ -201,11 +201,13 @@ gulp.task('movejs-signup', () => {
 
 gulp.task('movejs-eventchoice', () => {
 
-    gulp.src(['./public_src/js/addressreset.js',
+    gulp.src(['./public_src/bower_components/localforage/dist/localforage.min.js',
+              './public_src/js/addressreset.js',
               './public_src/bower_components/jquery/dist/jquery.min.js', 
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/bower_components/knockout/dist/knockout.js',
-              './public_src/js/navinit.js'])
+              './public_src/js/navinit.js',
+              './public_src/js/signout.js'])
               .pipe(concat('eventchoice.js'))
               .pipe(jsmin())
               .pipe(gulp.dest('public/js'))
@@ -214,7 +216,8 @@ gulp.task('movejs-eventchoice', () => {
 
 gulp.task('movejs-eventpersonal', () => {
 
-    gulp.src(['./public_src/bower_components/jquery/dist/jquery.min.js',
+    gulp.src(['./public_src/bower_components/localforage/dist/localforage.min.js',
+              './public_src/bower_components/jquery/dist/jquery.min.js',
               './public_src/bower_components/pickadate/lib/compressed/picker.js',
               './public_src/bower_components/pickadate/lib/compressed/picker.time.js',
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
@@ -222,7 +225,9 @@ gulp.task('movejs-eventpersonal', () => {
               './public_src/js/navinit.js',
               './public_src/js/eventmain.js',
               './public_src/js/eventpersonal.js',
-              './public_src/js/getprofile.js'])
+              './public_src/js/getprofile.js',
+              './public_src/js/redirect.js',
+              './public_src/js/signout.js'])
               .pipe(concat('eventpersonal.js'))
               .pipe(jsmin())
               .pipe(gulp.dest('public/js'))
@@ -231,7 +236,8 @@ gulp.task('movejs-eventpersonal', () => {
 
 gulp.task('movejs-eventsocial', () => {
 
-    gulp.src(['./public_src/bower_components/jquery/dist/jquery.min.js',
+    gulp.src(['./public_src/bower_components/localforage/dist/localforage.min.js',
+              './public_src/bower_components/jquery/dist/jquery.min.js',
               './public_src/bower_components/pickadate/lib/compressed/picker.js',
               './public_src/bower_components/pickadate/lib/compressed/picker.time.js',
               './public_src/bower_components/selectize/dist/js/standalone/selectize.js',
@@ -241,7 +247,9 @@ gulp.task('movejs-eventsocial', () => {
               './public_src/js/eventmain.js',
               './public_src/js/eventsocial.js',
               './public_src/js/selectize.js',
-              './public_src/js/getprofile.js'])
+              './public_src/js/getprofile.js',
+              './public_src/js/redirect.js',
+              './public_src/js/signout.js'])
               .pipe(concat('eventsocial.js'))
               .pipe(jsmin())
               .pipe(gulp.dest('public/js'))
@@ -256,7 +264,9 @@ gulp.task('movejs-profile', () => {
               './public_src/js/navinit.js',
               './public_src/js/getprofile.js',
               './public_src/js/getevent.js',
-              './public_src/js/savebio.js'])
+              './public_src/js/savebio.js',
+              './public_src/js/redirect.js',
+              './public_src/js/signout.js'])
               .pipe(concat('profile.js'))
               .pipe(jsmin())
               .pipe(gulp.dest('public/js'))

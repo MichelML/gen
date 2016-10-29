@@ -9,7 +9,7 @@ const express = require('express'),
 
 app.get('/eventsocial', function(request, response) {
 
-    response.render('./app/blocks/eventsocial', request.app.locals.settings.gapi);
+    response.render('./app/blocks/eventsocial', request.app.locals.settings.gapis);
 
 });
 

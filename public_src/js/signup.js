@@ -4,8 +4,12 @@ $(document).ready(function () {
         span.before($(element).attr('data-tooltip'));
         span.remove();
     });
+
     var email = {};
     email.elem = $('#email-account');
+    email.value = '';
+    email.isValid = false;
+    email.validationRegExp = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
     var password = {};
     password.elem = $('#password-account');
@@ -27,11 +31,12 @@ $(document).ready(function () {
 
     var areInputsAllValid = false;
     email.elem.on('keyup', function() {
+        isValidInput(email, email.validationRegExp);
         enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
     });
 
     password.elem.on('keyup', function() {
-       isValidPassword(password); 
+       isValidInput(password, passwordValidation); 
        enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
        shouldShowHelper(password,passwordHelper);
      });
@@ -42,24 +47,24 @@ $(document).ready(function () {
        passwordHelper.elem.addClass('hide');
      });
      passwordConfirm.elem.on('keyup', function() {
-       isValidPassword(passwordConfirm); 
+       isValidInput(passwordConfirm, passwordValidation); 
        isPasswordConfirmMatching(password,passwordConfirm);
        enableCreateAccountButton(email,password,passwordConfirm,createAccountButton, areInputsAllValid);
      });
 
-    function isValidPassword(pw) {
-        pw.value = pw.elem.val();
-        pw.isValid = passwordValidation.test(pw.value);
-        if (!pw.value) {
-            pw.elem.removeClass()
+    function isValidInput(element, validationregexp) {
+        element.value = element.elem.val();
+        element.isValid = validationregexp.test(element.value);
+        if (!element.value) {
+            element.elem.removeClass()
          }
-        else if (pw.isValid) {
-            pw.elem.removeClass('invalid');
-            pw.elem.addClass('valid');
+        else if (element.isValid) {
+            element.elem.removeClass('invalid');
+            element.elem.addClass('valid');
         }
         else {
-            pw.elem.removeClass('valid');
-            pw.elem.addClass('invalid');
+            element.elem.removeClass('valid');
+            element.elem.addClass('invalid');
         }
     }
 

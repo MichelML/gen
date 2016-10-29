@@ -7,7 +7,7 @@ var express = require('express'),
 
 app.get('/signin', function(request, response) {
 
-    response.render('./app/blocks/signin', request.app.locals.settings.gapi);
+    response.render('./app/blocks/signin', request.app.locals.settings.gapis);
 
 });
 

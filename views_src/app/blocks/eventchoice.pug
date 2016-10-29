@@ -30,8 +30,8 @@ block main
 
 
 block scripts
-    script(src="bower_components/localforage/dist/localforage.min.js")
     //////eventchoice
+    script(src="bower_components/localforage/dist/localforage.min.js")
     script(src='js/addressreset.js')
 
     script(src='bower_components/jquery/dist/jquery.min.js')
@@ -41,8 +41,8 @@ block scripts
     script(src='bower_components/knockout/dist/knockout.js')
 
     script(src='js/navinit.js')
+    script(src='js/signout.js')
     //////
-    include ./redirect.pug
     if me
         script.
             $.get('/user/' + '#{me.email}', function (user) {
@@ -57,6 +57,7 @@ block scripts
 
                 }).then(function(me) {
 
+                    $('#spinnerdiv').fadeOut();
                     ko.applyBindings(me);
 
                 }).catch(function(err) {
@@ -70,12 +71,18 @@ block scripts
         script.
             localforage.getItem("me")
 
-                        .then(function(me) {
+                .then(function(me) {
 
-                            ko.applyBindings(me);
+                    if (me) {
+                        $('#spinnerdiv').fadeOut();
+                        ko.applyBindings(me);
+                    }
+                    else { 
+                        window.location.replace('/');
+                    }
 
-                        }).catch(function(err) {
+                }).catch(function(err) {
 
-                            console.log(err);
+                    console.log(err);
 
-                        });
+                });
