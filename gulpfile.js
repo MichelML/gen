@@ -262,7 +262,8 @@ gulp.task('movejs-eventsocial', () => {
 
 gulp.task('movejs-profile', () => {
 
-    gulp.src(['./public_src/bower_components/jquery/dist/jquery.min.js',
+    gulp.src(['./public_src/bower_components/localforage/dist/localforage.min.js',
+              './public_src/bower_components/jquery/dist/jquery.min.js',
               './public_src/bower_components/materialize/dist/js/materialize.min.js',
               './public_src/bower_components/knockout/dist/knockout.js',
               './public_src/js/navinit.js',
