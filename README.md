@@ -6,7 +6,7 @@
 <br>
   
 # Synopsis   
-*GEN* lets you create any kind of event in sync with Google Calendar. The application allows someone to name their event, search for a host location, invite guests, set the start and end dates and times, and input a description of the event.  
+*GEN* lets you create any kind of event in sync with Google Calendar. The application allows someone to name their event, search for a host location, invite guests by email, set the start and end dates and times, and input a description of the event.  
 
 *GEN* is a web application that is a joy to use on both desktop and mobile.
                        
